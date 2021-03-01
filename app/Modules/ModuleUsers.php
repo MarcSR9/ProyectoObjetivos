@@ -21,7 +21,7 @@ class ModuleUsers
      */
     public function listarUsuarios()
     {
-        echo "Module User: crearUsuario";
+        //echo "Module User: crearUsuario";
         $usuarios = DB::table('users')->get();
         return $usuarios;
     }
@@ -51,7 +51,7 @@ class ModuleUsers
      */
     public function mostrarUsuario($id)
     {
-        //
+        //return User::
     }
 
     /**

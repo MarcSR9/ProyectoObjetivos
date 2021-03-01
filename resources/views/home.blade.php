@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div>
                 <h1>Inicio</h1>
-                <a href="{{ route('admin.index') }}">Gestión usuarios (solo admin)</a>
+                <a href="{{ route('usuarios.listarUsuarios') }}">Gestión usuarios (solo admin)</a>
                 <a href="{{ route('objetivos') }}">Mis objetivos</a>
                 <hr>
                 <h2>Estado de la aplicaión</h2>

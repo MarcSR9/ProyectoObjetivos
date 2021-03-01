@@ -12,19 +12,19 @@ class AdminController extends Controller
     {
         $usermodule = new ModuleUsers();
         $users = $usermodule->listarUsuarios();
-        dd($users);
-        //return redirect('gestion_usuarios');
+        return view('usuarios.listarUsuarios', [
+            'usuarios' => $users
+        ]);
+
     }
 
+    public function loadUser($user_id){
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $usermodule = new ModuleUsers();
+        $user = $user->listarUsuario($id);
+        return view('usuarios.listarUsuarios', [
+            'usuarios' => [$user]
+        ]);
     }
 
     /**
@@ -46,7 +46,7 @@ class AdminController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**

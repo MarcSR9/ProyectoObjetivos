@@ -19,11 +19,13 @@ Route::get('/login', function () {
 
 Auth::routes();
 
-Route::view('/', 'home')->name('home');
+Route::view('/', 'home');
 
-Route::resource('/gestion_usuarios', 'AdminController')
-	->parameters(['gestion_usuarios' => 'user'])
-	->names('admin');
+Route::get('/usuarios', 'AdminController@index');
+Route::get('/usuarios/{user_id}', 'AdminController@loadUser');
+
+
+
 
 Route::view('/objetivos', 'objetivos')->name('objetivos');
 
