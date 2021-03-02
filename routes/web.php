@@ -22,10 +22,15 @@ Auth::routes();
 Route::view('/', 'home');
 
 Route::get('/usuarios', 'AdminController@index');
-Route::get('/usuarios/{user_id}', 'AdminController@loadUser');
+Route::get('/usuarios/crearUsuario', 'AdminController@create');
+
+Route::get('/usuarios/{id}', 'AdminController@show');
+
+Route::get('/usuarios/{id}/editar', 'AdminController@editar');
+Route::patch('/usuarios/{id}', 'AdminController@update');
 
 
 
 
-Route::view('/objetivos', 'objetivos')->name('objetivos');
+
 

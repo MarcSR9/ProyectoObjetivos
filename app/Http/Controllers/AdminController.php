@@ -15,15 +15,21 @@ class AdminController extends Controller
         return view('usuarios.listarUsuarios', [
             'usuarios' => $users
         ]);
+    }
+
+    protected function create(array $data)
+    {
+        $usermodule = new ModuleUsers();
+        return $usermodule->crearUsuario($data);
 
     }
 
-    public function loadUser($user_id){
+    public function show($id){
 
         $usermodule = new ModuleUsers();
-        $user = $user->listarUsuario($id);
-        return view('usuarios.listarUsuarios', [
-            'usuarios' => [$user]
+        $user = $usermodule->mostrarUsuario($id);
+        return view('usuarios.mostrarUsuario', [
+            'usuario' => $user
         ]);
     }
 
@@ -44,10 +50,6 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -69,7 +71,11 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $usermodule = new ModuleUsers();
+        $user = $usermodule->mostrarUsuario($id);
+        return view('usuarios.mostrarUsuario', [
+            'usuario' => $user
+        ]);
     }
 
     /**
@@ -80,6 +86,10 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $usermodule = new ModuleUsers();
+        $users = $usermodule->eliminarUsuario($id);
+        return view('usuarios.listarUsuarios', [
+            'usuarios' => $users
+        ]);
     }
 }

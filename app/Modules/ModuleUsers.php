@@ -33,7 +33,6 @@ class ModuleUsers
      */
     public function crearUsuario($data)
     {
-        echo "Module User: crearUsuario";
         return User::create([
             'name' => $data['name'],
             'surname' => $data['surname'],
@@ -51,7 +50,8 @@ class ModuleUsers
      */
     public function mostrarUsuario($id)
     {
-        //return User::
+        $usuario = User::find($id);
+        return $usuario;
     }
 
     /**
@@ -62,7 +62,14 @@ class ModuleUsers
      */
     public function editarUsuario($id)
     {
-        //
+        $usuario = User::find($id);
+        $usuario->name = $name;
+        $usuario->surname = $surname;
+        $usuario->role = $role;
+        $usuario->email = $email;
+
+        $usuario->save();
+        return $usuario;
     }
 
 
@@ -72,9 +79,10 @@ class ModuleUsers
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function elimnarUsuario($id)
+    public function eliminarUsuario($id)
     {
-        //
+        $usuario = User::delete($id);
+        return $usuario;
     }
 
 
