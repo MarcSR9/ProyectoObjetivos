@@ -9,7 +9,7 @@
 			</div>
 			<hr>
 			<h2>Usuarios registrados</h2>
- 			<a class="btn btn-primary" href="{{ route('register')}}">Crear usuario</a>
+ 			<a class="btn btn-primary" href="{{ view('usuarios.crearUsuario')}}">Crear usuario</a>
 
  			<ul class="list-group">
 				@foreach ($usuarios as $usuario)

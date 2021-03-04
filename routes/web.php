@@ -21,16 +21,16 @@ Auth::routes();
 
 Route::view('/', 'home');
 
-Route::get('/usuarios', 'AdminController@index');
-Route::get('/usuarios/crearUsuario', 'AdminController@create');
+Route::get('/usuarios', 'AdminController@index')->name('usuarios.lista');
+Route::post('/usuarios/crearUsuario', 'AdminController@create')->name('usuarios.crear');
 
-Route::get('/usuarios/{id}', 'AdminController@show');
+//Route::get('/usuarios/{id}', 'AdminController@show');
 
-Route::get('/usuarios/{id}/editar', 'AdminController@editar');
-Route::patch('/usuarios/{id}', 'AdminController@update');
+//Route::get('/usuarios/{id}/editar', 'AdminController@editar');
+//Route::patch('/usuarios/{id}', 'AdminController@update');
 
+Route::get('/usuarios/{id}/eliminarUsuario', 'AdminController@destroy');
 
-
-
+//Route::view('/objetivos', 'objetivos');
 
 

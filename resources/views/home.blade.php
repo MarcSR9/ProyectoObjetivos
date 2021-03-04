@@ -6,8 +6,8 @@
         <div class="col-md-12">
             <div>
                 <h1>Inicio</h1>
-                <a href="{{ route('usuarios.index') }}">Gestión usuarios (solo admin)</a>
-                <a href="{{ route('objetivos') }}">Mis objetivos</a>
+                <a href="{{ route('usuarios.lista') }}">Gestión usuarios (solo admin)</a>
+                <a href="">Mis objetivos</a>
                 <hr>
                 <h2>Estado de la aplicaión</h2>
                 <p>Mostrar trimestre</p>

@@ -11,9 +11,11 @@ use App\Modules\ModuleUsers;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ModuleUsers
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -31,15 +33,19 @@ class ModuleUsers
      *
      * @return \Illuminate\Http\Response
      */
-    public function crearUsuario($data)
+    public function crearUsuario($name, $surname, $role, $email, $password)
     {
         return User::create([
-            'name' => $data['name'],
-            'surname' => $data['surname'],
-            'role' => $data['role'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'name' => $name,
+            'surname' => $surname,
+            'role' => $role,
+            'email' => $email,
+            'password' => Hash::make($password)
         ]);
+    }
+
+    public function getUserByEmail($email){
+        return User::where('email', $email)->first();
     }
 
     /**
@@ -81,8 +87,9 @@ class ModuleUsers
      */
     public function eliminarUsuario($id)
     {
-        $usuario = User::delete($id);
-        return $usuario;
+        $usuario = User::find($id);
+        $usuario ->delete($id);
+        return;
     }
 
 

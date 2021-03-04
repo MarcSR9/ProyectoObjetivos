@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Modules\ModuleUsers;
+use App\Models\User;
 
 class AdminController extends Controller
 {
@@ -17,11 +18,18 @@ class AdminController extends Controller
         ]);
     }
 
-    protected function create(array $data)
+    protected function create(Request $request)
     {
+        $data = $request->post();
         $usermodule = new ModuleUsers();
-        return $usermodule->crearUsuario($data);
 
+        $exists = $usermodule->getUserByEmail($data['email']);
+        if(is_null($exists)){
+            $response = $usermodule->crearUsuario($data['name'], $data['surname'], $data['role'], $data['email'], $data['password']);
+            return back()->with('status-success', 'El usuario ha sido creado correctamente');
+        }else{
+            return back()->with('status-error', 'El email del usuario ya existe en la base de datos.');
+        }
     }
 
     public function show($id){

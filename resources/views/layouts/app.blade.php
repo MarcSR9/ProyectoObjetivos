@@ -71,6 +71,7 @@
                 </div>
             </div>
         </nav>
+        @include('layouts.session-status')
 
         <main class="py-4">
             @yield('content')
