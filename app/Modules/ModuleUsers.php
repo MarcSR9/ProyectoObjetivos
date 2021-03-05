@@ -24,7 +24,7 @@ class ModuleUsers
     public function listarUsuarios()
     {
         //echo "Module User: crearUsuario";
-        $usuarios = DB::table('users')->get();
+        $usuarios = DB::table('users')->where('deleted_at', null)->get();
         return $usuarios;
     }
 
@@ -69,13 +69,14 @@ class ModuleUsers
     public function editarUsuario($id)
     {
         $usuario = User::find($id);
-        $usuario->name = $name;
-        $usuario->surname = $surname;
-        $usuario->role = $role;
-        $usuario->email = $email;
-
-        $usuario->save();
-        return $usuario;
+        $usuario->update([
+            'name' => $name,
+            'surname' => $surname,
+            'role' => $role,
+            'email' => $email,
+            'password' => Hash::make($password)
+        ]);
+        return;
     }
 
 
@@ -87,8 +88,7 @@ class ModuleUsers
      */
     public function eliminarUsuario($id)
     {
-        $usuario = User::find($id);
-        $usuario ->delete($id);
+        User::find($id)->delete();
         return;
     }
 

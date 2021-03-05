@@ -8,8 +8,16 @@
                 <div class="card-header">Editar usuario</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('usuarios.editar', $usuario) }}">
+                    <form method="POST" action="{{ route('usuarios.actualizar', $usuario) }}">
                         @csrf
+
+                        <div class="form-group row" >
+                            <label for="id" class="col-md-4 col-form-label text-md-right">ID</label>
+
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control" name="id" value="{{ old('id') }}" required>
+                            </div>
+                        </div>
 
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
@@ -43,7 +51,7 @@
                             <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
 
                             <div class="col-md-6">
-                                <select id="role" type="text" class="form-control" required>
+                                <select id="role" name="role" type="text" class="form-control" required>
                                     <option value="admin">Admin</option>
                                     <option value="director">Director General</option>
                                     <option value="default" selected>Default</option>

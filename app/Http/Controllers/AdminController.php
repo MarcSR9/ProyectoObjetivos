@@ -18,6 +18,11 @@ class AdminController extends Controller
         ]);
     }
 
+    protected function nuevoUsuario(){
+        //redirigir al formulario de crear usuarios
+        return view('usuarios.crearUsuario');
+    }
+
     protected function create(Request $request)
     {
         $data = $request->post();
@@ -26,16 +31,16 @@ class AdminController extends Controller
         $exists = $usermodule->getUserByEmail($data['email']);
         if(is_null($exists)){
             $response = $usermodule->crearUsuario($data['name'], $data['surname'], $data['role'], $data['email'], $data['password']);
-            return back()->with('status-success', 'El usuario ha sido creado correctamente');
+            return redirect()->route('usuarios.lista', $usuarios)->with('status-success', 'El usuario ha sido creado correctamente');
         }else{
             return back()->with('status-error', 'El email del usuario ya existe en la base de datos.');
         }
     }
 
-    public function show($id){
+    public function show($usuario){
 
         $usermodule = new ModuleUsers();
-        $user = $usermodule->mostrarUsuario($id);
+        $user = $usermodule->mostrarUsuario($usuario);
         return view('usuarios.mostrarUsuario', [
             'usuario' => $user
         ]);
@@ -65,9 +70,11 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($usuario)
     {
-        //
+        return view('usuarios.editarUsuario', [
+            'usuario' => $usuario
+        ]);
     }
 
     /**
@@ -79,11 +86,10 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $data = $request->post();
         $usermodule = new ModuleUsers();
-        $user = $usermodule->mostrarUsuario($id);
-        return view('usuarios.mostrarUsuario', [
-            'usuario' => $user
-        ]);
+        $response = $usermodule->editarUsuario($data['id'], $data['name'], $data['surname'], $data['role'], $data['email']);
+        return redirect()->route('usuarios.lista', $usuarios)->with('status-success', 'El usuario ha sido actualizado correctamente');
     }
 
     /**
@@ -96,8 +102,6 @@ class AdminController extends Controller
     {
         $usermodule = new ModuleUsers();
         $users = $usermodule->eliminarUsuario($id);
-        return view('usuarios.listarUsuarios', [
-            'usuarios' => $users
-        ]);
+        return view('usuarios.listarUsuarios')->with('status-success', 'El usuario ha sido eliminado correctamente');
     }
 }

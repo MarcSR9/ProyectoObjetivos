@@ -22,14 +22,15 @@ Auth::routes();
 Route::view('/', 'home');
 
 Route::get('/usuarios', 'AdminController@index')->name('usuarios.lista');
+Route::get('/usuarios/nuevoUsuario', 'AdminController@nuevoUsuario')->name('usuarios.nuevoUsuario');
 Route::post('/usuarios/crearUsuario', 'AdminController@create')->name('usuarios.crear');
 
-//Route::get('/usuarios/{id}', 'AdminController@show');
+Route::get('/usuarios/{id}', 'AdminController@show')->name('usuarios.mostrarUsuario');
 
-//Route::get('/usuarios/{id}/editar', 'AdminController@editar');
-//Route::patch('/usuarios/{id}', 'AdminController@update');
+Route::get('/usuarios/{id}/editar', 'AdminController@edit')->name('usuarios.editar');
+Route::post('/usuarios/{id}/actualizar', 'AdminController@update')->name('usuarios.actualizar');
 
-Route::get('/usuarios/{id}/eliminarUsuario', 'AdminController@destroy');
+Route::delete('/usuarios/{id}/eliminarUsuario', 'AdminController@destroy')->name('usuarios.eliminarUsuario');
 
 //Route::view('/objetivos', 'objetivos');
 

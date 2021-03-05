@@ -9,18 +9,21 @@
 			</div>
 			<hr>
 			<h2>Usuarios registrados</h2>
- 			<a class="btn btn-primary" href="{{ view('usuarios.crearUsuario')}}">Crear usuario</a>
+ 			<a class="btn btn-primary" href="{{ route('usuarios.nuevoUsuario')}}">Crear usuario</a>
 
  			<ul class="list-group">
-				@foreach ($usuarios as $usuario)
+				@forelse ($usuarios as $usuario)
 				    <li class="list-group-item border-0 mb-3 shadow-sm bg-transparent">
-						<a class="text-dark h5 d-flex justify-content-between align-items-center" {{--href="{{route('usuarios.mostrarUsuario', $usuario)}}"--}}>
+						<a class="text-dark h5 d-flex justify-content-between align-items-center" href="{{route('usuarios.mostrarUsuario', $usuario->id)}}">
 							<span class="font-weight-bold">{{ $usuario->name }} {{ $usuario->surname }}</span>
 							<span class="text-black-50">{{ $usuario->email }}</span>
 							<span class="text-black-50">{{ $usuario->role }}</span>
+							<span class="text-black-50">{{ $usuario->id }}</span>
 						</a>
 					</li>
-				@endforeach
+				@empty
+					<p>No hay usuarios</p>
+				@endforelse
 			</ul>
 		</div>
     </div>
