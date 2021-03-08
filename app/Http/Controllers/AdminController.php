@@ -8,7 +8,6 @@ use App\Models\User;
 
 class AdminController extends Controller
 {
-
     protected function index()
     {
         $usermodule = new ModuleUsers();
@@ -19,7 +18,6 @@ class AdminController extends Controller
     }
 
     protected function nuevoUsuario(){
-        //redirigir al formulario de crear usuarios
         return view('usuarios.crearUsuario');
     }
 
@@ -46,30 +44,6 @@ class AdminController extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($usuario)
     {
         return view('usuarios.editarUsuario', [
@@ -77,31 +51,44 @@ class AdminController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $data = $request->post();
         $usermodule = new ModuleUsers();
-        $response = $usermodule->editarUsuario($data['id'], $data['name'], $data['surname'], $data['role'], $data['email']);
-        return redirect()->route('usuarios.lista', $usuarios)->with('status-success', 'El usuario ha sido actualizado correctamente');
+        $usuario = $usermodule->editarUsuario($data['id'], $data['name'], $data['surname'], $data['role'], $data['email']);
+        return redirect()->route('usuarios.mostrarUsuario', $id)->with('status-success', 'El usuario ha sido actualizado correctamente');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $usermodule = new ModuleUsers();
         $users = $usermodule->eliminarUsuario($id);
         return view('usuarios.listarUsuarios')->with('status-success', 'El usuario ha sido eliminado correctamente');
+    }
+
+    public function actualizarPassword(Request $request, $id)
+    {
+        $data = $request->post();
+        $usermodule = new ModuleUsers();
+
+        $exists = $usermodule->getUserByEmail($data['email']);
+        if(is_null($exists)){
+            $response = $usermodule->crearUsuario($data['oldPassword'], $data['newPassword'];
+            return redirect()->route('usuarios.lista', $usuarios)->with('status-success', 'El usuario ha sido creado correctamente');
+        }else{
+            return back()->with('status-error', 'El email del usuario ya existe en la base de datos.');
+        }
+    }
+
+    public function generarTokenPW($id)
+    {
+        $usermodule = new ModuleUsers();
+        $users = $usermodule->generarTokenPassword($id);
+        return back();
+    }
+
+    public function recuperarContraseñaConToken($id)
+    {
+        # code...
     }
 }

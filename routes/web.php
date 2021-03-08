@@ -19,7 +19,7 @@ Route::get('/login', function () {
 
 Auth::routes();
 
-Route::view('/', 'home');
+Route::view('/home', 'home');
 
 Route::get('/usuarios', 'AdminController@index')->name('usuarios.lista');
 Route::get('/usuarios/nuevoUsuario', 'AdminController@nuevoUsuario')->name('usuarios.nuevoUsuario');
@@ -31,6 +31,8 @@ Route::get('/usuarios/{id}/editar', 'AdminController@edit')->name('usuarios.edit
 Route::post('/usuarios/{id}/actualizar', 'AdminController@update')->name('usuarios.actualizar');
 
 Route::delete('/usuarios/{id}/eliminarUsuario', 'AdminController@destroy')->name('usuarios.eliminarUsuario');
+
+Route::post('/usuarios/{id}/actualizarContraseña', 'AdminController@actualizarPassword')->name('usuarios.actualizarContraseña');
 
 //Route::view('/objetivos', 'objetivos');
 
