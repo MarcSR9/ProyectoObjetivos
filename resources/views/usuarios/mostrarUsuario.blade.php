@@ -6,7 +6,6 @@
 		<h1 class="display-5">{{ $usuario->name }} {{ $usuario->surname }}</h1>
 		<p class="text-secondary">{{ $usuario->role }}</p>
 		<p class="text-secondary">{{ $usuario->email }}</p>
-		<p class="text-secondary">{{ $usuario->id }}</p>
 		<p class="text-black-50">{{ $usuario->created_at->diffForHumans() }}</p>
 	</div>
 	<button><a href="{{ route('usuarios.editar', $usuario) }}">Editar usuario</a></button>

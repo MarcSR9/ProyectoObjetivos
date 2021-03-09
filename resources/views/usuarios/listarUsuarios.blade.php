@@ -18,7 +18,6 @@
 							<span class="font-weight-bold">{{ $usuario->name }} {{ $usuario->surname }}</span>
 							<span class="text-black-50">{{ $usuario->email }}</span>
 							<span class="text-black-50">{{ $usuario->role }}</span>
-							<span class="text-black-50">{{ $usuario->id }}</span>
 						</a>
 					</li>
 				@empty

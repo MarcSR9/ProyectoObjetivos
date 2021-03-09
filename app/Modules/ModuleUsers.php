@@ -36,54 +36,46 @@ class ModuleUsers
         return User::where('email', $email)->first();
     }
 
-    public function mostrarUsuario($id)
+    public function mostrarUsuario(User $usuario)
     {
-        $usuario = User::find($id);
         return $usuario;
     }
 
-    public function editarUsuario($id, $name, $surname, $role, $email)
+    public function editarUsuario(User $usuario, $newdata)
     {
-        $usuario = User::find($id);
-        $usuario->update([
-            'id' => $id,
-            'name' => $name,
-            'surname' => $surname,
-            'role' => $role,
-            'email' => $email,
-        ]);
+        $usuario->name = $newdata["name"];
+        $usuario->surname = $newdata["surname"];
+        $usuario->role = $newdata["role"];
+        $usuario->email = $newdata["email"];
+        $usuario->save();
+        return $usuario;
+    }
+
+    public function eliminarUsuario(User $usuario)
+    {
+        $usuario->delete();
         return;
     }
 
-    public function eliminarUsuario($id)
-    {
-        User::find($id)->delete();
-        return;
-    }
-
-    public function actualizarPassword($id)
+    public function actualizarPassword(User $usuario)
     {
         $usuario = User::find($id);
+
         $usuario->update([
             'password' => $password,
         ]);
         return;
     }
 
-    public function getUserPW($id)
-    {
-        # code...
-    }
-
-    public function recuperarPasswordConToken($id)
+    public function recuperarPasswordConToken(User $usuario)
     {
         //
     }
 
-    public function generarTokenPassword($id)
+    public function generarTokenPassword(User $usuario)
     {
         $usuario = User::find($id);
-        User::create(['reset_token' => Str::random(10)]);
+        User::create(['reset_token' => Str::random(128)]);
         return ;
     }
 }

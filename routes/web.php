@@ -25,14 +25,14 @@ Route::get('/usuarios', 'AdminController@index')->name('usuarios.lista');
 Route::get('/usuarios/nuevoUsuario', 'AdminController@nuevoUsuario')->name('usuarios.nuevoUsuario');
 Route::post('/usuarios/crearUsuario', 'AdminController@create')->name('usuarios.crear');
 
-Route::get('/usuarios/{id}', 'AdminController@show')->name('usuarios.mostrarUsuario');
+Route::get('/usuarios/{usuario}', 'AdminController@show')->name('usuarios.mostrarUsuario');
 
-Route::get('/usuarios/{id}/editar', 'AdminController@edit')->name('usuarios.editar');
-Route::post('/usuarios/{id}/actualizar', 'AdminController@update')->name('usuarios.actualizar');
+Route::get('/usuarios/{usuario}/editar', 'AdminController@edit')->name('usuarios.editar');
+Route::post('/usuarios/{usuario}/actualizar', 'AdminController@update')->name('usuarios.actualizar');
 
-Route::delete('/usuarios/{id}/eliminarUsuario', 'AdminController@destroy')->name('usuarios.eliminarUsuario');
+Route::delete('/usuarios/{usuario}/eliminarUsuario', 'AdminController@destroy')->name('usuarios.eliminarUsuario');
 
-Route::post('/usuarios/{id}/actualizarContraseña', 'AdminController@actualizarPassword')->name('usuarios.actualizarContraseña');
+//Route::post('/usuarios/{id}/actualizarContraseña', 'AdminController@actualizarPassword')->name('usuarios.actualizarContraseña');
 
 //Route::view('/objetivos', 'objetivos');
 

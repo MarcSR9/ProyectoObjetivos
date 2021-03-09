@@ -33,10 +33,25 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
+        'id',
         'password',
         'remember_token',
         'deleted_at'
     ];
+
+    /*public function resolveRouteBinding($value)
+    {
+        return $this->where([
+                ['id', $value],
+                ['deleted', null]
+                ])
+                ->first() ??  abort(404, "User not found");
+    }*/
+
+    public function resolveRouteBinding($id, $deleted = null)
+    {
+        return $this->where('id', $id)->firstOrFail();
+    }
 
     /**
      * The attributes that should be cast to native types.
@@ -46,6 +61,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
 
     public function roles()
     {

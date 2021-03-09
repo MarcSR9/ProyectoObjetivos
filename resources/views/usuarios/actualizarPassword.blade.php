@@ -8,7 +8,7 @@
                 <div class="card-header">Crear nuevo usuario</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('usuarios.actualizarContraseña', $usuario) }}">
+                    <form method="POST" {{--action="{{ route('usuarios.actualizarContraseña', $usuario) }}"--}}>
                         @csrf
 
                         <div class="form-group row">
