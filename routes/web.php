@@ -32,7 +32,16 @@ Route::post('/usuarios/{usuario}/actualizar', 'AdminController@update')->name('u
 
 Route::delete('/usuarios/{usuario}/eliminarUsuario', 'AdminController@destroy')->name('usuarios.eliminarUsuario');
 
-//Route::post('/usuarios/{id}/actualizarContraseña', 'AdminController@actualizarPassword')->name('usuarios.actualizarContraseña');
+Route::get('/usuarios/{usuario}/editarContraseña', 'AdminController@editarContraseña')->name('usuarios.editarContraseña');
+Route::post('/usuarios/{usuario}/actualizarContraseña', 'AdminController@actualizarContraseña')->name('usuarios.actualizarContraseña');
+
+Route::get('/login/recuperarContraseña', 'AdminController@recuperarContraseña')->name('recuperarContraseña');
+Route::post('/login/recuperarContraseña', 'AdminController@generarTokenPW')->name('generarTokenPW');
+
+Route::get('/login/recuperarCuenta', 'AdminController@recuperarCuenta')->name('recuperarCuenta');
+Route::post('/login/recuperarCuenta', 'AdminController@recuperarContraseñaConToken')->name('resetearCuenta');
+
+
 
 //Route::view('/objetivos', 'objetivos');
 

@@ -12,6 +12,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 
 class ModuleUsers
 {
@@ -57,25 +58,27 @@ class ModuleUsers
         return;
     }
 
-    public function actualizarPassword(User $usuario)
+    public function actualizarPassword(User $usuario, $data)
     {
-        $usuario = User::find($id);
+        $usuario->password = Hash::make($data["newPassword"]);
+        $usuario->save();
+        return $usuario;
+    }
 
-        $usuario->update([
-            'password' => $password,
+    public function recuperarPasswordConToken($data)
+    {
+        User::where('email', $data['email'])->where('reset_token', $data['token'])->update([
+            'password' => Hash::make($data['password']),
+            'reset_token' => null
         ]);
         return;
     }
 
-    public function recuperarPasswordConToken(User $usuario)
+    public function generarTokenPassword($data)
     {
-        //
-    }
-
-    public function generarTokenPassword(User $usuario)
-    {
-        $usuario = User::find($id);
-        User::create(['reset_token' => Str::random(128)]);
-        return ;
+        User::where('email', $data['email'])->update([
+            'reset_token' => Str::random(128)
+        ]);
+        return;
     }
 }

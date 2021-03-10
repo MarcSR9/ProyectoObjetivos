@@ -61,7 +61,7 @@
                                         {{ __('Logout') }}
                                     </a>
 
-                                    <a class="dropdown-item" {{--href="{{ view('usuarios.actualizarPassword') }}"--}}>Actualizar contraseña</a>
+                                    <a class="dropdown-item" href="{{ route('usuarios.editarContraseña', $usuario->id) }}">Actualizar contraseña</a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf

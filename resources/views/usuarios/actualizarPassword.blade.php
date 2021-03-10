@@ -5,21 +5,15 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Crear nuevo usuario</div>
+                <div class="card-header">Actualizar contraseña</div>
 
                 <div class="card-body">
-                    <form method="POST" {{--action="{{ route('usuarios.actualizarContraseña', $usuario) }}"--}}>
+                    <form method="POST" action="{{ route('usuarios.actualizarContraseña', $usuario) }}">
                         @csrf
-
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">{{ Auth::user()->name }} {{ Auth::user()->surname }}</label>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">{{ Auth::user()->email }}</label>
                         </div>
-
                         <div class="form-group row">
                             <label for="oldPassword" class="col-md-4 col-form-label text-md-right">Contraseña antigua</label>
 
@@ -40,7 +34,7 @@
                             <div class="col-md-6">
                                 <input id="newPassword" type="password" class="form-control @error('newPassword') is-invalid @enderror" name="newPassword" required autocomplete="new-password">
 
-                                @error('password')
+                                @error('newPassword')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

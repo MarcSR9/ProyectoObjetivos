@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Modules\ModuleUsers;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Contracts\Validation\Rule;
+
 
 class AdminController extends Controller
 {
@@ -65,29 +68,58 @@ class AdminController extends Controller
         return view('usuarios.listarUsuarios', $usuarios)->with('status-success', 'El usuario ha sido eliminado correctamente');
     }
 
-    public function actualizarPassword(Request $request, User $usuario)
+    public function editarContraseña(User $usuario)
+    {
+        return view('usuarios.actualizarPassword', ['usuario' => $usuario]);
+    }
+
+    public function actualizarContraseña(User $usuario, Request $request)
     {
         $data = $request->post();
         $usermodule = new ModuleUsers();
 
-        $exists = $usermodule->getUserByEmail($data['email']);
-        if(is_null($exists)){
-            $response = $usermodule->crearUsuario($data['oldPassword'], $data['newPassword']);
-            return redirect()->route('usuarios.lista', $usuario)->with('status-success', 'El usuario ha sido creado correctamente');
-        }else{
-            return view('usuarios.mostrarUsuario', ['usuario' => $usuario])->with('status-error', 'El email del usuario ya existe en la base de datos.');
+        if (Hash::check($data["oldPassword"], auth()->user()->password)) {
+            $usermodule->actualizarPassword($usuario, $data);
+            return back()->with('status-success', 'La contraseña ha sido actualizada correctamente');
+        }
+        else{
+            return back()->with('status-error', 'La contraseña introducida no es correcta');
         }
     }
 
-    public function generarTokenPW(User $usuario)
+    public function recuperarContraseña()
     {
-        $usermodule = new ModuleUsers();
-        $users = $usermodule->generarTokenPassword($id);
-        return back()->with('status-success', 'Ponte en contacto con el Administrador para obtener el Token y recuperar tu cuenta.');
+        return view('recuperarContraseña');
     }
 
-    public function recuperarContraseñaConToken(User $usuario)
+    public function generarTokenPW(Request $request)
     {
+        $data = $request->post();
+        $usermodule = new ModuleUsers();
+        $exists = $usermodule->getUserByEmail($data['email']);
+        if(is_null($exists)){
+            return back()->with('status-error', 'La dirección de correo electrónico no existe en la base de datos.');
+        }else{
+            $users = $usermodule->generarTokenPassword($data);
+            return back()->with('status-success', 'Ponte en contacto con el Administrador para obtener el Token y recuperar tu cuenta.');
+        }
+    }
 
+    public function recuperarCuenta()
+    {
+        return view('recuperarCuenta');
+    }
+
+    public function recuperarContraseñaConToken(Request $request)
+    {
+        $data = $request->post();
+        $usermodule = new ModuleUsers();
+        $exists = $usermodule->getUserByEmail($data['email']);
+        if(is_null($exists)){
+            return back()->with('status-error', 'La dirección de correo electrónico no existe en la base de datos.');
+        }else{
+            $users = $usermodule->recuperarPasswordConToken($data);
+            return redirect('login')->with('status-success', 'Tu contraseña ha sido actualizada correctamente');
+        }
     }
 }
