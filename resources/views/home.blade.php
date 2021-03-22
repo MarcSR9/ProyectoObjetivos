@@ -7,7 +7,8 @@
             <div>
                 <h1>Inicio</h1>
                 <a href="{{ route('usuarios.lista') }}">Gestión usuarios (solo admin)</a>
-                <a href="">Mis objetivos</a>
+                <hr>
+                @include('objetivos.misObjetivos')
                 <hr>
                 <h2>Estado de la aplicaión</h2>
                 <p>Mostrar trimestre</p>

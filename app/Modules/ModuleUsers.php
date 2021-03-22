@@ -81,4 +81,10 @@ class ModuleUsers
         ]);
         return;
     }
+
+    public function listarPermisos()
+    {
+        $permisos = DB::table('permisos')->where('deleted_at', null)->get();
+        return $permisos;
+    }
 }

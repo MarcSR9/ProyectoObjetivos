@@ -19,29 +19,40 @@ Route::get('/login', function () {
 
 Auth::routes();
 
-Route::view('/home', 'home');
+Route::group(['middleware' => 'auth'], function(){
+	Route::get('/', 'ObjetivosController@listarObjetivosPorIdUsuario')->name('home');
 
-Route::get('/usuarios', 'AdminController@index')->name('usuarios.lista');
-Route::get('/usuarios/nuevoUsuario', 'AdminController@nuevoUsuario')->name('usuarios.nuevoUsuario');
-Route::post('/usuarios/crearUsuario', 'AdminController@create')->name('usuarios.crear');
+	//Usuarios
+	Route::get('/usuarios', 'UsersController@index')->name('usuarios.lista');
+	Route::get('/usuarios/nuevoUsuario', 'UsersController@nuevoUsuario')->name('usuarios.nuevoUsuario');
+	Route::post('/usuarios/crearUsuario', 'UsersController@create')->name('usuarios.crear');
 
-Route::get('/usuarios/{usuario}', 'AdminController@show')->name('usuarios.mostrarUsuario');
+	Route::get('/usuarios/{usuario}', 'UsersController@show')->name('usuarios.mostrarUsuario');
 
-Route::get('/usuarios/{usuario}/editar', 'AdminController@edit')->name('usuarios.editar');
-Route::post('/usuarios/{usuario}/actualizar', 'AdminController@update')->name('usuarios.actualizar');
+	Route::get('/usuarios/{usuario}/editar', 'UsersController@edit')->name('usuarios.editar');
+	Route::post('/usuarios/{usuario}/actualizar', 'UsersController@update')->name('usuarios.actualizar');
 
-Route::delete('/usuarios/{usuario}/eliminarUsuario', 'AdminController@destroy')->name('usuarios.eliminarUsuario');
+	Route::delete('/usuarios/{usuario}/eliminarUsuario', 'UsersController@destroy')->name('usuarios.eliminarUsuario');
 
-Route::get('/usuarios/{usuario}/editarContraseña', 'AdminController@editarContraseña')->name('usuarios.editarContraseña');
-Route::post('/usuarios/{usuario}/actualizarContraseña', 'AdminController@actualizarContraseña')->name('usuarios.actualizarContraseña');
+	Route::get('/usuarios/{usuario}/editarContraseña', 'UsersController@editarContraseña')->name('usuarios.editarContraseña');
+	Route::post('/usuarios/{usuario}/actualizarContraseña', 'UsersController@actualizarContraseña')->name('usuarios.actualizarContraseña');
 
-Route::get('/login/recuperarContraseña', 'AdminController@recuperarContraseña')->name('recuperarContraseña');
-Route::post('/login/recuperarContraseña', 'AdminController@generarTokenPW')->name('generarTokenPW');
+	Route::get('/login/recuperarContraseña', 'UsersController@recuperarContraseña')->name('recuperarContraseña');
+	Route::post('/login/recuperarContraseña', 'UsersController@generarTokenPW')->name('generarTokenPW');
 
-Route::get('/login/recuperarCuenta', 'AdminController@recuperarCuenta')->name('recuperarCuenta');
-Route::post('/login/recuperarCuenta', 'AdminController@recuperarContraseñaConToken')->name('resetearCuenta');
+	Route::get('/login/recuperarCuenta', 'UsersController@recuperarCuenta')->name('recuperarCuenta');
+	Route::post('/login/recuperarCuenta', 'UsersController@recuperarContraseñaConToken')->name('resetearCuenta');
+
+	//Objetivos
+	Route::get('/objetivos/nuevoObjetivo', 'ObjetivosController@nuevoObjetivo')->name('nuevoObjetivo');
+	Route::post('/objetivos/crearObjetivo', 'ObjetivosController@create')->name('crearObjetivo');
 
 
+
+	//Administración de la aplicación
+
+
+});
 
 //Route::view('/objetivos', 'objetivos');
 

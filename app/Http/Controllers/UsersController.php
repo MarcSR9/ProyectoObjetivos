@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Contracts\Validation\Rule;
 
 
-class AdminController extends Controller
+class UsersController extends Controller
 {
     protected function index()
     {
@@ -121,5 +121,14 @@ class AdminController extends Controller
             $users = $usermodule->recuperarPasswordConToken($data);
             return redirect('login')->with('status-success', 'Tu contraseña ha sido actualizada correctamente');
         }
+    }
+
+    protected function listarPermisos()
+    {
+        $usermodule = new ModuleUsers();
+        $permisos = $usermodule->listarPermisos();
+        return view('usuarios.listarPermisos', [
+            'usuarios' => $permisos
+        ]);
     }
 }
