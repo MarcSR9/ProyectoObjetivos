@@ -7,6 +7,7 @@ use App\Modules\ModuleUsers;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Contracts\Validation\Rule;
+use App\Modules\ModuleAppAdministration;
 
 
 class UsersController extends Controller
@@ -34,6 +35,8 @@ class UsersController extends Controller
             $response = $usermodule->crearUsuario($data['name'], $data['surname'], $data['role'], $data['email'], $data['password']);
             return redirect()->route('usuarios.lista', $usuario)->with('status-success', 'El usuario ha sido creado correctamente');
         }else{
+            $appmodule = new ModuleAppAdministration();
+            $error = $appmodule->registrarError('Error al crear nuevo usuario. Email ya registrado');
             return back()->with('status-error', 'El email del usuario ya existe en la base de datos.');
         }
     }
@@ -83,6 +86,8 @@ class UsersController extends Controller
             return back()->with('status-success', 'La contraseña ha sido actualizada correctamente');
         }
         else{
+            $appmodule = new ModuleAppAdministration();
+            $error = $appmodule->registrarError('Error al actualizar contraseña. La contraseña introducida no es correcta');
             return back()->with('status-error', 'La contraseña introducida no es correcta');
         }
     }
@@ -98,6 +103,8 @@ class UsersController extends Controller
         $usermodule = new ModuleUsers();
         $exists = $usermodule->getUserByEmail($data['email']);
         if(is_null($exists)){
+            $appmodule = new ModuleAppAdministration();
+            $error = $appmodule->registrarError('Error al generar Token de recuperacion. El email no existe en la Base de datos');
             return back()->with('status-error', 'La dirección de correo electrónico no existe en la base de datos.');
         }else{
             $users = $usermodule->generarTokenPassword($data);
@@ -116,6 +123,8 @@ class UsersController extends Controller
         $usermodule = new ModuleUsers();
         $exists = $usermodule->getUserByEmail($data['email']);
         if(is_null($exists)){
+            $appmodule = new ModuleAppAdministration();
+            $error = $appmodule->registrarError('Error al recuperar cuenta. El email no existe en la Base de datos');
             return back()->with('status-error', 'La dirección de correo electrónico no existe en la base de datos.');
         }else{
             $users = $usermodule->recuperarPasswordConToken($data);
@@ -123,12 +132,12 @@ class UsersController extends Controller
         }
     }
 
-    protected function listarPermisos()
+    /*protected function listarPermisos()
     {
         $usermodule = new ModuleUsers();
         $permisos = $usermodule->listarPermisos();
         return view('usuarios.listarPermisos', [
             'usuarios' => $permisos
         ]);
-    }
+    }*/
 }

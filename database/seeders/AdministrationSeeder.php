@@ -14,29 +14,12 @@ class AdministrationSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('trimesters')->insert([
-        	'trimestre' => '1',
-            'estado' => 'desactivado',
-        ]);
-
-        DB::table('trimesters')->insert([
-            'trimestre' => '2',
-            'estado' => 'desactivado',
-        ]);
-
-        DB::table('trimesters')->insert([
-            'trimestre' => '3',
-            'estado' => 'desactivado',
-        ]);
-
-        DB::table('trimesters')->insert([
-            'trimestre' => '4',
-            'estado' => 'desactivado',
-        ]);
-
-        DB::table('trimesters')->insert([
-            'trimestre' => 'Conclusiones',
-            'estado' => 'desactivado',
+        DB::table('app_administration')->insert([
+        	'trimester_1' => 'disabled',
+            'trimester_2' => 'disabled',
+            'trimester_3' => 'disabled',
+            'trimester_4' => 'disabled',
+            'conclusions' => 'disabled',
         ]);
     }
 }

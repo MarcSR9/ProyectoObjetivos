@@ -13,9 +13,12 @@ class CreateTrimestersTable extends Migration
      */
     public function up()
     {
-        Schema::create('trimesters', function (Blueprint $table) {
-            $table->string('trimestre');
-            $table->string('estado');
+        Schema::create('app_administration', function (Blueprint $table) {
+            $table->string('trimester_1');
+            $table->string('trimester_2');
+            $table->string('trimester_3');
+            $table->string('trimester_4');
+            $table->string('conclusions');
         });
     }
 
@@ -26,6 +29,6 @@ class CreateTrimestersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('trimesters');
+        Schema::dropIfExists('app_administration');
     }
 }
