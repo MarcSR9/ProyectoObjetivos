@@ -73,25 +73,28 @@ class ModuleAppAdministration
 
 	public function registrarError($error)
 	{
-
 		return Errors::create([
 			'error' => $error,
 			'user_id' => auth()->user()->id,
 		]);
 	}
 
-
 	public function listarErrores()
     {
-        $errores = Errors::get();
+        $errores = Errors::join('users', 'errors.user_id', '=', 'users.id')
+        ->select('errors.error', 'errors.created_at', 'users.email')
+        ->get();
         return $errores;
     }
 
-	/*public function listarTrimestres()
+	public function listarUltimosErrores()
     {
-        $trimestres = DB::table('app_administration')->get();
-        return $trimestres;
-    }*/
+        $errores = Errors::join('users', 'errors.user_id', '=', 'users.id')
+        ->select('errors.error', 'errors.created_at', 'users.email')
+        ->latest()->take(10)->get();
+        return $errores;
+    }
+
 
 
 

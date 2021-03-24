@@ -44,9 +44,9 @@
 
                             <div class="col-md-6">
                                 <select id="role" name="role" type="text" class="form-control" required>
-                                    <option value="admin">Admin</option>
-                                    <option value="director">Director General</option>
-                                    <option value="default" selected>Default</option>
+                                    <option value="Admin">Admin</option>
+                                    <option value="Director General">Director General</option>
+                                    <option value="Default" selected>Default</option>
                                 </select>
 
                                 @error('role')

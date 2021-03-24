@@ -33,7 +33,7 @@ class UsersController extends Controller
         $exists = $usermodule->getUserByEmail($data['email']);
         if(is_null($exists)){
             $response = $usermodule->crearUsuario($data['name'], $data['surname'], $data['role'], $data['email'], $data['password']);
-            return redirect()->route('usuarios.lista', $usuario)->with('status-success', 'El usuario ha sido creado correctamente');
+            return redirect()->route('usuarios.lista', $usuarios)->with('status-success', 'El usuario ha sido creado correctamente');
         }else{
             $appmodule = new ModuleAppAdministration();
             $error = $appmodule->registrarError('Error al crear nuevo usuario. Email ya registrado');

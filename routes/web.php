@@ -50,7 +50,8 @@ Route::group(['middleware' => 'auth'], function(){
 
 
 	//Administración de la aplicación
-
+	Route::get('/administracion', 'AppAdminController@listarUltimosErrores')->name('administracion');
+	Route::get('/administracion/errores', 'AppAdminController@listarErrores')->name('listaErrores');
 
 });
 

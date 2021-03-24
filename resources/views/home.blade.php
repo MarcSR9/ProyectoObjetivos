@@ -6,7 +6,10 @@
         <div class="col-md-12">
             <div>
                 <h1>Inicio</h1>
-                <a href="{{ route('usuarios.lista') }}">Gestión usuarios (solo admin)</a>
+                @if(auth()->user()->role != 'Default')
+                    <a href="{{ route('usuarios.lista') }}">Gestión usuarios (solo admin)</a>
+                    <a href="{{ route('administracion') }}">Administración de la aplicación</a>
+                @endif
                 <hr>
                 @include('objetivos.misObjetivos')
                 <hr>

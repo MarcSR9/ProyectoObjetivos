@@ -82,14 +82,22 @@ class AppAdminController extends Controller
 
 	public function listarErrores()
     {
-        $errores = Errors::get();
-        return $errores;
+        $moduloAdminApp = new ModuleAppAdministration();
+	    $errores = $moduloAdminApp->listarErrores();
+	    return view('administracionApp.listaErrores', [
+	        'errores' => $errores
+	    ]);
     }
 
     public function listarUltimosErrores()
     {
-        $errores = Errors::latest()->take(10)->get();
-        return $errores;
+    	$moduloAdminApp = new ModuleAppAdministration();
+    	$estados = $moduloAdminApp->
+    	$moduloAdminApp = new ModuleAppAdministration();
+	    $errores = $moduloAdminApp->listarUltimosErrores();
+	    return view('administracionApp.estadoApp', [
+	        'errores' => $errores
+	    ]);
     }
 
 }
