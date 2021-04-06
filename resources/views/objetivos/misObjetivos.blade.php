@@ -9,12 +9,13 @@
 		<div class="d-flex justify-content-between align-items-center">
 			<div class="list-group col-md-4">
 				<h5>Objetivos Generales</h5>
-				@foreach ($objetivos as $objetivo)
+				@foreach ($objetivosOrigen as $objetivo)
 					@if($objetivo->Tipo == 'General')
 					<ul class="list-group">
 					    <li class="list-group-item border-0 mb-3 shadow-sm bg-transparent">
 							<a class="text-dark h5 d-flex justify-content-between align-items-center">
 								<span class="font-weight-bold">{{ $objetivo->Nombre }}</span>
+								<span class="font-weight-bold">{{ $objetivo->Tipo }}</span>
 							</a>
 						</li>
 					</ul>
@@ -24,12 +25,13 @@
 
 			<div class="list-group col-md-4">
 				<h5>Objetivos Secundarios</h5>
-				@foreach ($objetivos as $objetivo)
+				@foreach ($objetivosOrigen as $objetivo)
 					@if($objetivo->Tipo == 'Secundario')
 					<ul class="list-group">
 					    <li class="list-group-item border-0 mb-3 shadow-sm bg-transparent">
 							<a class="text-dark h5 d-flex justify-content-between align-items-center">
 								<span class="font-weight-bold">{{ $objetivo->Nombre }}</span>
+								<span class="font-weight-bold">{{ $objetivo->Tipo }}</span>
 							</a>
 						</li>
 					</ul>
@@ -39,12 +41,13 @@
 
 			<div class="list-group col-md-4">
 				<h5>Hitos</h5>
-				@foreach ($objetivos as $objetivo)
+				@foreach ($objetivosOrigen as $objetivo)
 					@if($objetivo->Tipo == 'Hito')
 					<ul class="list-group">
 					    <li class="list-group-item border-0 mb-3 shadow-sm bg-transparent">
 							<a class="text-dark h5 d-flex justify-content-between align-items-center">
 								<span class="font-weight-bold">{{ $objetivo->Nombre }}</span>
+								<span class="font-weight-bold">{{ $objetivo->Tipo }}</span>
 							</a>
 						</li>
 					</ul>

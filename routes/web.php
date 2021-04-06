@@ -53,6 +53,18 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/administracion', 'AppAdminController@listarUltimosErrores')->name('administracion');
 	Route::get('/administracion/errores', 'AppAdminController@listarErrores')->name('listaErrores');
 
+	// Activación/Desactivación de trimestres
+	Route::post('/administracion/at1', 'AppAdminController@activarTrimestre1')->name('activarTrimestre1');
+	Route::post('/administracion/dt1', 'AppAdminController@desactivarTrimestre1')->name('desactivarTrimestre1');
+	Route::post('/administracion/at2', 'AppAdminController@activarTrimestre2')->name('activarTrimestre2');
+	Route::post('/administracion/dt2', 'AppAdminController@desactivarTrimestre2')->name('desactivarTrimestre2');
+	Route::post('/administracion/at3', 'AppAdminController@activarTrimestre3')->name('activarTrimestre3');
+	Route::post('/administracion/dt3', 'AppAdminController@desactivarTrimestre3')->name('desactivarTrimestre3');
+	Route::post('/administracion/at4', 'AppAdminController@activarTrimestre4')->name('activarTrimestre4');
+	Route::post('/administracion/dt4', 'AppAdminController@desactivarTrimestre4')->name('desactivarTrimestre4');
+	Route::post('/administracion/ac', 'AppAdminController@activarConclusiones')->name('activarConclusiones');
+	Route::post('/administracion/dc', 'AppAdminController@desactivarConclusiones')->name('desactivarConclusiones');
+
 });
 
 //Route::view('/objetivos', 'objetivos');

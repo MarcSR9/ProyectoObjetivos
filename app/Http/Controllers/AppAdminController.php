@@ -4,73 +4,68 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Modules\ModuleAppAdministration;
+use DB;
 
 class AppAdminController extends Controller
 {
-    /*$moduloAdminApp = new ModuleAppAdministration();
-    $trimestres = $moduloAdminApp->listarTrimestres();
-    return view('administracionApp', [
-        'trimestres' => $trimestres
-    ]);*/
-
     public function activarTrimestre1()
 	{
-		DB::table('trimesters')->update(['trimestre_1' => 'enabled']);
-		return view('administracionApp');
+		DB::table('app_administration')->update(['trimester_1' => 'enabled']);
+		return back();
 	}
 
 	public function desactivarTrimestre1()
 	{
-		DB::table('trimesters')->update(['trimestre_1' => 'disabled']);
-		return view('administracionApp');
+		DB::table('app_administration')->update(['trimester_1' => 'disabled']);
+		return back();
 	}
 
 	public function activarTrimestre2()
 	{
-		DB::table('trimesters')->update(['trimestre_2' => 'enabled']);
-		return view('administracionApp');
+		DB::table('app_administration')->update(['trimester_2' => 'enabled']);
+		return back();
 	}
 
 	public function desactivarTrimestre2()
 	{
-		DB::table('trimesters')->update(['trimestre_2' => 'disabled']);
-		return view('administracionApp');
+		DB::table('app_administration')->update(['trimester_2' => 'disabled']);
+		return back();
 	}
 
 	public function activarTrimestre3()
 	{
-		DB::table('trimesters')->update(['trimestre_3' => 'enabled']);
-		return view('administracionApp');
+		DB::table('app_administration')->update(['trimester_3' => 'enabled']);
+		return back();
 	}
 
 	public function desactivarTrimestre3()
 	{
-		DB::table('trimesters')->update(['trimestre_3' => 'disabled']);
-		return view('administracionApp');
+		DB::table('app_administration')->update(['trimester_3' => 'disabled']);
+		return back();
 	}
 
 	public function activarTrimestre4()
 	{
-		DB::table('trimesters')->update(['trimestre_4' => 'enabled']);
-		return view('administracionApp');
+		DB::table('app_administration')->update(['trimester_4' => 'enabled']);
+		return back();
 	}
 
 	public function desactivarTrimestre4()
 	{
-		DB::table('trimesters')->update(['trimestre_4' => 'disabled']);
-		return view('administracionApp');
+		DB::table('app_administration')->update(['trimester_4' => 'disabled']);
+		return back();
 	}
 
 	public function activarConclusiones()
 	{
-		DB::table('trimesters')->update(['conclusiones' => 'enabled']);
-		return view('administracionApp');
+		DB::table('app_administration')->update(['conclusions' => 'enabled']);
+		return back();
 	}
 
 	public function desactivarConclusiones()
 	{
-		DB::table('trimesters')->update(['conclusiones' => 'disabled']);
-		return view('administracionApp');
+		DB::table('app_administration')->update(['conclusions' => 'disabled']);
+		return back();
 	}
 
 	public function registrarError()
@@ -91,8 +86,6 @@ class AppAdminController extends Controller
 
     public function listarUltimosErrores()
     {
-    	$moduloAdminApp = new ModuleAppAdministration();
-    	$estados = $moduloAdminApp->
     	$moduloAdminApp = new ModuleAppAdministration();
 	    $errores = $moduloAdminApp->listarUltimosErrores();
 	    return view('administracionApp.estadoApp', [

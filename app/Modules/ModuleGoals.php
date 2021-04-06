@@ -17,16 +17,16 @@ class ModuleGoals
         return $objetivos;
     }
 
-    public function listarObjetivosPorId($user_id)
+    public function listarObjetivosOrigen($user_id)
     {
-        $objetivos = Goal::where('Id_usuario_origen', $user_id)->get();
-        return $objetivos;
+        $objetivosOrigen = Goal::where('Id_usuario_origen', $user_id)->get();
+        return $objetivosOrigen;
     }
 
     public function listarObjetivosDestino($user_id)
     {
-        $objetivos = Goal::where('Id_usuario_destino', $user_id)->get();
-        return $objetivos;
+        $objetivosDestino = Goal::where('Id_usuario_destino', $user_id)->get();
+        return $objetivosDestino;
     }
 
     public function crearObjetivo($tipo, $nombre, $descripcion, $year, $id_usuario_destino, $id_objetivo_dependiente)

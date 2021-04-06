@@ -21,9 +21,11 @@ class ObjetivosController extends Controller
 
         $user_id = auth()->user()->id;
         $moduloObjetivo = new ModuleGoals();
-        $objetivos = $moduloObjetivo->listarObjetivosPorId($user_id);
+        $objetivosOrigen = $moduloObjetivo->listarObjetivosOrigen($user_id);
+        $objetivosDestino = $moduloObjetivo->listarObjetivosDestino($user_id);
         return view('home', [
-            'objetivos' => $objetivos
+            'objetivosOrigen' => $objetivosOrigen,
+            'objetivosDestino' => $objetivosDestino
         ]);
     }
 

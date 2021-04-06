@@ -13,72 +13,67 @@
 			    <li class="list-group-item border-0 mb-3 shadow-sm bg-transparent d-flex justify-content-between">
 					<span class="h5 font-weight-bold align-items-left">Trimestre 1</span>
 					<div class="btn-group align-items-right mr-100">
-						<a class="btn btn-primary rounded mr-2">Activar trimestre 1</a>
-						<a class="btn btn-danger rounded" href="#" {{--onclick="document.getElementById('delete-project').submit()"--}}>Desactivar trimestre 1</a>
-
-						{{--<form class="d-none" id="delete-project" method="POST" action="{{ route('projects.destroy', $project )}}">
-							@csrf @method('DELETE')
-						</form>
-						<form class="d-none" id="delete-project" method="POST" action="{{ route('projects.destroy', $project )}}">
-							@csrf @method('DELETE')
-						</form>--}}
+						<a class="btn btn-primary rounded mr-2" href="#" onclick="document.getElementById('activarT1').submit()">Activar</a>
+							<form class="d-none" id="activarT1" method="POST" action="{{ route('activarTrimestre1') }}">
+								@csrf
+							</form>
+						<a class="btn btn-secondary rounded" href="#" onclick="document.getElementById('desactivarT1').submit()">Desactivar</a>
+							<form class="d-none" id="desactivarT1" method="POST" action="{{ route('desactivarTrimestre1') }}">
+								@csrf
+							</form>
 					</div>
 				</li>
 				<li class="list-group-item border-0 mb-3 shadow-sm bg-transparent d-flex justify-content-between">
 					<span class="h5 font-weight-bold align-items-left">Trimestre 2</span>
 					<div class="btn-group align-items-right mr-100">
-						<a class="btn btn-primary rounded mr-2">Activar trimestre 2</a>
-						<a class="btn btn-danger rounded" href="#" {{--onclick="document.getElementById('delete-project').submit()"--}}>Desactivar trimestre 2</a>
-
-						{{--<form class="d-none" id="delete-project" method="POST" action="{{ route('projects.destroy', $project )}}">
-							@csrf @method('DELETE')
-						</form>
-						<form class="d-none" id="delete-project" method="POST" action="{{ route('projects.destroy', $project )}}">
-							@csrf @method('DELETE')
-						</form>--}}
+						<a class="btn btn-primary rounded mr-2" href="#" onclick="document.getElementById('activarT2').submit()">Activar</a>
+							<form class="d-none" id="activarT2" method="POST" action="{{ route('activarTrimestre2') }}">
+								@csrf
+							</form>
+						<a class="btn btn-secondary rounded" href="#" onclick="document.getElementById('desactivarT2').submit()">Desactivar</a>
+							<form class="d-none" id="desactivarT2" method="POST" action="{{ route('desactivarTrimestre2') }}">
+								@csrf
+							</form>
 					</div>
 				</li>
 				<li class="list-group-item border-0 mb-3 shadow-sm bg-transparent d-flex justify-content-between">
 					<span class="h5 font-weight-bold align-items-left">Trimestre 3</span>
 					<div class="btn-group align-items-right mr-100">
-						<a class="btn btn-primary rounded mr-2">Activar trimestre 3</a>
-						<a class="btn btn-danger rounded" href="#" {{--onclick="document.getElementById('delete-project').submit()"--}}>Desactivar trimestre 3</a>
-
-						{{--<form class="d-none" id="delete-project" method="POST" action="{{ route('projects.destroy', $project )}}">
-							@csrf @method('DELETE')
-						</form>
-						<form class="d-none" id="delete-project" method="POST" action="{{ route('projects.destroy', $project )}}">
-							@csrf @method('DELETE')
-						</form>--}}
+						<a class="btn btn-primary rounded mr-2" href="#" onclick="document.getElementById('activarT3').submit()">Activar</a>
+							<form class="d-none" id="activarT3" method="POST" action="{{ route('activarTrimestre3') }}">
+								@csrf
+							</form>
+						<a class="btn btn-secondary rounded" href="#" onclick="document.getElementById('desactivarT3').submit()">Desactivar</a>
+							<form class="d-none" id="desactivarT3" method="POST" action="{{ route('desactivarTrimestre3') }}">
+								@csrf
+							</form>
 					</div>
 				</li>
 				<li class="list-group-item border-0 mb-3 shadow-sm bg-transparent d-flex justify-content-between">
 					<span class="h5 font-weight-bold align-items-left">Trimestre 4</span>
 					<div class="btn-group align-items-right mr-100">
-						<a class="btn btn-primary rounded mr-2">Activar trimestre 4</a>
-						<a class="btn btn-danger rounded" href="#" {{--onclick="document.getElementById('delete-project').submit()"--}}>Desactivar trimestre 4</a>
-
-						{{--<form class="d-none" id="delete-project" method="POST" action="{{ route('projects.destroy', $project )}}">
-							@csrf @method('DELETE')
-						</form>
-						<form class="d-none" id="delete-project" method="POST" action="{{ route('projects.destroy', $project )}}">
-							@csrf @method('DELETE')
-						</form>--}}
+						<a class="btn btn-primary rounded mr-2" href="#" onclick="document.getElementById('activarT4').submit()">Activar</a>
+							<form class="d-none" id="activarT4" method="POST" action="{{ route('activarTrimestre4') }}">
+								@csrf
+							</form>
+						<a class="btn btn-secondary rounded" href="#" onclick="document.getElementById('desactivarT4').submit()">Desactivar</a>
+							<form class="d-none" id="desactivarT4" method="POST" action="{{ route('desactivarTrimestre4') }}">
+								@csrf
+							</form>
 					</div>
 				</li>
 				<hr>
 				<li class="list-group-item border-0 mb-3 shadow-sm bg-transparent d-flex justify-content-between">
 					<span class="h5 font-weight-bold align-items-left">Conclusiones</span>
 					<div class="btn-group align-items-right mr-100">
-						<a class="btn btn-primary rounded mr-2">Activar Conclusiones</a>
-						<a class="btn btn-danger rounded" href="#" {{--onclick="document.getElementById('delete-project').submit()"--}}>Desactivar Conclusiones</a>
-
-						{{--<form class="d-none" id="delete-project" method="POST" action="{{ route('projects.destroy', $project )}}">
-							@csrf @method('DELETE')
-						</form>
-						<form class="d-none" id="delete-project" method="POST" action="{{ route('projects.destroy', $project )}}">
-							@csrf @method('DELETE')
-						</form>--}}
+						<a class="btn btn-primary rounded mr-2" href="#" onclick="document.getElementById('activarConclusiones').submit()">Activar</a>
+							<form class="d-none" id="activarConclusiones" method="POST" action="{{ route('activarConclusiones') }}">
+								@csrf
+							</form>
+						<a class="btn btn-secondary rounded" href="#" onclick="document.getElementById('desactivarConclusiones').submit()">Desactivar</a>
+							<form class="d-none" id="desactivarConclusiones" method="POST" action="{{ route('desactivarConclusiones') }}">
+								@csrf
+							</form>
 					</div>
 				</li>
 			</ul>
