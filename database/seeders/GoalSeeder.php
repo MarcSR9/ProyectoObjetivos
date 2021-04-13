@@ -17,37 +17,37 @@ class GoalSeeder extends Seeder
     {
         DB::table('goals')->insert([
         	'id' => '1',
-            'Tipo' => 'Secundario',
-            'Nombre' => 'Implementar módulo Objetivos',
-            'Descripcion' => 'Implementar módulo Objetivos con todas sus funciones',
-            'Id_usuario_origen' => '1',
-            'Id_usuario_destino' => '1',
-            'Id_objetivo_dependiente' => null,
-            'Year' => 2021,
+            'tipo' => 'Secundario',
+            'nombre' => 'Implementar módulo Objetivos',
+            'descripcion' => 'Implementar módulo Objetivos con todas sus funciones',
+            'id_usuario_origen' => '1',
+            'id_usuario_destino' => '1',
+            'id_objetivo_dependiente' => null,
+            'year' => 2021,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
         	'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('goals')->insert([
         	'id' => '2',
-            'Tipo' => 'Secundario',
-            'Nombre' => 'Implementar módulo AppAdministration',
-            'Descripcion' => 'Implementar módulo AppAdministration con todas sus funciones',
-            'Id_usuario_origen' => '1',
-            'Id_usuario_destino' => '1',
-            'Id_objetivo_dependiente' => null,
-            'Year' => 2021,
+            'tipo' => 'Secundario',
+            'nombre' => 'Implementar módulo AppAdministration',
+            'descripcion' => 'Implementar módulo AppAdministration con todas sus funciones',
+            'id_usuario_origen' => '1',
+            'id_usuario_destino' => '1',
+            'id_objetivo_dependiente' => null,
+            'year' => 2021,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
         	'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('goals')->insert([
         	'id' => '3',
-            'Tipo' => 'Hito',
-            'Nombre' => 'función crear',
-            'Descripcion' => 'Implementar módulo AppAdministration con todas sus funciones',
-            'Id_usuario_origen' => '1',
-            'Id_usuario_destino' => '1',
-            'Id_objetivo_dependiente' => '1',
-            'Year' => 2021,
+            'tipo' => 'Hito',
+            'nombre' => 'función crear',
+            'descripcion' => 'Implementar módulo AppAdministration con todas sus funciones',
+            'id_usuario_origen' => '1',
+            'id_usuario_destino' => '1',
+            'id_objetivo_dependiente' => '1',
+            'year' => 2021,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
         	'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);

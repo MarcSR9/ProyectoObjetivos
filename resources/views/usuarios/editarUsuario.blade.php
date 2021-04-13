@@ -5,7 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Editar usuario</div>
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4>Editar usuario</h4>
+                    <a class="btn btn-primary btn-arrow-left" href="{{ URL::previous() }}">< Volver</a>
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('usuarios.actualizarContraseña', $usuario) }}">

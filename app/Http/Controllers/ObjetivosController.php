@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Modules\ModuleGoals;
 use App\Modules\ModuleUsers;
+use App\Models\Goal;
 
 class ObjetivosController extends Controller
 {
@@ -24,8 +25,9 @@ class ObjetivosController extends Controller
         $objetivosOrigen = $moduloObjetivo->listarObjetivosOrigen($user_id);
         $objetivosDestino = $moduloObjetivo->listarObjetivosDestino($user_id);
         return view('home', [
-            'objetivosOrigen' => $objetivosOrigen,
-            'objetivosDestino' => $objetivosDestino
+            'objetivosOrigen' => $objetivosOrigen
+        ], [
+            'objetivosDestino' => $objetivosDestino,
         ]);
     }
 
@@ -35,7 +37,7 @@ class ObjetivosController extends Controller
 
         $user_id = auth()->user()->id;
         $moduloObjetivo = new ModuleGoals();
-        $objetivos = $moduloObjetivo->listarObjetivosPorId($user_id);
+        $objetivos = $moduloObjetivo->listarObjetivosDestino($user_id);
 
         return view('objetivos.crearObjetivo', [
             'usuarios' => $users
@@ -53,5 +55,17 @@ class ObjetivosController extends Controller
         //$objetivos = $moduloObjetivo->listarObjetivosPorId($user_id);
         return redirect()->route('home')->with('status-success', 'El objetivo ha sido creado correctamente');
         //$this->listarObjetivosPorIdUsuario();
+    }
+
+    public function mostrarObjetivo(Goal $objetivo){
+
+        $moduloObjetivo = new ModuleGoals();
+        $objetivo = $moduloObjetivo->mostrarObjetivo($objetivo);
+        $creador = $moduloObjetivo->creadorObjetivo($objetivo);
+        $destinatario = $moduloObjetivo->destinatarioObjetivo($objetivo);
+        return view('objetivos.mostrarObjetivo',
+            ['objetivo' => $objetivo],
+            ['creador' => $creador],
+        );
     }
 }

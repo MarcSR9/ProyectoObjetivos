@@ -7,11 +7,16 @@
 		<p class="text-secondary">{{ $usuario->role }}</p>
 		<p class="text-secondary">{{ $usuario->email }}</p>
 		<p class="text-black-50">{{ $usuario->created_at->diffForHumans() }}</p>
+
+		<div class="d-flex justify-content-between align-items-center">
+			<a class="btn btn-success mr-3" href="{{ route('usuarios.editar', $usuario) }}">Editar usuario</a>
+			<form method="POST" action={{ route('usuarios.eliminarUsuario', $usuario) }}>
+				@csrf @method('DELETE')
+				<button class="btn btn-danger">Eliminar usuario</button>
+			</form>
+
+			<a class="btn btn-primary ml-auto" href="{{ URL::previous() }}">< Volver</a>
+		</div>
 	</div>
-	<button><a href="{{ route('usuarios.editar', $usuario) }}">Editar usuario</a></button>
-	<form method="POST" action={{ route('usuarios.eliminarUsuario', $usuario) }}>
-		@csrf @method('DELETE')
-		<button>Eliminar usuario</button>
-	</form>
 </div>
 @endsection

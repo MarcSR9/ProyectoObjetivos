@@ -19,26 +19,33 @@ class ModuleGoals
 
     public function listarObjetivosOrigen($user_id)
     {
-        $objetivosOrigen = Goal::where('Id_usuario_origen', $user_id)->get();
+        $objetivosOrigen = Goal::leftJoin('users', 'goals.id_usuario_origen', '=', 'users.id')
+        ->select('goals.id', 'goals.nombre', 'goals.tipo', 'users.email')
+        ->where('goals.id_usuario_destino', auth()->user()->id)
+        ->get();
+
         return $objetivosOrigen;
     }
 
     public function listarObjetivosDestino($user_id)
     {
-        $objetivosDestino = Goal::where('Id_usuario_destino', $user_id)->get();
+        $objetivosDestino = Goal::leftJoin('users', 'goals.id_usuario_destino', '=', 'users.id')
+        ->select('goals.id', 'goals.nombre', 'goals.tipo', 'users.email')
+        ->where('goals.id_usuario_origen', $user_id)
+        ->get();
         return $objetivosDestino;
     }
 
     public function crearObjetivo($tipo, $nombre, $descripcion, $year, $id_usuario_destino, $id_objetivo_dependiente)
     {
         return Goal::create([
-            'Tipo' => $tipo,
-            'Nombre' => $nombre,
-            'Descripcion' => $descripcion,
-            'Year' => $year,
-            'Id_usuario_origen' => auth()->user()->id,
-            'Id_usuario_destino' => $id_usuario_destino,
-            'Id_objetivo_dependiente' => $id_objetivo_dependiente,
+            'tipo' => $tipo,
+            'nombre' => $nombre,
+            'descripcion' => $descripcion,
+            'year' => $year,
+            'id_usuario_origen' => auth()->user()->id,
+            'id_usuario_destino' => $id_usuario_destino,
+            'id_objetivo_dependiente' => $id_objetivo_dependiente,
         ]);
     }
 
@@ -74,6 +81,20 @@ class ModuleGoals
     {
         $objetivo->Completado = 'Completado';
         return $objetivo;
+    }
+
+    public function creadorObjetivo(Goal $objetivo)
+    {
+        $creador = Goal::join('users', 'goals.id_usuario_origen', '=', 'users.id')
+        ->select('users.email')->where('id_usuario_origen', $objetivo->id_usuario_origen)->take(1)->get();
+        return $creador;
+    }
+
+    public function destinatarioObjetivo(Goal $objetivo)
+    {
+        $destinatario = Goal::join('users', 'goals.id_usuario_destino', '=', 'users.id')
+        ->select('users.email')->where('id_usuario_destino', $objetivo->id_usuario_destino)->take(1)->get();
+        return $destinatario;
     }
 
 }

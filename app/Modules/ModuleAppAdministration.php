@@ -95,6 +95,11 @@ class ModuleAppAdministration
         return $errores;
     }
 
+    public function estadoApp()
+    {
+        $estados = DB::table('app_administration')->get();
+        return $estados;
+    }
 
 
 

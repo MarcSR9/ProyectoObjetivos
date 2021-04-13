@@ -22,21 +22,42 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ route('home') }}">
+            <div class="container justify-content-between d-flex">
+                <a class="navbar-brand mr-5" href="{{ route('home') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
+                <div class="collapse navbar-collapse " id="navbarSupportedContent">
                     <!-- Right Side Of Navbar -->
+                    <div class="ml-5 d-flex align-items-center">
+                        @foreach($estados as $estado)
+                            @if($estado->trimester_1 == 'enabled')
+                                <button class="mx-1 font-weight-bold btn btn-success">T1</button>
+                            @else
+                                <button class="mx-1 font-weight-bold btn" style="background-color: #b3b3b3">T1</button>
+                            @endif
+                            @if($estado->trimester_2 == 'enabled')
+                                <button class="mx-1 font-weight-bold btn btn-success">T2</button>
+                            @else
+                                <button class="mx-1 font-weight-bold btn" style="background-color: #b3b3b3">T2</button>
+                            @endif
+                            @if($estado->trimester_3 == 'enabled')
+                                <button class="mx-1 font-weight-bold btn btn-success">T3</button>
+                            @else
+                                <button class="mx-1 font-weight-bold btn" style="background-color: #b3b3b3">T3</button>
+                            @endif
+                            @if($estado->trimester_4 == 'enabled')
+                                <button class="mx-1 font-weight-bold btn btn-success">T4</button>
+                            @else
+                                <button class="mx-1 font-weight-bold btn" style="background-color: #b3b3b3">T4</button>
+                            @endif
+                            @if($estado->conclusions == 'enabled')
+                                <button class="mx-1 font-weight-bold btn btn-success">Conclusiones</button>
+                            @else
+                                <button class="mx-1 font-weight-bold btn" style="background-color: #b3b3b3">Conclusiones</button>
+                            @endif
+                        @endforeach
+                    </div>
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest

@@ -1,22 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container col-md-9">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div>
-                <h1>Inicio</h1>
+            <div class="">
                 @if(auth()->user()->role != 'Default')
-                    <a href="{{ route('usuarios.lista') }}">Gestión usuarios (solo admin)</a>
-                    <a href="{{ route('administracion') }}">Administración de la aplicación</a>
+                    <a class="btn btn-primary" href="{{ route('usuarios.lista') }}">Gestión usuarios</a>
+                    <a class="btn btn-primary" href="{{ route('administracion') }}">Administración de la aplicación</a>
                 @endif
-                <hr>
-                @include('objetivos.misObjetivos')
-                <hr>
-                <h2>Estado de la aplicaión</h2>
-                <p>Mostrar trimestre</p>
-                <p>Comentarios</p>
             </div>
+            <hr>
+            @include('objetivos.misObjetivos')
         </div>
     </div>
 </div>

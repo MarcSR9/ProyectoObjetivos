@@ -16,22 +16,27 @@ class Goal extends Model
     protected $table = 'goals';
 
     protected $fillable = [
-        'Tipo',
-        'Nombre',
-        'Descripcion',
-        'Id_usuario_origen',
-        'Id_usuario_destino',
-        'Id_objetivo_dependiente',
-        'Completado',
-        'Year',
-        'Comentario_origen_T1',
-        'Comentario_origen_T2',
-        'Comentario_origen_T3',
-        'Comentario_origen_T4',
-        'Comentario_destino_T1',
-        'Comentario_destino_T2',
-        'Comentario_destino_T3',
-        'Comentario_destino_T4',
+        'tipo',
+        'nombre',
+        'descripcion',
+        'id_usuario_origen',
+        'id_usuario_destino',
+        'id_objetivo_dependiente',
+        'completado',
+        'year',
+        'comentario_origen_T1',
+        'comentario_origen_T2',
+        'comentario_origen_T3',
+        'comentario_origen_T4',
+        'comentario_destino_T1',
+        'comentario_destino_T2',
+        'comentario_destino_T3',
+        'comentario_destino_T4',
+    ];
+
+    protected $hidden = [
+        'id',
+        'deleted_at'
     ];
 
     /**

@@ -46,11 +46,12 @@ Route::group(['middleware' => 'auth'], function(){
 	//Objetivos
 	Route::get('/objetivos/nuevoObjetivo', 'ObjetivosController@nuevoObjetivo')->name('nuevoObjetivo');
 	Route::post('/objetivos/crearObjetivo', 'ObjetivosController@create')->name('crearObjetivo');
+	Route::get('/objetivos/{objetivo}', 'ObjetivosController@mostrarObjetivo')->name('mostrarObjetivo');
 
 
 
 	//Administración de la aplicación
-	Route::get('/administracion', 'AppAdminController@listarUltimosErrores')->name('administracion');
+	Route::get('/administracion', 'AppAdminController@estadoApp')->name('administracion');
 	Route::get('/administracion/errores', 'AppAdminController@listarErrores')->name('listaErrores');
 
 	// Activación/Desactivación de trimestres
@@ -67,6 +68,5 @@ Route::group(['middleware' => 'auth'], function(){
 
 });
 
-//Route::view('/objetivos', 'objetivos');
 
 

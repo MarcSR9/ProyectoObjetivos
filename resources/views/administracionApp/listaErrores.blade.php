@@ -6,6 +6,7 @@
         <div class="col-md-12">
             <div class="list-group col-md-12 mt-5">
                 <h3>Registro de errores</h3>
+                <a class="btn btn-primary btn-arrow-left" href="{{ URL::previous() }}">Volver</a>
                 <ul class="list-group">
                     @forelse($errores as $error)
                     <li class="list-group-item border-0 mb-3 shadow-sm bg-transparent text-dark h5 d-flex justify-content-between align-items-center">

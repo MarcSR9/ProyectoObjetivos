@@ -5,7 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Crear nuevo Objetivo</div>
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4>Crear objetivo</h4>
+                    <a class="btn btn-primary btn-arrow-left" href="{{ URL::previous() }}">< Volver</a>
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('crearObjetivo') }}">
