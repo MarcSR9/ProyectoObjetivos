@@ -15,6 +15,7 @@
 			</div>
  			<table class="table mb-3 shadow-sm bg-transparent h5">
  				<tr>
+ 					<th>ID</th>
  					<th>Nombre</th>
  					<th>Correo electrónico</th>
  					<th>Rol</th>
@@ -22,10 +23,11 @@
  				</tr>
 				@forelse ($usuarios as $usuario)
 				    <tr class="border-0 m-5 shadow-sm bg-transparent h5">
+				    	<td class="font-weight-bold">{{ $usuario->id }}</td>
 				    	<td class="font-weight-bold">{{ $usuario->name }} {{ $usuario->surname }}</td>
-						<td class="text-black-50">{{ $usuario->email }}</td>
-						<td class="text-black-50">{{ $usuario->role }}</td>
-						<td><a class="text-dark" href="{{route('usuarios.mostrarUsuario', $usuario->id)}}">Ver usuario</a></td>
+						<td class="text-black-80">{{ $usuario->email }}</td>
+						<td class="text-black-80">{{ $usuario->role }}</td>
+						<td><a class="btn btn-primary" href="{{route('usuarios.mostrarUsuario', $usuario->id)}}">Ver usuario</a></td>
 					</tr>
 				@empty
 					<p>No hay usuarios</p>

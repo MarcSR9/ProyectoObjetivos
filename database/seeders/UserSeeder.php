@@ -29,8 +29,17 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'Alex',
             'surname' => 'Santolaria',
-            'role' => 'Admin',
+            'role' => 'Director General',
             'email' => 'alex.santolaria@aeinnova.com',
+            'password' => Hash::make('firewolf09'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Kaladin',
+            'surname' => 'Stormblessed',
+            'role' => 'Default',
+            'email' => 'kaladin.stormblessed@aeinnova.com',
             'password' => Hash::make('firewolf09'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')

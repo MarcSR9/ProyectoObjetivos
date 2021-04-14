@@ -15,7 +15,7 @@ class AdministrationSeeder extends Seeder
     public function run()
     {
         DB::table('app_administration')->insert([
-        	'trimester_1' => 'disabled',
+        	'trimester_1' => 'enabled',
             'trimester_2' => 'disabled',
             'trimester_3' => 'disabled',
             'trimester_4' => 'disabled',

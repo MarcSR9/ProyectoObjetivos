@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Modules\ModuleGoals;
 use App\Modules\ModuleUsers;
 use App\Models\Goal;
+use App\Modules\ModuleAppAdministration;
 
 class ObjetivosController extends Controller
 {
@@ -63,9 +64,19 @@ class ObjetivosController extends Controller
         $objetivo = $moduloObjetivo->mostrarObjetivo($objetivo);
         $creador = $moduloObjetivo->creadorObjetivo($objetivo);
         $destinatario = $moduloObjetivo->destinatarioObjetivo($objetivo);
+
+        $moduloAdminApp = new ModuleAppAdministration();
+        $estados = $moduloAdminApp->estadoApp();
+
         return view('objetivos.mostrarObjetivo',
-            ['objetivo' => $objetivo],
-            ['creador' => $creador],
+            ['objetivo' => $objetivo, 'creador' => $creador, 'destinatario' => $destinatario, 'estados' => $estados]
         );
+    }
+
+    public function actualizarObjetivo(Request $request, Goal $objetivo)
+    {
+        $moduloObjetivo = new ModuleGoals();
+        $moduloObjetivo->actualizarObjetivo($objetivo, $request->post());
+        return redirect()->route('mostrarObjetivo', $objetivo)->with('status-success', 'El objetivo ha sido actualizado correctamente');
     }
 }

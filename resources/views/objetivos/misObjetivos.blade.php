@@ -9,7 +9,7 @@
             <h3>Objetivos asignados</h3>
             <table class="table shadow-sm bg-transparent h5">
                 <tr>
-                    <th>id</th>
+                    <th>Id</th>
                     <th>Nombre</th>
                     <th>Tipo</th>
                     <th>Usuario Creador</th>
@@ -21,8 +21,8 @@
                     <td>{{ $objetivo->id }}</td>
                     <td>{{ $objetivo->nombre }}</td>
                     <td>{{ $objetivo->tipo }}</td>
-                    <td>{{ $objetivo->email }}</td>
-                    <td>{{ auth()->user()->email }}</td>
+                    <td>{{ $objetivo->name }} {{ $objetivo->surname }}</td>
+                    <td>{{ auth()->user()->name }} {{ auth()->user()->surname }}</td>
                     <td><a class="btn btn-primary" href="{{route('mostrarObjetivo', $objetivo->id)}}" >Ver Objetivo</a></td>
                 </tr>
                 @empty
@@ -38,6 +38,7 @@
 	        <h3>Objetivos creados por mí</h3>
 	        <table class="table mb-3 shadow-sm bg-transparent h5">
 	            <tr>
+                    <th>Id</th>
 	                <th>Nombre</th>
 	                <th>Tipo</th>
 	                <th>Usuario Creador</th>
@@ -46,10 +47,11 @@
 	            </tr>
 	            @forelse ($objetivosOrigen as $objetivo)
 	            <tr>
+                    <td>{{ $objetivo->id }}</td>
 	                <td>{{ $objetivo->nombre }}</td>
                     <td>{{ $objetivo->tipo }}</td>
-                    <td>{{ auth()->user()->email }}</td>
-                    <td>{{ $objetivo->email }}</td>
+                    <td>{{ auth()->user()->name }} {{ auth()->user()->surname }}</td>
+                    <td>{{ $objetivo->name }} {{ $objetivo->surname }}</td>
                     <td><a class="btn btn-primary" href="{{route('mostrarObjetivo', $objetivo->id)}}" >Ver Objetivo</a></td>
 	            </tr>
                 @empty

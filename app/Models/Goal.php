@@ -32,6 +32,8 @@ class Goal extends Model
         'comentario_destino_T2',
         'comentario_destino_T3',
         'comentario_destino_T4',
+        'comentario_origen_conclusiones',
+        'comentario_destino_conclusiones'
     ];
 
     protected $hidden = [

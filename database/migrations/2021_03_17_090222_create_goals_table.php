@@ -20,7 +20,7 @@ class CreateGoalsTable extends Migration
             $table->string('descripcion');
             $table->integer('id_usuario_origen');
             $table->integer('id_usuario_destino');
-            $table->integer('id_objetivo_dependiente')->nullable();
+            $table->integer('id_objetivo_dependiente')->nullable()->unsigned();
             $table->string('completado')->nullable();
             $table->string('year');
             $table->string('comentario_origen_T1')->nullable();
@@ -31,6 +31,8 @@ class CreateGoalsTable extends Migration
             $table->string('comentario_destino_T2')->nullable();
             $table->string('comentario_destino_T3')->nullable();
             $table->string('comentario_destino_T4')->nullable();
+            $table->string('comentario_origen_conclusiones')->nullable();
+            $table->string('comentario_destino_conclusiones')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
