@@ -21,7 +21,7 @@
  					<th>Rol</th>
  					<th>Acciones</th>
  				</tr>
-				@forelse ($usuarios as $usuario)
+				@forelse ($usuarios->sortBy('id') as $usuario)
 				    <tr class="border-0 m-5 shadow-sm bg-transparent h5">
 				    	<td class="font-weight-bold">{{ $usuario->id }}</td>
 				    	<td class="font-weight-bold">{{ $usuario->name }} {{ $usuario->surname }}</td>
@@ -30,7 +30,7 @@
 						<td><a class="btn btn-primary" href="{{route('usuarios.mostrarUsuario', $usuario->id)}}">Ver usuario</a></td>
 					</tr>
 				@empty
-					<p>No hay usuarios</p>
+					<p>No hay usuarios registrados</p>
 				@endforelse
 			</table>
 		</div>

@@ -79,4 +79,18 @@ class ObjetivosController extends Controller
         $moduloObjetivo->actualizarObjetivo($objetivo, $request->post());
         return redirect()->route('mostrarObjetivo', $objetivo)->with('status-success', 'El objetivo ha sido actualizado correctamente');
     }
+
+    public function completarObjetivo(Goal $objetivo)
+    {
+        $moduloObjetivo = new ModuleGoals();
+        $moduloObjetivo->completarObjetivo($objetivo);
+        return redirect()->route('mostrarObjetivo', $objetivo)->with('status-success', 'El objetivo ha sido marcado como completado');
+    }
+
+    public function eliminarObjetivo(User $usuario)
+    {
+        $moduloObjetivo = new ModuleGoals();
+        $moduloObjetivo->eliminarObjetivo($usuario);
+        listarObjetivosPorIdUsuario();
+    }
 }

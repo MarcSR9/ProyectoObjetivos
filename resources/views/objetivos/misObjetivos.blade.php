@@ -9,7 +9,7 @@
             <h3>Objetivos asignados</h3>
             <table class="table shadow-sm bg-transparent h5">
                 <tr>
-                    <th>Id</th>
+                    <th>ID</th>
                     <th>Nombre</th>
                     <th>Tipo</th>
                     <th>Usuario Creador</th>
@@ -38,7 +38,7 @@
 	        <h3>Objetivos creados por mí</h3>
 	        <table class="table mb-3 shadow-sm bg-transparent h5">
 	            <tr>
-                    <th>Id</th>
+                    <th>ID</th>
 	                <th>Nombre</th>
 	                <th>Tipo</th>
 	                <th>Usuario Creador</th>

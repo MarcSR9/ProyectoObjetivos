@@ -47,7 +47,9 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/objetivos/nuevoObjetivo', 'ObjetivosController@nuevoObjetivo')->name('nuevoObjetivo');
 	Route::post('/objetivos/crearObjetivo', 'ObjetivosController@create')->name('crearObjetivo');
 	Route::get('/objetivos/{objetivo}', 'ObjetivosController@mostrarObjetivo')->name('mostrarObjetivo');
-	Route::post('/usuarios/{objetivo}', 'ObjetivosController@actualizarObjetivo')->name('actualizarObjetivo');
+	Route::post('/objetivos/{objetivo}/actualizar', 'ObjetivosController@actualizarObjetivo')->name('actualizarObjetivo');
+	Route::post('/objetivos/{objetivo}/completar', 'ObjetivosController@completarObjetivo')->name('completarObjetivo');
+	Route::delete('/objetivos/{objetivo}', 'ObjetivosController@eliminarObjetivo')->name('eliminarObjetivo');
 
 
 	//Administración de la aplicación
