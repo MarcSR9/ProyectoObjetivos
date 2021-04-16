@@ -102,9 +102,14 @@
 			</ul>
 		</div>
 		<hr>
-		<div class="list-group col-md-12 mt-5">
-			<h4 class="text-primary">Registro de errores</h4>
+		<div class="list-group col-md-12 my-4">
+			<h4>Errores recientes</h4>
 			<table class="table shadow-sm bg-transparent text-dark h5">
+				<tr class="text-primary">
+                    <th>Acción</th>
+                    <th>Autor</th>
+                    <th>Fecha</th>
+                </tr>
 				@forelse($errores as $error)
 				<tr>
 					<td class="font-weight-bold">{{ $error->error }}</td>
@@ -116,13 +121,19 @@
 				@endforelse
 			</table>
 			@if(count($errores)>0)
-				<a class="btn btn-primary rounded" href="{{ route('listaErrores')}}">Mostrar todos los errores</a>
+				<a class="btn btn-primary rounded col-md-2" href="{{ route('listaErrores')}}">Mostrar todos los errores</a>
 			@endif
 		</div>
 
 		<hr>
-		<h4 class="text-primary">Registro de acciones</h4>
+		<div class="list-group col-md-12 my-4">
+			<h4>Acciones recientes</h4>
 			<table class="table shadow-sm bg-transparent text-dark h5">
+				<tr class="text-primary">
+                    <th>Acción</th>
+                    <th>Autor</th>
+                    <th>Fecha</th>
+                </tr>
 				@forelse($acciones as $accion)
 				<tr>
 					<td class="font-weight-bold">{{ $accion->action }}</td>
@@ -134,9 +145,10 @@
 				@endforelse
 			</table>
 			@if(count($acciones)>0)
-				<a class="btn btn-primary rounded" href="{{ route('listaAcciones')}}">Mostrar todas las acciones</a>
+				<a class="btn btn-primary rounded col-md-2" href="{{ route('listaAcciones')}}">Mostrar todas las acciones</a>
 			@endif
 		</div>
 	</div>
 </div>
+
 @endsection

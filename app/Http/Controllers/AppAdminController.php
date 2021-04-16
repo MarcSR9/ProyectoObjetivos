@@ -81,7 +81,7 @@ class AppAdminController extends Controller
     {
         $moduloAdminApp = new ModuleAppAdministration();
 	    $errores = $moduloAdminApp->listarErrores();
-	    return view('administracionApp.listarErrores', [
+	    return view('administracionApp.listaErrores', [
 	        'errores' => $errores
 	    ]);
     }
@@ -105,7 +105,7 @@ class AppAdminController extends Controller
     {
         $moduloAdminApp = new ModuleAppAdministration();
 	    $acciones = $moduloAdminApp->listarAcciones();
-	    return view('administracionApp.listarAcciones', [
+	    return view('administracionApp.listaAcciones', [
 	        'acciones' => $acciones
 	    ]);
     }

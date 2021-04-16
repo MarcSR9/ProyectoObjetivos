@@ -5,24 +5,24 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="d-flex justify-content-between align-items-center mt-3">
-                <h3 class="display-5 text-primary">Registro de errores</h3>
+                <h3 class="display-5 text-primary">Registro de acciones</h3>
                 <a class="btn btn-primary btn-arrow-left" href="{{ URL::previous() }}">< Volver</a>
             </div>
             <div class="list-group col-md-12 mt-3">
                 <table class="table shadow-sm bg-transparent text-dark h5">
                     <tr class="text-primary">
-                        <th>Error</th>
+                        <th>Acción</th>
                         <th>Autor</th>
                         <th>Fecha</th>
                     </tr>
-                    @forelse($errores as $error)
+                    @forelse($acciones as $accion)
                     <tr>
-                        <td class="font-weight-bold">{{ $error->error }}</td>
-                        <td>{{ $error->email }}</td>
-                        <td>{{ $error->created_at }}</td>
+                        <td class="font-weight-bold">{{ $accion->action }}</td>
+                        <td>{{ $accion->email }}</td>
+                        <td>{{ $accion->created_at }}</td>
                     </tr>
                     @empty
-                        <p>No hay errores registradas</p>
+                        <p>No hay acciones registradas</p>
                     @endforelse
                 </table>
             </div>

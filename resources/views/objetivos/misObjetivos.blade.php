@@ -19,7 +19,13 @@
                         <th>Acciones</th>
                     </tr>
                     @foreach ($objetivosDestino->sortBy('id')->sortBy('year') as $objetivo)
-                    <tr>
+                    @if($objetivo->tipo == 'General')
+                    <tr class="table-primary">
+                    @elseif($objetivo->tipo == 'Secundario')
+                    <tr class="table-info">
+                    @elseif($objetivo->tipo == 'Hito')
+                    <tr class="table-warning">
+                    @endif
                         <td>{{ $objetivo->id }}</td>
                         <td>{{ $objetivo->nombre }}</td>
                         <td>{{ $objetivo->tipo }}</td>
@@ -50,7 +56,13 @@
     	                <th>Acciones</th>
     	            </tr>
     	            @foreach ($objetivosOrigen->sortBy('id')->sortBy('year') as $objetivo)
-    	            <tr>
+                    @if($objetivo->tipo == 'General')
+    	            <tr class="table-primary">
+                    @elseif($objetivo->tipo == 'Secundario')
+                    <tr class="table-info">
+                    @elseif($objetivo->tipo == 'Hito')
+                    <tr class="table-warning">
+                    @endif
                         <td>{{ $objetivo->id }}</td>
     	                <td>{{ $objetivo->nombre }}</td>
                         <td>{{ $objetivo->tipo }}</td>
