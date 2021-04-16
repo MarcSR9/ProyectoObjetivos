@@ -60,6 +60,13 @@
                             </div>
                         </div>
 
+                        <div class="form-check row">
+                            <div class="col-md-5 m-auto">
+                                <input class="col-form-label mr-3 text-md-left" type="checkbox" name="obj_general" value="true">
+                                <label class="ml-2" for="obj_general" >Puede crear objetivo general</label>
+                            </div>
+                        </div>
+
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Correo electrónico') }}</label>
 

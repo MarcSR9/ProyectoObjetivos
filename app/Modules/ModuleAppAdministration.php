@@ -7,6 +7,7 @@ use DB;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\Errors;
+use App\Models\Actions;
 use Illuminate\Support\Str;
 
 class ModuleAppAdministration
@@ -93,6 +94,30 @@ class ModuleAppAdministration
         ->select('errors.error', 'errors.created_at', 'users.email')
         ->latest()->take(10)->get();
         return $errores;
+    }
+
+    public function registrarAccion($action)
+	{
+		return Actions::create([
+			'action' => $action,
+			'user_id' => auth()->user()->id,
+		]);
+	}
+
+	public function listarAcciones()
+    {
+        $acciones = Actions::join('users', 'actions.user_id', '=', 'users.id')
+        ->select('actions.action', 'actions.created_at', 'users.email')
+        ->get();
+        return $acciones;
+    }
+
+	public function listarUltimasAcciones()
+    {
+        $acciones = Actions::join('users', 'actions.user_id', '=', 'users.id')
+        ->select('actions.action', 'actions.created_at', 'users.email')
+        ->latest()->take(10)->get();
+        return $acciones;
     }
 
     public function estadoApp()

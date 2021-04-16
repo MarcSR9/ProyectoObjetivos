@@ -25,7 +25,7 @@
 			@csrf
 			<label for="descripcion" class="h5 my-3 text-primary">Descripción del objetivo</p>
 			@if(auth()->user()->id != $objetivo->id_usuario_origen)
-				<textarea name="descripcion" id="descripcion" rows="5" cols="100" readonly="readonly">{{ $objetivo->descripcion }}</textarea>
+				<textarea name="descripcion" id="descripcion" rows="5" cols="100" readonly="readonly" style="background-color: lightgrey; border-color: grey;">{{ $objetivo->descripcion }}</textarea>
 			@else
 				<textarea name="descripcion" id="descripcion" rows="5" cols="100">{{ $objetivo->descripcion }}</textarea>
 			@endif
@@ -36,7 +36,7 @@
 					@if($estado->trimester_1 == 'enabled')
 						<label for="comentario_origen_T1" class="mt-3 text-dark">Comentarios del creador del objetivo en el trimestre 1</label>
 						@if(auth()->user()->id != $objetivo->id_usuario_origen)
-							<textarea id="comentario_origen_T1" name="comentario_origen_T1" rows="5" cols="100" readonly="readonly">{{ $objetivo->comentario_origen_T1 }}</textarea>
+							<textarea id="comentario_origen_T1" name="comentario_origen_T1" rows="5" cols="100" readonly="readonly" style="background-color: lightgrey; border-color: grey;">{{ $objetivo->comentario_origen_T1 }}</textarea>
 						@else
 							<textarea id="comentario_origen_T1" name="comentario_origen_T1" rows="5" cols="100">{{ $objetivo->comentario_origen_T1 }}</textarea>
 						@endif
@@ -44,22 +44,22 @@
 						@if($objetivo->tipo != 'Hito')
 							<label for="comentario_destino_T1" class="mt-3 text-dark">Comentarios del destinatario del objetivo en el trimestre 1</label>
 							@if(auth()->user()->id != $objetivo->id_usuario_destino)
-								<textarea id="comentario_destino_T1" name="comentario_destino_T1"  rows="5" cols="100" readonly="readonly">{{ $objetivo->comentario_destino_T1 }}</textarea>
+								<textarea id="comentario_destino_T1" name="comentario_destino_T1"  rows="5" cols="100" readonly="readonly" style="background-color: lightgrey; border-color: grey;">{{ $objetivo->comentario_destino_T1 }}</textarea>
 							@else
 								<textarea id="comentario_destino_T1" name="comentario_destino_T1"  rows="5" cols="100">{{ $objetivo->comentario_destino_T1 }}</textarea>
 							@endif
 						@endif
 					@else
 						<div style="display: none;">
-							<textarea id="comentario_origen_T1" name="comentario_origen_T1" rows="5" cols="100" readonly="readonly">{{ $objetivo->comentario_origen_T1 }}</textarea>
-							<textarea id="comentario_destino_T1" name="comentario_destino_T1" rows="5" cols="100" readonly="readonly">{{ $objetivo->comentario_destino_T1 }}</textarea>
+							<textarea id="comentario_origen_T1" name="comentario_origen_T1" rows="5" cols="100" readonly="readonly" style="background-color: lightgrey; border-color: grey;">{{ $objetivo->comentario_origen_T1 }}</textarea>
+							<textarea id="comentario_destino_T1" name="comentario_destino_T1" rows="5" cols="100" readonly="readonly" style="background-color: lightgrey; border-color: grey;">{{ $objetivo->comentario_destino_T1 }}</textarea>
 						</div>
 					@endif
 
 					@if($estado->trimester_2 == 'enabled')
 						<label for="comentario_origen_T2" class="mt-3 text-dark">Comentarios del creador del objetivo en el trimestre 2</label>
 						@if(auth()->user()->id != $objetivo->id_usuario_origen)
-							<textarea id="comentario_origen_T2" name="comentario_origen_T2" rows="5" cols="100" readonly="readonly">{{ $objetivo->comentario_origen_T2 }}</textarea>
+							<textarea id="comentario_origen_T2" name="comentario_origen_T2" rows="5" cols="100" readonly="readonly" style="background-color: lightgrey; border-color: grey;">{{ $objetivo->comentario_origen_T2 }}</textarea>
 						@else
 							<textarea id="comentario_origen_T2" name="comentario_origen_T2" rows="5" cols="100">{{ $objetivo->comentario_origen_T2 }}</textarea>
 						@endif
@@ -67,22 +67,22 @@
 						@if($objetivo->tipo != 'Hito')
 							<label for="comentario_destino_T2" class="mt-3 text-dark">Comentarios del destinatario del objetivo en el trimestre 2</label>
 							@if(auth()->user()->id != $objetivo->id_usuario_destino)
-								<textarea id="comentario_destino_T2" name="comentario_destino_T2" rows="5" cols="100" readonly="readonly">{{ $objetivo->comentario_destino_T2 }}</textarea>
+								<textarea id="comentario_destino_T2" name="comentario_destino_T2" rows="5" cols="100" readonly="readonly" style="background-color: lightgrey; border-color: grey;">{{ $objetivo->comentario_destino_T2 }}</textarea>
 							@else
 								<textarea id="comentario_destino_T2" name="comentario_destino_T2" rows="5" cols="100">{{ $objetivo->comentario_destino_T2 }}</textarea>
 							@endif
 						@endif
 					@else
 						<div style="display: none;">
-							<textarea id="comentario_origen_T2" name="comentario_origen_T2" rows="5" cols="100" readonly="readonly">{{ $objetivo->comentario_origen_T2 }}</textarea>
-							<textarea id="comentario_destino_T2" name="comentario_destino_T2" rows="5" cols="100" readonly="readonly">{{ $objetivo->comentario_destino_T2 }}</textarea>
+							<textarea id="comentario_origen_T2" name="comentario_origen_T2" rows="5" cols="100" readonly="readonly" style="background-color: lightgrey; border-color: grey;">{{ $objetivo->comentario_origen_T2 }}</textarea>
+							<textarea id="comentario_destino_T2" name="comentario_destino_T2" rows="5" cols="100" readonly="readonly" style="background-color: lightgrey; border-color: grey;">{{ $objetivo->comentario_destino_T2 }}</textarea>
 						</div>
 					@endif
 
 					@if($estado->trimester_3 == 'enabled')
 						<label for="comentario_origen_T3" class="mt-3 text-dark">Comentarios del creador del objetivo en el trimestre 3</label>
 						@if(auth()->user()->id != $objetivo->id_usuario_origen)
-							<textarea id="comentario_origen_T3" name="comentario_origen_T3" rows="5" cols="100" readonly="readonly">{{ $objetivo->comentario_origen_T3 }}</textarea>
+							<textarea id="comentario_origen_T3" name="comentario_origen_T3" rows="5" cols="100" readonly="readonly" style="background-color: lightgrey; border-color: grey;">{{ $objetivo->comentario_origen_T3 }}</textarea>
 						@else
 							<textarea id="comentario_origen_T3" name="comentario_origen_T3" rows="5" cols="100">{{ $objetivo->comentario_origen_T3 }}</textarea>
 						@endif
@@ -90,22 +90,22 @@
 						@if($objetivo->tipo != 'Hito')
 							<label for="comentario_destino_T3" class="mt-3 text-dark">Comentarios del destinatario del objetivo en el trimestre 3</label>
 							@if(auth()->user()->id != $objetivo->id_usuario_destino)
-								<textarea id="comentario_destino_T3" name="comentario_destino_T3" rows="5" cols="100" readonly="readonly">{{ $objetivo->comentario_destino_T3 }}</textarea>
+								<textarea id="comentario_destino_T3" name="comentario_destino_T3" rows="5" cols="100" readonly="readonly" style="background-color: lightgrey; border-color: grey;">{{ $objetivo->comentario_destino_T3 }}</textarea>
 							@else
 								<textarea id="comentario_destino_T3" name="comentario_destino_T3" rows="5" cols="100">{{ $objetivo->comentario_destino_T3 }}</textarea>
 							@endif
 						@endif
 					@else
 						<div style="display: none;">
-							<textarea id="comentario_origen_T3" name="comentario_origen_T3" rows="5" cols="100" readonly="readonly">{{ $objetivo->comentario_origen_T3 }}</textarea>
-							<textarea id="comentario_destino_T3" name="comentario_destino_T3" rows="5" cols="100" readonly="readonly">{{ $objetivo->comentario_destino_T3 }}</textarea>
+							<textarea id="comentario_origen_T3" name="comentario_origen_T3" rows="5" cols="100" readonly="readonly" style="background-color: lightgrey; border-color: grey;">{{ $objetivo->comentario_origen_T3 }}</textarea>
+							<textarea id="comentario_destino_T3" name="comentario_destino_T3" rows="5" cols="100" readonly="readonly" style="background-color: lightgrey; border-color: grey;">{{ $objetivo->comentario_destino_T3 }}</textarea>
 						</div>
 					@endif
 
 					@if($estado->trimester_4 == 'enabled')
 						<label for="comentario_origen_T4" class="mt-3 text-dark">Comentarios del creador del objetivo en el trimestre 4</label>
 						@if(auth()->user()->id != $objetivo->id_usuario_origen)
-							<textarea id="comentario_origen_T4" name="comentario_origen_T4" rows="5" cols="100" readonly="readonly">{{ $objetivo->comentario_origen_T4 }}</textarea>
+							<textarea id="comentario_origen_T4" name="comentario_origen_T4" rows="5" cols="100" readonly="readonly" style="background-color: lightgrey; border-color: grey;">{{ $objetivo->comentario_origen_T4 }}</textarea>
 						@else
 							<textarea id="comentario_origen_T4" name="comentario_origen_T4" rows="5" cols="100">{{ $objetivo->comentario_origen_T4 }}</textarea>
 						@endif
@@ -113,22 +113,22 @@
 						@if($objetivo->tipo != 'Hito')
 							<label for="comentario_destino_T4" class="mt-3 text-dark">Comentarios del destinatario del objetivo en el trimestre 4</label>
 							@if(auth()->user()->id != $objetivo->id_usuario_destino)
-								<textarea id="comentario_destino_T4" name="comentario_destino_T4" rows="5" cols="100" readonly="readonly">{{ $objetivo->comentario_destino_T4 }}</textarea>
+								<textarea id="comentario_destino_T4" name="comentario_destino_T4" rows="5" cols="100" readonly="readonly" style="background-color: lightgrey; border-color: grey;">{{ $objetivo->comentario_destino_T4 }}</textarea>
 							@else
 								<textarea id="comentario_destino_T4" name="comentario_destino_T4" rows="5" cols="100">{{ $objetivo->comentario_destino_T4 }}</textarea>
 							@endif
 						@endif
 					@else
 						<div style="display: none;">
-							<textarea id="comentario_origen_T4" name="comentario_origen_T4" rows="5" cols="100" readonly="readonly">{{ $objetivo->comentario_origen_T4 }}</textarea>
-							<textarea id="comentario_destino_T4" name="comentario_destino_T4" rows="5" cols="100" readonly="readonly">{{ $objetivo->comentario_destino_T4 }}</textarea>
+							<textarea id="comentario_origen_T4" name="comentario_origen_T4" rows="5" cols="100" readonly="readonly" style="background-color: lightgrey; border-color: grey;">{{ $objetivo->comentario_origen_T4 }}</textarea>
+							<textarea id="comentario_destino_T4" name="comentario_destino_T4" rows="5" cols="100" readonly="readonly" style="background-color: lightgrey; border-color: grey;">{{ $objetivo->comentario_destino_T4 }}</textarea>
 						</div>
 					@endif
 
 					@if($estado->conclusions == 'enabled')
 						<label for="comentario_origen_conclusiones" class="mt-3 text-dark">Comentarios del creador del objetivo en las conclusiones</label>
 						@if(auth()->user()->id != $objetivo->id_usuario_origen)
-							<textarea id="comentario_origen_conclusiones" name="comentario_origen_conclusiones" rows="5" cols="100" readonly="readonly">{{ $objetivo->comentario_origen_conclusiones }}</textarea>
+							<textarea id="comentario_origen_conclusiones" name="comentario_origen_conclusiones" rows="5" cols="100" readonly="readonly" style="background-color: lightgrey; border-color: grey;">{{ $objetivo->comentario_origen_conclusiones }}</textarea>
 						@else
 							<textarea id="comentario_origen_conclusiones" name="comentario_origen_conclusiones" rows="5" cols="100">{{ $objetivo->comentario_origen_conclusiones }}</textarea>
 						@endif
@@ -136,15 +136,15 @@
 						@if($objetivo->tipo != 'Hito')
 							<label for="comentario_destino_conclusiones" class="mt-3 text-dark">Comentarios del destinatario del objetivo en las conclusiones</label>
 							@if(auth()->user()->id != $objetivo->id_usuario_destino)
-								<textarea id="comentario_destino_conclusiones" name="comentario_destino_conclusiones" rows="5" cols="100" readonly="readonly">{{ $objetivo->comentario_destino_conclusiones }}</textarea>
+								<textarea id="comentario_destino_conclusiones" name="comentario_destino_conclusiones" rows="5" cols="100" readonly="readonly" style="background-color: lightgrey; border-color: grey;">{{ $objetivo->comentario_destino_conclusiones }}</textarea>
 							@else
 								<textarea id="comentario_destino_conclusiones" name="comentario_destino_conclusiones" rows="5" cols="100">{{ $objetivo->comentario_destino_conclusiones }}</textarea>
 							@endif
 						@endif
 					@else
 						<div style="display: none;">
-							<textarea id="comentario_origen_conclusiones" name="comentario_origen_conclusiones" rows="5" cols="100" readonly="readonly">{{ $objetivo->comentario_origen_conclusiones }}</textarea>
-							<textarea id="comentario_destino_conclusiones" name="comentario_destino_conclusiones" rows="5" cols="100" readonly="readonly">{{ $objetivo->comentario_destino_conclusiones }}</textarea>
+							<textarea id="comentario_origen_conclusiones" name="comentario_origen_conclusiones" rows="5" cols="100" readonly="readonly" style="background-color: lightgrey; border-color: grey;">{{ $objetivo->comentario_origen_conclusiones }}</textarea>
+							<textarea id="comentario_destino_conclusiones" name="comentario_destino_conclusiones" rows="5" cols="100" readonly="readonly" style="background-color: lightgrey; border-color: grey;">{{ $objetivo->comentario_destino_conclusiones }}</textarea>
 						</div>
 					@endif
 
@@ -157,17 +157,19 @@
                 <div class="col-md-6">
                     <button type="submit" class="font-weight-bold btn btn-primary">Guardar cambios</button>
                 </div>
+               {{-- @if(auth()->user()->id == $objetivo->id_usuario_origen)
                 <div class="ml-auto btn-group">
                 	<form method="POST" action="{{ route('completarObjetivo', $objetivo) }}">
 						@csrf
-						<button class="btn btn-success rounded mr-3 font-weight-bold" href="">Marcar objetivo como compleado</button>
+						<button class="btn btn-success rounded mr-3 font-weight-bold" onclick="return confirm('Estás seguro de que quieres marcar el objetivo como completado?')" href="">Marcar objetivo como compleado</button>
 					</form>
 
 					<form method="POST" action="{{ route('eliminarObjetivo', $objetivo) }}">
 						@csrf @method('DELETE')
-						<button class="btn btn-danger font-weight-bold" href="">Eliminar objetivo</button>
+						<button class="btn btn-danger font-weight-bold" onclick="return confirm('Estás seguro de que quieres eliminar el objetivo?')" href="">Eliminar objetivo</button>
 					</form>
                 </div>
+                @endif--}}
             </div>
 		</form>
 		<div class="d-flex justify-content-between align-items-center mt-5">

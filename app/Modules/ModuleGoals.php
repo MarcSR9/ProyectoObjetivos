@@ -22,7 +22,7 @@ class ModuleGoals
     {
         $objetivosOrigen = Goal::leftJoin('users', 'goals.id_usuario_destino', '=', 'users.id')
         ->select('goals.*', 'users.name', 'users.surname')
-        ->where('goals.id_usuario_origen', auth()->user()->id)
+        ->where('goals.id_usuario_origen', $user_id)
         ->get();
 
         return $objetivosOrigen;

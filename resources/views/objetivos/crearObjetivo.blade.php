@@ -19,9 +19,15 @@
 
                             <div class="col-md-6">
                                 <select id="tipo" name="tipo" type="text" class="form-control" required>
-                                    <option value="General">Objetivo General</option>
-                                    <option value="Secundario">Objetivo Secundario</option>
-                                    <option value="Hito">Hito</option>
+                                    @if(auth()->user()->crea_objetivo_general == 'true')
+                                        <option value="General">Objetivo General</option>
+                                    @endif
+                                    @if(auth()->user()->crea_objetivo_secundario == 'true')
+                                        <option value="Secundario">Objetivo Secundario</option>
+                                    @endif
+                                    @if(auth()->user()->crea_objetivo_hito == 'true')
+                                        <option value="Hito">Hito</option>
+                                    @endif
                                 </select>
 
                                 @error('tipo')

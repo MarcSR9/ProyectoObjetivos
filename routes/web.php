@@ -49,12 +49,14 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/objetivos/{objetivo}', 'ObjetivosController@mostrarObjetivo')->name('mostrarObjetivo');
 	Route::post('/objetivos/{objetivo}/actualizar', 'ObjetivosController@actualizarObjetivo')->name('actualizarObjetivo');
 	Route::post('/objetivos/{objetivo}/completar', 'ObjetivosController@completarObjetivo')->name('completarObjetivo');
-	Route::delete('/objetivos/{objetivo}', 'ObjetivosController@eliminarObjetivo')->name('eliminarObjetivo');
+	Route::delete('/objetivos/{objetivo}/eliminar', 'ObjetivosController@eliminarObjetivo')->name('eliminarObjetivo');
 
 
 	//Administración de la aplicación
 	Route::get('/administracion', 'AppAdminController@estadoApp')->name('administracion');
+	Route::get('/panelDGeneral', 'AppAdminController@vistaDG')->name('panelDGeneral');
 	Route::get('/administracion/errores', 'AppAdminController@listarErrores')->name('listaErrores');
+	Route::get('/administracion/acciones', 'AppAdminController@listarAcciones')->name('listaAcciones');
 
 	// Activación/Desactivación de trimestres
 	Route::post('/administracion/at1', 'AppAdminController@activarTrimestre1')->name('activarTrimestre1');

@@ -10,14 +10,14 @@ use App\Modules\ModuleAppAdministration;
 
 class ObjetivosController extends Controller
 {
-	protected function listarObjetivos()
+	/*protected function listarObjetivos()
     {
         $moduloObjetivo = new ModuleGoals();
         $objetivos = $moduloObjetivo->listarObjetivos();
         return view('objetivos.listarObjetivos', [
             'objetivos' => $objetivos
         ]);
-    }
+    }*/
 
     protected function listarObjetivosPorIdUsuario() {
 
@@ -40,11 +40,19 @@ class ObjetivosController extends Controller
         $moduloObjetivo = new ModuleGoals();
         $objetivos = $moduloObjetivo->listarObjetivosDestino($user_id);
 
-        return view('objetivos.crearObjetivo', [
-            'usuarios' => $users
-        ], [
-            'objetivos' => $objetivos
-        ] );
+
+        if (auth()->user()->crea_objetivo_general == 'true' || auth()->user()->crea_objetivo_secundario == 'true' || auth()->user()->crea_objetivo_hito == 'true') {
+            return view('objetivos.crearObjetivo', [
+                'usuarios' => $users
+            ], [
+                'objetivos' => $objetivos
+            ] );
+        }
+        else {
+            $moduloAdminApp = new ModuleAppAdministration();
+            $action = $moduloAdminApp->registrarAccion('Intento de acceso a recurso no autorizado');
+            return back()->with('status-error', 'No tienes permisos para crear objetivos');
+        }
     }
 
 
@@ -53,9 +61,11 @@ class ObjetivosController extends Controller
         $data = $request->post();
         $moduloObjetivo = new ModuleGoals();
         $response = $moduloObjetivo->crearObjetivo($data['tipo'], $data['nombre'], $data['descripcion'], $data['year'], $data['id_usuario_destino'], $data['id_objetivo_dependiente']);
-        //$objetivos = $moduloObjetivo->listarObjetivosPorId($user_id);
+
+        $appmodule = new ModuleAppAdministration();
+        $action = $appmodule->registrarAccion('El usuario ha creado un nuevo objetivo');
+
         return redirect()->route('home')->with('status-success', 'El objetivo ha sido creado correctamente');
-        //$this->listarObjetivosPorIdUsuario();
     }
 
     public function mostrarObjetivo(Goal $objetivo){
@@ -68,15 +78,28 @@ class ObjetivosController extends Controller
         $moduloAdminApp = new ModuleAppAdministration();
         $estados = $moduloAdminApp->estadoApp();
 
-        return view('objetivos.mostrarObjetivo',
-            ['objetivo' => $objetivo, 'creador' => $creador, 'destinatario' => $destinatario, 'estados' => $estados]
-        );
+        if (auth()->user()->id == $objetivo->id_usuario_destino || auth()->user()->id == $objetivo->id_usuario_origen) {
+            return view('objetivos.mostrarObjetivo',
+                ['objetivo' => $objetivo, 'creador' => $creador, 'destinatario' => $destinatario, 'estados' => $estados]
+            );
+        }
+        else {
+            $moduloAdminApp = new ModuleAppAdministration();
+            $action = $moduloAdminApp->registrarAccion('Intento de acceso a recurso no autorizado');
+            return back()->with('status-error', 'No tienes acceso a este recurso');
+        }
+
+
     }
 
     public function actualizarObjetivo(Request $request, Goal $objetivo)
     {
         $moduloObjetivo = new ModuleGoals();
         $moduloObjetivo->actualizarObjetivo($objetivo, $request->post());
+
+        $moduloAdminApp = new ModuleAppAdministration();
+            $action = $moduloAdminApp->registrarAccion('El usuario ha actualizado un objetivo');
+
         return redirect()->route('mostrarObjetivo', $objetivo)->with('status-success', 'El objetivo ha sido actualizado correctamente');
     }
 
@@ -84,13 +107,17 @@ class ObjetivosController extends Controller
     {
         $moduloObjetivo = new ModuleGoals();
         $moduloObjetivo->completarObjetivo($objetivo);
+        $moduloAdminApp = new ModuleAppAdministration();
+            $action = $moduloAdminApp->registrarAccion('El usuario ha completado un objetivo');
         return redirect()->route('mostrarObjetivo', $objetivo)->with('status-success', 'El objetivo ha sido marcado como completado');
     }
 
-    public function eliminarObjetivo(User $usuario)
+    public function eliminarObjetivo(Goal $objetivo)
     {
         $moduloObjetivo = new ModuleGoals();
-        $moduloObjetivo->eliminarObjetivo($usuario);
-        listarObjetivosPorIdUsuario();
+        $moduloObjetivo->eliminarObjetivo($objetivo);
+        $moduloAdminApp = new ModuleAppAdministration();
+            $action = $moduloAdminApp->registrarAccion('El usuario ha eliminado un objetivo');
+        return redirect()->route('home')->with('status-success', 'El objetivo ha sido eliminado correctamente');
     }
 }

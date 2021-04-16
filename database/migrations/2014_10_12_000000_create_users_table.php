@@ -18,6 +18,9 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('surname');
             $table->string('role');
+            $table->string('crea_objetivo_general')->nullable();
+            $table->string('crea_objetivo_secundario')->nullable();
+            $table->string('crea_objetivo_hito')->nullable();
             $table->string('email')->unique();
             $table->string('password');
             $table->string('reset_token')->nullable();

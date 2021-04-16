@@ -5,9 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="">
-                @if(auth()->user()->role != 'Default')
-                    <a class="btn btn-primary" href="{{ route('usuarios.lista') }}">Gestión usuarios</a>
+                @if(auth()->user()->role == 'Admin')
                     <a class="btn btn-primary" href="{{ route('administracion') }}">Administración de la aplicación</a>
+                @elseif(auth()->user()->role == 'Director General')
+                    <a class="btn btn-primary" href="{{ route('panelDGeneral') }}">Administración de la aplicación</a>
                 @endif
             </div>
             <hr>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Modules\ModuleAppAdministration;
+use App\Modules\ModuleGoals;
+use App\Modules\ModuleUsers;
 use DB;
 
 class AppAdminController extends Controller
@@ -71,7 +73,7 @@ class AppAdminController extends Controller
 	public function registrarError()
 	{
 		$appmodule = new ModuleAppAdministration();
-        $error = $appmodule->listarUsuarios();
+        $error = $appmodule->registrarError();
 	}
 
 
@@ -79,7 +81,7 @@ class AppAdminController extends Controller
     {
         $moduloAdminApp = new ModuleAppAdministration();
 	    $errores = $moduloAdminApp->listarErrores();
-	    return view('administracionApp.listaErrores', [
+	    return view('administracionApp.listarErrores', [
 	        'errores' => $errores
 	    ]);
     }
@@ -87,9 +89,32 @@ class AppAdminController extends Controller
     public function listarUltimosErrores()
     {
     	$moduloAdminApp = new ModuleAppAdministration();
-
 	    return view('administracionApp.estadoApp', [
 	        'errores' => $errores
+	    ]);
+    }
+
+    public function registrarAccion()
+	{
+		$appmodule = new ModuleAppAdministration();
+        $action = $appmodule->registrarAccion();
+	}
+
+
+	public function listarAcciones()
+    {
+        $moduloAdminApp = new ModuleAppAdministration();
+	    $acciones = $moduloAdminApp->listarAcciones();
+	    return view('administracionApp.listarAcciones', [
+	        'acciones' => $acciones
+	    ]);
+    }
+
+    public function listarUltimasAcciones()
+    {
+    	$moduloAdminApp = new ModuleAppAdministration();
+	    return view('administracionApp.estadoApp', [
+	        'acciones' => $acciones
 	    ]);
     }
 
@@ -100,10 +125,30 @@ class AppAdminController extends Controller
 
     	$errores = $moduloAdminApp->listarUltimosErrores();
 
+    	$acciones = $moduloAdminApp->listarUltimasAcciones();
+
     	return view('administracionApp.estadoApp',
-    		['estados' => $estados],
-	    	['errores' => $errores]
+    		['estados' => $estados, 'errores' => $errores, 'acciones' => $acciones]
     	);
+    }
+
+    public function vistaDG()
+    {
+    	$moduloAdminApp = new ModuleAppAdministration();
+    	$estados = $moduloAdminApp->estadoApp();
+
+    	$moduloObjetivo = new ModuleGoals();
+        $objetivos = $moduloObjetivo->listarObjetivos();
+
+        if (auth()->user()->role == 'Director General') {
+        	return view('administracionApp.vistaDG',
+    		['estados' => $estados, 'objetivos' => $objetivos, 'creador' => $creador, 'destinatario' => $destinatario]);
+        }
+        else {
+            $moduloAdminApp = new ModuleAppAdministration();
+            $action = $moduloAdminApp->registrarAccion('Intento de acceso a recurso no autorizado');
+            return back()->with('status-error', 'No tienes acceso a este recurso');
+        }
     }
 
 }

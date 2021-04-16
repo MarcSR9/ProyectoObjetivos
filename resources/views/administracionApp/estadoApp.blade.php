@@ -8,6 +8,8 @@
 			<a class="btn btn-primary btn-arrow-left" href="{{ URL::previous() }}">< Volver</a>
 		</div>
 		<hr>
+		<a class="btn btn-primary" href="{{ route('usuarios.lista') }}">Administración de usuarios</a>
+		<hr>
 		<div class="list-group col-md-12">
 			<ul class="list-group">
 				@foreach($estados as $estado)
@@ -101,7 +103,7 @@
 		</div>
 		<hr>
 		<div class="list-group col-md-12 mt-5">
-			<h4>Registro de errores</h4>
+			<h4 class="text-primary">Registro de errores</h4>
 			<ul class="list-group">
 				@forelse($errores as $error)
 				<li class="list-group-item border-0 mb-3 shadow-sm bg-transparent text-dark h5 d-flex justify-content-between align-items-center">
@@ -113,10 +115,28 @@
 					<p>No hay errores registrados</p>
 				@endforelse
 			</ul>
+			@if(count($errores)>0)
+				<a class="btn btn-primary rounded" href="{{ route('listaErrores')}}">Mostrar todos los errores</a>
+			@endif
 		</div>
-		@if(count($errores)>0)
-			<a class="btn btn-primary rounded" href="{{ route('listaErrores')}}">Mostrar todos los errores</a>
-		@endif
+
+		<hr>
+		<h4 class="text-primary">Registro de acciones</h4>
+			<ul class="list-group">
+				@forelse($acciones as $accion)
+				<li class="list-group-item border-0 mb-3 shadow-sm bg-transparent text-dark h5 d-flex justify-content-between align-items-center">
+					<span class="font-weight-bold">{{ $accion->action }}</span>
+					<span>{{ $accion->email }}</span>
+					<span>{{ $accion->created_at }}</span>
+				</li>
+				@empty
+					<p>No hay acciones registradas</p>
+				@endforelse
+			</ul>
+			@if(count($acciones)>0)
+				<a class="btn btn-primary rounded" href="{{ route('listaAcciones')}}">Mostrar todas las acciones</a>
+			@endif
+		</div>
 	</div>
 </div>
 @endsection

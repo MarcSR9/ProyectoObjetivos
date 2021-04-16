@@ -24,6 +24,9 @@ class User extends Authenticatable
         'role',
         'email',
         'password',
+        'crea_objetivo_general',
+        'crea_objetivo_secundario',
+        'crea_objetivo_hito'
     ];
 
     /**

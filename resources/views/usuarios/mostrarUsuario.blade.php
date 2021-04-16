@@ -6,7 +6,6 @@
 		<h1 class="display-5">{{ $usuario->name }} {{ $usuario->surname }}</h1>
 		<p class="h5 my-4 text-secondary">{{ $usuario->role }}</p>
 		<p class="h5 my-4 text-secondary">{{ $usuario->email }}</p>
-		<p class="h5 my-4 text-black-50">Fecha de registro: {{ $usuario->created_at->diffForHumans() }}</p>
 
 		<div class="d-flex justify-content-between align-items-center">
 			<a class="btn btn-success mr-3" href="{{ route('usuarios.editar', $usuario) }}">Editar usuario</a>
