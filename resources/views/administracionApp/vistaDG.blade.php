@@ -7,10 +7,10 @@
             <h1 class="display-5 text-primary">Vista Director General</h1>
             <a class="btn btn-primary btn-arrow-left" href="{{ URL::previous() }}">Volver</a>
         </div>
+        <hr>
         <div class="list-group col-md-12">
             <ul class="list-group">
                 @foreach($estados as $estado)
-
                 <li class="list-group-item border-0 mb-3 shadow-sm bg-transparent d-flex justify-content-between">
                     <span class="h5 font-weight-bold align-items-left">Trimestre 1</span>
                     @if($estado->trimester_1 == 'enabled')
@@ -107,17 +107,19 @@
                         <th>ID</th>
                         <th>Nombre</th>
                         <th>Tipo</th>
-                        <th>Usuario Creador</th>
-                        <th>Usuario Destino</th>
+                        <th>Año</th>
+                        <th class="text-center">Usuario Creador</th>
+                        <th class="text-center">Usuario Destino</th>
                         <th>Acciones</th>
                     </tr>
-                    @foreach ($objetivos->sortBy('id') as $objetivo)
+                    @foreach ($objetivos->sortBy('year')->sortBy('id') as $objetivo)
                     <tr>
                         <td>{{ $objetivo->id }}</td>
                         <td>{{ $objetivo->nombre }}</td>
                         <td>{{ $objetivo->tipo }}</td>
-                        <td>{{ $objetivo->id_usuario_origen }}</td>
-                        <td>{{ $objetivo->id_usuario_destino }}</td>
+                        <td>{{ $objetivo->year }}</td>
+                        <td class="text-center">{{ $objetivo->id_usuario_origen }}</td>
+                        <td class="text-center">{{ $objetivo->id_usuario_destino }}</td>
                         <td><a class="btn btn-primary" href="{{route('mostrarObjetivo', $objetivo->id)}}" >Ver Objetivo</a></td>
                     </tr>
                     @endforeach

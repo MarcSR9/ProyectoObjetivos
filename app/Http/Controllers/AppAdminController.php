@@ -127,9 +127,15 @@ class AppAdminController extends Controller
 
     	$acciones = $moduloAdminApp->listarUltimasAcciones();
 
+    	if (auth()->user()->role == 'Admin') {
     	return view('administracionApp.estadoApp',
-    		['estados' => $estados, 'errores' => $errores, 'acciones' => $acciones]
-    	);
+    		['estados' => $estados, 'errores' => $errores, 'acciones' => $acciones]);
+    	}
+        else {
+            $moduloAdminApp = new ModuleAppAdministration();
+            $action = $moduloAdminApp->registrarAccion('Intento de acceso a recurso no autorizado');
+            return back()->with('status-error', 'No tienes acceso a este recurso');
+        }
     }
 
     public function vistaDG()
@@ -142,7 +148,7 @@ class AppAdminController extends Controller
 
         if (auth()->user()->role == 'Director General') {
         	return view('administracionApp.vistaDG',
-    		['estados' => $estados, 'objetivos' => $objetivos, 'creador' => $creador, 'destinatario' => $destinatario]);
+    		['estados' => $estados, 'objetivos' => $objetivos]);
         }
         else {
             $moduloAdminApp = new ModuleAppAdministration();

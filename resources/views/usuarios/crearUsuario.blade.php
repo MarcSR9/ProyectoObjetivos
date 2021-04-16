@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h4>Crear nuevo usuario</h4>
@@ -60,10 +60,39 @@
                             </div>
                         </div>
 
-                        <div class="form-check row">
-                            <div class="col-md-5 m-auto">
-                                <input class="col-form-label mr-3 text-md-left" type="checkbox" name="obj_general" value="true">
-                                <label class="ml-2" for="obj_general" >Puede crear objetivo general</label>
+                        <div class="form-group">
+                            <div class="form-check row">
+                                <label class="col-md-4 col-form-label text-md-right">Permiso para crear objetivos generales:</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="obj_general" id="obj_general" value="true">
+                                    <label class="form-check-label" for="obj_general">Sí</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="obj_general" id="obj_general" value="false">
+                                    <label class="form-check-label" for="obj_general">No</label>
+                                </div>
+                            </div>
+
+                            <div class="form-check row">
+                                <label class="col-md-4 col-form-label text-md-right">Permiso para crear objetivos secundarios:</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="obj_secundario" id="obj_secundario" value="true">
+                                    <label class="form-check-label" for="obj_secundario">Sí</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="obj_secundario" id="obj_secundario" value="false">
+                                    <label class="form-check-label" for="obj_secundario">No</label>
+                                </div>
+                            </div><div class="form-check row">
+                                <label class="col-md-4 col-form-label text-md-right">Permiso para crear hitos:</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="obj_hito" id="obj_hito" value="true">
+                                    <label class="form-check-label" for="obj_hito">Sí</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="obj_hito" id="obj_hito" value="false">
+                                    <label class="form-check-label" for="obj_hito">No</label>
+                                </div>
                             </div>
                         </div>
 

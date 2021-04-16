@@ -22,12 +22,15 @@ class ModuleUsers
         return $usuarios;
     }
 
-    public function crearUsuario($name, $surname, $role, $email, $password)
+    public function crearUsuario($name, $surname, $role, $obj_general, $obj_secundario, $obj_hito, $email, $password)
     {
         return User::create([
             'name' => $name,
             'surname' => $surname,
             'role' => $role,
+            'crea_objetivo_general' => $obj_general,
+            'crea_objetivo_secundario' => $obj_secundario,
+            'crea_objetivo_hito' => $obj_hito,
             'email' => $email,
             'password' => Hash::make($password)
         ]);

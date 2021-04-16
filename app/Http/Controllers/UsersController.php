@@ -43,8 +43,9 @@ class UsersController extends Controller
             if(is_null($exists)){
                 $appmodule = new ModuleAppAdministration();
                 $action = $appmodule->registrarAccion('Usuario creado');
-                $response = $usermodule->crearUsuario($data['name'], $data['surname'], $data['role'], $data['email'], $data['password']);
-                return redirect()->route('usuarios.lista', $usuarios)->with('status-success', 'El usuario ha sido creado correctamente');
+                $response = $usermodule->crearUsuario($data['name'], $data['surname'], $data['role'], $data['obj_general'], $data['obj_secundario'], $data['obj_hito'], $data['email'], $data['password']);
+
+                return redirect()->route('usuarios.lista')->with('status-success', 'El usuario ha sido creado correctamente');
             }else{
                 $appmodule = new ModuleAppAdministration();
                 $error = $appmodule->registrarError('Error al crear nuevo usuario. Email ya registrado');
@@ -111,7 +112,7 @@ class UsersController extends Controller
             $users = $usermodule->eliminarUsuario($usuario);
             $appmodule = new ModuleAppAdministration();
             $action = $appmodule->registrarAccion('Usuario eliminado');
-            return view('usuarios.listarUsuarios', $usuarios)->with('status-success', 'El usuario ha sido eliminado correctamente');
+            return redirect()->route('usuarios.lista')->with('status-success', 'El usuario ha sido eliminado correctamente');
         }
         else{
             $moduloAdminApp = new ModuleAppAdministration();

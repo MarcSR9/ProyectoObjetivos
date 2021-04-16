@@ -78,7 +78,8 @@ class ObjetivosController extends Controller
         $moduloAdminApp = new ModuleAppAdministration();
         $estados = $moduloAdminApp->estadoApp();
 
-        if (auth()->user()->id == $objetivo->id_usuario_destino || auth()->user()->id == $objetivo->id_usuario_origen) {
+        if (auth()->user()->id == $objetivo->id_usuario_destino || auth()->user()->id == $objetivo->id_usuario_origen ||
+            auth()->user()->role == 'Director General' || auth()->user()->role == 'Admin') {
             return view('objetivos.mostrarObjetivo',
                 ['objetivo' => $objetivo, 'creador' => $creador, 'destinatario' => $destinatario, 'estados' => $estados]
             );
@@ -105,19 +106,33 @@ class ObjetivosController extends Controller
 
     public function completarObjetivo(Goal $objetivo)
     {
-        $moduloObjetivo = new ModuleGoals();
-        $moduloObjetivo->completarObjetivo($objetivo);
-        $moduloAdminApp = new ModuleAppAdministration();
-            $action = $moduloAdminApp->registrarAccion('El usuario ha completado un objetivo');
-        return redirect()->route('mostrarObjetivo', $objetivo)->with('status-success', 'El objetivo ha sido marcado como completado');
+        if(auth()->user()->id == $objetivo->id_usuario_origen){
+            $moduloObjetivo = new ModuleGoals();
+            $moduloObjetivo->completarObjetivo($objetivo);
+            $moduloAdminApp = new ModuleAppAdministration();
+                $action = $moduloAdminApp->registrarAccion('El usuario ha completado un objetivo');
+            return redirect()->route('mostrarObjetivo', $objetivo)->with('status-success', 'El objetivo ha sido marcado como completado');
+        }
+        else{
+            $moduloAdminApp = new ModuleAppAdministration();
+            $action = $moduloAdminApp->registrarAccion('Intento de acceso a recurso no autorizado');
+            return back()->with('status-error', 'No tienes acceso a este recurso');
+        }
     }
 
     public function eliminarObjetivo(Goal $objetivo)
     {
-        $moduloObjetivo = new ModuleGoals();
-        $moduloObjetivo->eliminarObjetivo($objetivo);
-        $moduloAdminApp = new ModuleAppAdministration();
-            $action = $moduloAdminApp->registrarAccion('El usuario ha eliminado un objetivo');
-        return redirect()->route('home')->with('status-success', 'El objetivo ha sido eliminado correctamente');
+        if(auth()->user()->id == $objetivo->id_usuario_origen){
+            $moduloObjetivo = new ModuleGoals();
+            $moduloObjetivo->eliminarObjetivo($objetivo);
+            $moduloAdminApp = new ModuleAppAdministration();
+                $action = $moduloAdminApp->registrarAccion('El usuario ha eliminado un objetivo');
+            return redirect()->route('home')->with('status-success', 'El objetivo ha sido eliminado correctamente');
+        }
+        else{
+            $moduloAdminApp = new ModuleAppAdministration();
+            $action = $moduloAdminApp->registrarAccion('Intento de acceso a recurso no autorizado');
+            return back()->with('status-error', 'No tienes acceso a este recurso');
+        }
     }
 }

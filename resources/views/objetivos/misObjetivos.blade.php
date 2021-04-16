@@ -13,15 +13,17 @@
                         <th>ID</th>
                         <th>Nombre</th>
                         <th>Tipo</th>
+                        <th>Año</th>
                         <th>Usuario Creador</th>
                         <th>Usuario Destino</th>
                         <th>Acciones</th>
                     </tr>
-                    @foreach ($objetivosDestino->sortBy('id') as $objetivo)
+                    @foreach ($objetivosDestino->sortBy('id')->sortBy('year') as $objetivo)
                     <tr>
                         <td>{{ $objetivo->id }}</td>
                         <td>{{ $objetivo->nombre }}</td>
                         <td>{{ $objetivo->tipo }}</td>
+                        <td>{{ $objetivo->year }}</td>
                         <td>{{ $objetivo->name }} {{ $objetivo->surname }}</td>
                         <td>{{ auth()->user()->name }} {{ auth()->user()->surname }}</td>
                         <td><a class="btn btn-primary" href="{{route('mostrarObjetivo', $objetivo->id)}}" >Ver Objetivo</a></td>
@@ -42,15 +44,17 @@
                         <th>ID</th>
     	                <th>Nombre</th>
     	                <th>Tipo</th>
+                        <th>Año</th>
     	                <th>Usuario Creador</th>
     	                <th>Usuario Destino</th>
     	                <th>Acciones</th>
     	            </tr>
-    	            @foreach ($objetivosOrigen->sortBy('id') as $objetivo)
+    	            @foreach ($objetivosOrigen->sortBy('id')->sortBy('year') as $objetivo)
     	            <tr>
                         <td>{{ $objetivo->id }}</td>
     	                <td>{{ $objetivo->nombre }}</td>
                         <td>{{ $objetivo->tipo }}</td>
+                        <td>{{ $objetivo->year }}</td>
                         <td>{{ auth()->user()->name }} {{ auth()->user()->surname }}</td>
                         <td>{{ $objetivo->name }} {{ $objetivo->surname }}</td>
                         <td>

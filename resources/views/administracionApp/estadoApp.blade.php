@@ -104,17 +104,17 @@
 		<hr>
 		<div class="list-group col-md-12 mt-5">
 			<h4 class="text-primary">Registro de errores</h4>
-			<ul class="list-group">
+			<table class="table shadow-sm bg-transparent text-dark h5">
 				@forelse($errores as $error)
-				<li class="list-group-item border-0 mb-3 shadow-sm bg-transparent text-dark h5 d-flex justify-content-between align-items-center">
-					<span class="font-weight-bold">{{ $error->error }}</span>
-					<span>{{ $error->email }}</span>
-					<span>{{ $error->created_at }}</span>
-				</li>
+				<tr>
+					<td class="font-weight-bold">{{ $error->error }}</td>
+					<td>{{ $error->email }}</td>
+					<td>{{ $error->created_at }}</td>
+				</tr>
 				@empty
 					<p>No hay errores registrados</p>
 				@endforelse
-			</ul>
+			</table>
 			@if(count($errores)>0)
 				<a class="btn btn-primary rounded" href="{{ route('listaErrores')}}">Mostrar todos los errores</a>
 			@endif
@@ -122,17 +122,17 @@
 
 		<hr>
 		<h4 class="text-primary">Registro de acciones</h4>
-			<ul class="list-group">
+			<table class="table shadow-sm bg-transparent text-dark h5">
 				@forelse($acciones as $accion)
-				<li class="list-group-item border-0 mb-3 shadow-sm bg-transparent text-dark h5 d-flex justify-content-between align-items-center">
-					<span class="font-weight-bold">{{ $accion->action }}</span>
-					<span>{{ $accion->email }}</span>
-					<span>{{ $accion->created_at }}</span>
-				</li>
+				<tr>
+					<td class="font-weight-bold">{{ $accion->action }}</td>
+					<td>{{ $accion->email }}</td>
+					<td>{{ $accion->created_at }}</td>
+				</tr>
 				@empty
 					<p>No hay acciones registradas</p>
 				@endforelse
-			</ul>
+			</table>
 			@if(count($acciones)>0)
 				<a class="btn btn-primary rounded" href="{{ route('listaAcciones')}}">Mostrar todas las acciones</a>
 			@endif
