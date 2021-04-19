@@ -68,7 +68,7 @@ return [
             'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST', 'objetivos.aeinnova.com'),
             'port' => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', 'admin_objetivos'),
+            'database' => env('DB_DATABASE', 'admin_objetivos_aei'),
             'username' => env('DB_USERNAME', 'alex'),
             'password' => env('DB_PASSWORD', '2_Cd3zv7'),
             'charset' => 'utf8',
