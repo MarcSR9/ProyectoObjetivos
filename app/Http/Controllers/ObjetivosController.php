@@ -60,7 +60,19 @@ class ObjetivosController extends Controller
     {
         $data = $request->post();
         $moduloObjetivo = new ModuleGoals();
-        $response = $moduloObjetivo->crearObjetivo($data['tipo'], $data['nombre'], $data['descripcion'], $data['year'], $data['id_usuario_destino'], $data['id_objetivo_dependiente']);
+
+        if($data["year"] == "null"){
+            $data["year"] = null;
+        }
+
+        if($data["id_usuario_destino"] == "null"){
+            $data["id_usuario_destino"] = null;
+        }
+
+        if($data["id_objetivo_dependiente"] == "null"){
+            $data["id_objetivo_dependiente"] = null;
+        }
+        $response = $moduloObjetivo->crearObjetivo($data['tipo'], $data['nombre'], $data['descripcion'], intval($data['year']), intval($data['id_usuario_destino']), intval($data['id_objetivo_dependiente']));
 
         $appmodule = new ModuleAppAdministration();
         $action = $appmodule->registrarAccion('El usuario ha creado un nuevo objetivo');

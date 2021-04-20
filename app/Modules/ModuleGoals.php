@@ -37,7 +37,7 @@ class ModuleGoals
         return $objetivosDestino;
     }
 
-    public function crearObjetivo($tipo, $nombre, $descripcion, $year, $id_usuario_destino, $id_objetivo_dependiente)
+    public function crearObjetivo(string $tipo, string $nombre, string $descripcion, int $year, int $id_usuario_destino, int $id_objetivo_dependiente)
     {
         return Goal::create([
             'tipo' => $tipo,
@@ -46,7 +46,7 @@ class ModuleGoals
             'year' => $year,
             'id_usuario_origen' => auth()->user()->id,
             'id_usuario_destino' => $id_usuario_destino,
-            'id_objetivo_dependiente' => $id_objetivo_dependiente,
+            'id_objetivo_dependiente' => $id_objetivo_dependiente
         ]);
     }
 
