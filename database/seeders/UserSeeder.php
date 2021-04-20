@@ -18,38 +18,74 @@ class UserSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'name' => 'Marc',
-            'surname' => 'Santolaria',
+            'name' => 'Admin',
+            'surname' => 'Admin',
             'role' => 'Admin',
             'crea_objetivo_general' => 'true',
             'crea_objetivo_secundario' => 'true',
             'crea_objetivo_hito' => 'true',
-            'email' => 'marc.santolaria@aeinnova.com',
-            'password' => Hash::make('firewolf09'),
+            'email' => 'admin@aeinnova.com',
+            'password' => Hash::make('12345aA'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('users')->insert([
-            'name' => 'Alex',
-            'surname' => 'Santolaria',
+            'name' => 'Director',
+            'surname' => 'General',
             'role' => 'Director General',
+            'crea_objetivo_general' => 'true',
+            'crea_objetivo_secundario' => 'false',
+            'crea_objetivo_hito' => 'false',
+            'email' => 'director.general@aeinnova.com',
+            'password' => Hash::make('12345aA'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Project/Product',
+            'surname' => 'Manager',
+            'role' => 'Default',
             'crea_objetivo_general' => 'false',
             'crea_objetivo_secundario' => 'true',
-            'crea_objetivo_hito' => 'true',
-            'email' => 'alex.santolaria@aeinnova.com',
-            'password' => Hash::make('firewolf09'),
+            'crea_objetivo_hito' => 'false',
+            'email' => 'pm@aeinnova.com',
+            'password' => Hash::make('12345aA'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('users')->insert([
-            'name' => 'Kaladin',
-            'surname' => 'Stormblessed',
+            'name' => 'Responsable',
+            'surname' => 'Departamento',
             'role' => 'Default',
             'crea_objetivo_general' => 'false',
             'crea_objetivo_secundario' => 'false',
             'crea_objetivo_hito' => 'true',
-            'email' => 'kaladin.stormblessed@aeinnova.com',
-            'password' => Hash::make('firewolf09'),
+            'email' => 'responsable@aeinnova.com',
+            'password' => Hash::make('12345aA'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Auxiliar',
+            'surname' => 'Departamento',
+            'role' => 'Default',
+            'crea_objetivo_general' => 'false',
+            'crea_objetivo_secundario' => 'false',
+            'crea_objetivo_hito' => 'false',
+            'email' => 'auxiliar@aeinnova.com',
+            'password' => Hash::make('12345aA'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Usuario',
+            'surname' => 'Comodín',
+            'role' => 'Default',
+            'crea_objetivo_general' => 'true',
+            'crea_objetivo_secundario' => 'true',
+            'crea_objetivo_hito' => 'true',
+            'email' => 'comodin@aeinnova.com',
+            'password' => Hash::make('12345aA'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);

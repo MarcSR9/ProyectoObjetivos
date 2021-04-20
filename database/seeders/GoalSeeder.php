@@ -15,7 +15,7 @@ class GoalSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('goals')->insert([
+        /*DB::table('goals')->insert([
         	'id' => '1',
             'tipo' => 'Secundario',
             'nombre' => 'Implementar módulo Objetivos',
@@ -50,6 +50,6 @@ class GoalSeeder extends Seeder
             'year' => 2021,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
         	'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-        ]);
+        ]);*/
     }
 }
