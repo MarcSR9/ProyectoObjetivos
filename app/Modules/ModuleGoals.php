@@ -55,6 +55,14 @@ class ModuleGoals
         return $objetivo;
     }
 
+    public function dependenciaObjetivo(Goal $objetivo)
+    {
+        $objetivoDependiente = Goal::join('goals as origen', 'origen.id_objetivo_dependiente', '=', 'goals.id')
+        ->select('goals.*')->where('goals.id', $objetivo->id_objetivo_dependiente)->get();
+        return $objetivoDependiente;
+
+    }
+
     public function actualizarObjetivo(Goal $objetivo, $newdata)
     {
         $objetivo->descripcion = $newdata["descripcion"];

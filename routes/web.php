@@ -19,6 +19,12 @@ Route::get('/login', function () {
 
 Auth::routes();
 
+Route::get('/login/recuperarContraseña', 'UsersController@recuperarContraseña')->name('recuperarContraseña');
+Route::post('/login/recuperarContraseña', 'UsersController@generarTokenPW')->name('generarTokenPW');
+
+Route::get('/login/recuperarCuenta', 'UsersController@recuperarCuenta')->name('recuperarCuenta');
+Route::post('/login/recuperarCuenta', 'UsersController@recuperarContraseñaConToken')->name('resetearCuenta');
+
 Route::group(['middleware' => 'auth'], function(){
 	Route::get('/', 'ObjetivosController@listarObjetivosPorIdUsuario')->name('home');
 
@@ -37,11 +43,6 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/usuarios/{usuario}/editarContraseña', 'UsersController@editarContraseña')->name('usuarios.editarContraseña');
 	Route::post('/usuarios/{usuario}/actualizarContraseña', 'UsersController@actualizarContraseña')->name('usuarios.actualizarContraseña');
 
-	Route::get('/login/recuperarContraseña', 'UsersController@recuperarContraseña')->name('recuperarContraseña');
-	Route::post('/login/recuperarContraseña', 'UsersController@generarTokenPW')->name('generarTokenPW');
-
-	Route::get('/login/recuperarCuenta', 'UsersController@recuperarCuenta')->name('recuperarCuenta');
-	Route::post('/login/recuperarCuenta', 'UsersController@recuperarContraseñaConToken')->name('resetearCuenta');
 
 	//Objetivos
 	Route::get('/objetivos/nuevoObjetivo', 'ObjetivosController@nuevoObjetivo')->name('nuevoObjetivo');

@@ -6,7 +6,7 @@
         <div class="col-md-12">
         	<div class="d-flex justify-content-between align-items-center">
 				<h2 class="text-primary">Lista de usuarios</h2>
- 				<a class="btn btn-primary btn-arrow-left" href="{{ URL::previous() }}">< Volver</a>
+ 				<a class="btn btn-outline-secondary btn-arrow-left" href="{{ route('administracion') }}">< Volver</a>
 			</div>
 			<hr>
 			<div class="d-flex justify-content-between align-items-center my-4">
@@ -27,7 +27,7 @@
 				    	<td class="font-weight-bold">{{ $usuario->name }} {{ $usuario->surname }}</td>
 						<td class="text-black-80">{{ $usuario->email }}</td>
 						<td class="text-black-80">{{ $usuario->role }}</td>
-						<td><a class="btn btn-primary" href="{{route('usuarios.mostrarUsuario', $usuario->id)}}">Ver usuario</a></td>
+						<td><a class="btn btn-outline-primary font-weight-bold" href="{{route('usuarios.mostrarUsuario', $usuario->id)}}">Ver usuario</a></td>
 					</tr>
 				@empty
 					<p>No hay usuarios registrados</p>

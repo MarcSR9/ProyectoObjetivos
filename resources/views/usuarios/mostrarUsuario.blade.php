@@ -14,7 +14,7 @@
 				<button class="btn btn-danger">Eliminar usuario</button>
 			</form>
 
-			<a class="btn btn-primary ml-auto" href="{{ URL::previous() }}">< Volver</a>
+			<a class="btn btn-outline-secondary ml-auto" href="{{ route('usuarios.lista') }}">< Volver</a>
 		</div>
 	</div>
 </div>

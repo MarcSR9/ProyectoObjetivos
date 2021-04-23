@@ -59,14 +59,14 @@
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('recuperarContraseña') }}">
-                                        {{ __('Recuperar cuenta') }}
+                                        {{ __('He olvidado mi contraseña') }}
                                     </a>
                                 @endif
                             </div>
                             <div class="col-md-9 offset-md-4">
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('recuperarCuenta') }}">
-                                        {{ __('Recuperar contraseña con Token') }}
+                                        {{ __('Recuperar cuenta con Token') }}
                                     </a>
                                 @endif
                             </div>

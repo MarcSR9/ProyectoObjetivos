@@ -5,7 +5,7 @@
     <div class="bg-white p-5 shadow rounded">
         <div class="d-flex justify-content-between align-items-center">
             <h1 class="display-5 text-primary">Vista Director General</h1>
-            <a class="btn btn-primary btn-arrow-left" href="{{ URL::previous() }}">Volver</a>
+            <a class="btn btn-outline-secondary btn-arrow-left" href="{{ route('home') }}">< Volver</a>
         </div>
         <hr>
         <div class="list-group col-md-12">

@@ -5,7 +5,7 @@
     <div class="col-md-10">
     	<div class="d-flex justify-content-between align-items-center">
 			<h3 class="display-5 text-primary">Estado de la aplicación</h3>
-			<a class="btn btn-primary btn-arrow-left" href="{{ URL::previous() }}">< Volver</a>
+			<a class="btn btn-outline-secondary btn-arrow-left" href="{{ route('home') }}">< Volver</a>
 		</div>
 		<hr>
 		<a class="btn btn-primary" href="{{ route('usuarios.lista') }}">Administración de usuarios</a>
@@ -105,11 +105,13 @@
 		<div class="list-group col-md-12 my-4">
 			<h4>Errores recientes</h4>
 			<table class="table shadow-sm bg-transparent text-dark h5">
+				@if(count($errores)>0)
 				<tr class="text-primary">
-                    <th>Acción</th>
+                    <th>Error</th>
                     <th>Autor</th>
                     <th>Fecha</th>
                 </tr>
+                @endif
 				@forelse($errores as $error)
 				<tr>
 					<td class="font-weight-bold">{{ $error->error }}</td>
@@ -129,17 +131,21 @@
 		<div class="list-group col-md-12 my-4">
 			<h4>Acciones recientes</h4>
 			<table class="table shadow-sm bg-transparent text-dark h5">
+				@if(count($acciones)>0)
 				<tr class="text-primary">
                     <th>Acción</th>
                     <th>Autor</th>
                     <th>Fecha</th>
                 </tr>
+                @endif
 				@forelse($acciones as $accion)
-				<tr>
-					<td class="font-weight-bold">{{ $accion->action }}</td>
-					<td>{{ $accion->email }}</td>
-					<td>{{ $accion->created_at }}</td>
-				</tr>
+					@if($accion->action == 'Intento de acceso a recurso no autorizado')
+	                	<tr class="table-danger text-danger">
+	                @endif
+						<td class="font-weight-bold">{{ $accion->action }}</td>
+						<td>{{ $accion->email }}</td>
+						<td>{{ $accion->created_at }}</td>
+					</tr>
 				@empty
 					<p>No hay acciones registradas</p>
 				@endforelse

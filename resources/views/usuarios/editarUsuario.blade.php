@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h4>Editar usuario</h4>
-                    <a class="btn btn-primary btn-arrow-left" href="{{ URL::previous() }}">< Volver</a>
+                    <a class="btn btn-outline-secondary btn-arrow-left" href="{{ route('usuarios.lista') }}">< Volver</a>
                 </div>
 
                 <div class="card-body">
@@ -52,12 +52,11 @@
 
                         <div class="form-group row">
                             <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
-
                             <div class="col-md-6">
                                 <select id="role" name="role" type="text" class="form-control" required>
-                                    <option value="Admin">Admin</option>
-                                    <option value="Director General">Director General</option>
-                                    <option value="Default" selected>Default</option>
+                                    <option value="Admin" {{ $usuario->role == 'Admin' ? 'selected' : ''}}>Admin</option>
+                                    <option value="Director General" {{ $usuario->role == 'Director General' ? 'selected' : '' }}>Director General</option>
+                                    <option value="Default" {{ $usuario->role == 'Default' ? 'selected' : '' }}>Default</option>
                                 </select>
 
                                 @error('role')

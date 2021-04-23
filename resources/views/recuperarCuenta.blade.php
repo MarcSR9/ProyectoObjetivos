@@ -9,7 +9,7 @@
                 <div class="card-header">Resetear cuenta</div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('resetearCuenta') }}">
-                        <input type="hidden" name="_token" value="hyBiyJKBHdMTK7GVYoxtEcWn0hnN7iIZ7pU2YrCm">
+                        @csrf
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">Correo electrónico</label>
                             <div class="col-md-6">

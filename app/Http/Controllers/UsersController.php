@@ -96,7 +96,7 @@ class UsersController extends Controller
             $usermodule->editarUsuario($usuario, $request->post());
             $appmodule = new ModuleAppAdministration();
             $action = $appmodule->registrarAccion('Usuario actualizado');
-            return redirect()->route('usuarios.mostrarUsuario', $usuario)->with('status-success', 'El usuario ha sido actualizado correctamente');
+            return redirect()->route('usuarios.lista')->with('status-success', 'El usuario ha sido actualizado correctamente');
         }
         else{
             $moduloAdminApp = new ModuleAppAdministration();
@@ -154,15 +154,14 @@ class UsersController extends Controller
         $data = $request->post();
         $usermodule = new ModuleUsers();
         $exists = $usermodule->getUserByEmail($data['email']);
+
         if(is_null($exists)){
             $appmodule = new ModuleAppAdministration();
-            $error = $appmodule->registrarError('Error al generar Token de recuperacion. El email no existe en la Base de datos');
             return back()->with('status-error', 'La dirección de correo electrónico no existe en la base de datos.');
         }else{
             $appmodule = new ModuleAppAdministration();
-            $action = $appmodule->registrarAccion('Generado Token de recuperación de contraseña');
             $users = $usermodule->generarTokenPassword($data);
-            return back()->with('status-success', 'Ponte en contacto con el Administrador para obtener el Token y recuperar tu cuenta.');
+            return redirect()->route('login')->with('status-success', 'Ponte en contacto con el Administrador para obtener el Token y recuperar tu cuenta.');
         }
     }
 

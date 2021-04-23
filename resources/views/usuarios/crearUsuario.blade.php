@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h4>Crear nuevo usuario</h4>
-                    <a class="btn btn-primary btn-arrow-left" href="{{ URL::previous() }}">< Volver</a>
+                    <a class="btn btn-outline-secondary btn-arrow-left" href="{{ route('usuarios.lista') }}">< Volver</a>
                 </div>
 
                 <div class="card-body">

@@ -72,12 +72,19 @@ class ObjetivosController extends Controller
         if($data["id_objetivo_dependiente"] == "null"){
             $data["id_objetivo_dependiente"] = null;
         }
-        $response = $moduloObjetivo->crearObjetivo($data['tipo'], $data['nombre'], $data['descripcion'], intval($data['year']), intval($data['id_usuario_destino']), intval($data['id_objetivo_dependiente']));
 
-        $appmodule = new ModuleAppAdministration();
-        $action = $appmodule->registrarAccion('El usuario ha creado un nuevo objetivo');
+        if($data["id_objetivo_dependiente"] == null && $data["tipo"] == "Hito"){
+            return back()->with('status-error', 'Un objetivo de tipo Hito siempre debe depender de otro objetivo.');
+        }
+        else{
+            $response = $moduloObjetivo->crearObjetivo($data['tipo'], $data['nombre'], $data['descripcion'], intval($data['year']), intval($data['id_usuario_destino']), intval($data['id_objetivo_dependiente']));
 
-        return redirect()->route('home')->with('status-success', 'El objetivo ha sido creado correctamente');
+            $appmodule = new ModuleAppAdministration();
+            $action = $appmodule->registrarAccion('El usuario ha creado un nuevo objetivo');
+
+            return redirect()->route('home')->with('status-success', 'El objetivo ha sido creado correctamente');
+        }
+
     }
 
     public function mostrarObjetivo(Goal $objetivo){
@@ -87,13 +94,16 @@ class ObjetivosController extends Controller
         $creador = $moduloObjetivo->creadorObjetivo($objetivo);
         $destinatario = $moduloObjetivo->destinatarioObjetivo($objetivo);
 
+        $dependencia = $moduloObjetivo->dependenciaObjetivo($objetivo);
+
+
         $moduloAdminApp = new ModuleAppAdministration();
         $estados = $moduloAdminApp->estadoApp();
 
         if (auth()->user()->id == $objetivo->id_usuario_destino || auth()->user()->id == $objetivo->id_usuario_origen ||
             auth()->user()->role == 'Director General' || auth()->user()->role == 'Admin') {
             return view('objetivos.mostrarObjetivo',
-                ['objetivo' => $objetivo, 'creador' => $creador, 'destinatario' => $destinatario, 'estados' => $estados]
+                ['objetivo' => $objetivo, 'creador' => $creador, 'destinatario' => $destinatario, 'estados' => $estados, 'dependencia' => $dependencia]
             );
         }
         else {
@@ -113,7 +123,7 @@ class ObjetivosController extends Controller
         $moduloAdminApp = new ModuleAppAdministration();
             $action = $moduloAdminApp->registrarAccion('El usuario ha actualizado un objetivo');
 
-        return redirect()->route('mostrarObjetivo', $objetivo)->with('status-success', 'El objetivo ha sido actualizado correctamente');
+        return redirect()->route('home')->with('status-success', 'El objetivo ha sido actualizado correctamente');
     }
 
     public function completarObjetivo(Goal $objetivo)
@@ -123,7 +133,7 @@ class ObjetivosController extends Controller
             $moduloObjetivo->completarObjetivo($objetivo);
             $moduloAdminApp = new ModuleAppAdministration();
                 $action = $moduloAdminApp->registrarAccion('El usuario ha completado un objetivo');
-            return redirect()->route('mostrarObjetivo', $objetivo)->with('status-success', 'El objetivo ha sido marcado como completado');
+            return redirect()->route('home')->with('status-success', 'El objetivo ha sido marcado como completado');
         }
         else{
             $moduloAdminApp = new ModuleAppAdministration();

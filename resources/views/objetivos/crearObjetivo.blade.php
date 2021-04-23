@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h4>Crear objetivo</h4>
-                    <a class="btn btn-primary btn-arrow-left" href="{{ URL::previous() }}">< Volver</a>
+                    <a class="btn btn-outline-secondary btn-arrow-left" href="{{ route('home') }}">< Volver</a>
                 </div>
 
                 <div class="card-body">
@@ -110,12 +110,15 @@
                             </div>
                         </div>
 
+                        @if(auth()->user()->role != 'Director General' & auth()->user()->role != 'Admin')
                         <div class="form-group row">
                             <label for="id_objetivo_dependiente" class="col-md-4 col-form-label text-md-right">Depende de otro objetivo?</label>
 
                             <div class="col-md-6">
                                 <select id="id_objetivo_dependiente" name="id_objetivo_dependiente" type="text" class="form-control" required>
+
                                     <option value="null">No depende de ningún objetivo</option>
+
                                     @forelse ($objetivos as $objetivo)
                                         <option value="{{ $objetivo->id }}">{{ $objetivo->id }} / {{ $objetivo->Nombre }} ({{ $objetivo->Tipo }})</option>
                                     @empty
@@ -130,6 +133,28 @@
                                 @enderror
                             </div>
                         </div>
+                        @else
+                        <div class="form-group row d-none">
+                            <label for="id_objetivo_dependiente" class="col-md-4 col-form-label text-md-right">Depende de otro objetivo?</label>
+
+                            <div class="col-md-6">
+                                <select id="id_objetivo_dependiente" name="id_objetivo_dependiente" type="text" class="form-control" required>
+                                    <option value="null">No depende de ningún objetivo</option>
+                                    @forelse ($objetivos as $objetivo)
+                                        <option value="{{ $objetivo->id }}">{{ $objetivo->id }} / {{ $objetivo->nombre }} ({{ $objetivo->tipo }})</option>
+                                    @empty
+                                        <p>No hay objetivos</p>
+                                    @endforelse
+                                </select>
+
+                                @error('id_objetivo_dependiente')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        @endif
 
 
                         <div class="form-group row mb-0">
