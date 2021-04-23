@@ -6,7 +6,7 @@
         <div class="col-md-12">
         	<div class="d-flex justify-content-between align-items-center">
 				<h2 class="text-primary">Lista de usuarios</h2>
- 				<a class="btn btn-outline-secondary btn-arrow-left" href="{{ route('administracion') }}">< Volver</a>
+ 				<a class="btn btn-outline-secondary btn-arrow-left font-weight-bold" href="{{ route('administracion') }}">< Volver</a>
 			</div>
 			<hr>
 			<div class="d-flex justify-content-between align-items-center my-4">

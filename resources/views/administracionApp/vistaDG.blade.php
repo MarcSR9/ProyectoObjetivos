@@ -5,7 +5,7 @@
     <div class="bg-white p-5 shadow rounded">
         <div class="d-flex justify-content-between align-items-center">
             <h1 class="display-5 text-primary">Vista Director General</h1>
-            <a class="btn btn-outline-secondary btn-arrow-left" href="{{ route('home') }}">< Volver</a>
+            <a class="btn btn-outline-secondary btn-arrow-left font-weight-bold" href="{{ route('home') }}">< Volver</a>
         </div>
         <hr>
         <div class="list-group col-md-12">
@@ -120,12 +120,12 @@
                         <td>{{ $objetivo->year }}</td>
                         <td class="text-center">{{ $objetivo->id_usuario_origen }}</td>
                         <td class="text-center">{{ $objetivo->id_usuario_destino }}</td>
-                        <td><a class="btn btn-primary" href="{{route('mostrarObjetivo', $objetivo->id)}}" >Ver Objetivo</a></td>
+                        <td><a class="btn btn-outline-primary font-weight-bold" href="{{route('mostrarObjetivo', $objetivo->id)}}" >Ver Objetivo</a></td>
                     </tr>
                     @endforeach
                 </table>
                 @if(count($objetivos)>0 || auth()->user()->role == 'Director General')
-                    <a class="btn btn-primary col-md-2" href="{{ route('nuevoObjetivo')}}">Crear objetivo</a>
+                    <a class="btn btn-outline-primary col-md-2 font-weight-bold" href="{{ route('nuevoObjetivo')}}">Crear objetivo</a>
                 @endif
             @else
                 <p class="h5">Aún no existe ningún objetivo</p>

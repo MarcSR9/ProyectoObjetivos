@@ -6,9 +6,9 @@
         <div class="col-md-12">
             <div class="">
                 @if(auth()->user()->role == 'Admin')
-                    <a class="btn btn-primary" href="{{ route('administracion') }}">Administración de la aplicación</a>
+                    <a class="btn btn-outline-primary font-weight-bold" href="{{ route('administracion') }}">Administración de la aplicación</a>
                 @elseif(auth()->user()->role == 'Director General')
-                    <a class="btn btn-primary" href="{{ route('panelDGeneral') }}">Administración de la aplicación</a>
+                    <a class="btn btn-outline-primary font-weight-bold" href="{{ route('panelDGeneral') }}">Administración de la aplicación</a>
                 @endif
             </div>
             <hr>
