@@ -43,13 +43,14 @@
             @else
                 <p class="h5">Aún no te han asignado ningún objetivo</p>
             @endif
-            @if(auth()->user()->crea_objetivo_general == 'true' || auth()->user()->crea_objetivo_secundario == 'true' || auth()->user()->crea_objetivo_hito == 'true')
-                <a class="btn btn-outline-primary col-md-2 font-weight-bold" href="{{ route('nuevoObjetivo')}}">Crear objetivo</a>
-            @endif
+
         </div>
         <br><br>
         <div class="col-md-12 py-3">
 	        <h3>Objetivos creados por mí</h3>
+            @if(auth()->user()->crea_objetivo_general == 'true' || auth()->user()->crea_objetivo_secundario == 'true' || auth()->user()->crea_objetivo_hito == 'true')
+                <a class="btn btn-outline-primary col-md-2 font-weight-bold" href="{{ route('nuevoObjetivo')}}">Crear objetivo</a>
+            @endif
             @if(count($objetivosOrigen) > 0)
     	        <table class="table mb-3 shadow-sm bg-transparent h5">
     	            <tr>

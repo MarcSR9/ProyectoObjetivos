@@ -168,7 +168,7 @@
 						<div>
 							<label for="comentario_origen_conclusiones" class="mt-3 text-dark">Comentarios del creador del objetivo en las conclusiones</label>
 							<textarea id="comentario_origen_conclusiones" name="comentario_origen_conclusiones" rows="5" cols="100" readonly="readonly" class="table-secondary text-dark border border-secondary">{{ $objetivo->comentario_origen_conclusiones }}</textarea>
-							<label for="comentario_origen_conclusiones" class="mt-3 text-dark">Comentarios del creador del objetivo en las conclusiones</label>
+							<label for="comentario_origen_conclusiones" class="mt-3 text-dark">Comentarios del destinatario del objetivo en las conclusiones</label>
 							<textarea id="comentario_destino_conclusiones" name="comentario_destino_conclusiones" rows="5" cols="100" readonly="readonly" class="table-secondary text-dark border border-secondary">{{ $objetivo->comentario_destino_conclusiones }}</textarea>
 						</div>
 					@endif
