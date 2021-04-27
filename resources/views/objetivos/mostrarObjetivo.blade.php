@@ -168,7 +168,7 @@
 						<div>
 							<label for="comentario_origen_conclusiones" class="mt-3 text-dark">Comentarios del creador del objetivo en las conclusiones</label>
 							<textarea id="comentario_origen_conclusiones" name="comentario_origen_conclusiones" rows="5" cols="100" readonly="readonly" class="table-secondary text-dark border border-secondary">{{ $objetivo->comentario_origen_conclusiones }}</textarea>
-							<label for="comentario_origen_conclusiones" class="mt-3 text-dark">Comentarios del creador del objetivo en las conclusiones</label>
+							<label for="comentario_origen_conclusiones" class="mt-3 text-dark">Comentarios del destinatario del objetivo en las conclusiones</label>
 							<textarea id="comentario_destino_conclusiones" name="comentario_destino_conclusiones" rows="5" cols="100" readonly="readonly" class="table-secondary text-dark border border-secondary">{{ $objetivo->comentario_destino_conclusiones }}</textarea>
 						</div>
 					@endif
@@ -179,10 +179,12 @@
 			</div>
 
 			<div class="form-group row mb-0 mt-3">
-				@if(auth()->user()->id == $objetivo->id_usuario_origen || auth()->user()->id == $objetivo->id_usuario_destino)
-                <div class="col-md-6">
-                    <button type="submit" class="font-weight-bold btn btn-primary">Guardar cambios</button>
-                </div>
+				@if($objetivo->completado == null)
+					@if(auth()->user()->id == $objetivo->id_usuario_origen || auth()->user()->id == $objetivo->id_usuario_destino)
+	                <div class="col-md-6">
+	                    <button type="submit" class="font-weight-bold btn btn-primary">Guardar cambios</button>
+	                </div>
+	                @endif
                 @endif
                {{-- @if(auth()->user()->id == $objetivo->id_usuario_origen)
                 <div class="ml-auto btn-group">

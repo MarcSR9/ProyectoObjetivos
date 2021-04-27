@@ -146,6 +146,8 @@ class AppAdminController extends Controller
     	$moduloObjetivo = new ModuleGoals();
         $objetivos = $moduloObjetivo->listarObjetivos();
 
+
+
         if (auth()->user()->role == 'Director General') {
         	return view('administracionApp.vistaDG',
     		['estados' => $estados, 'objetivos' => $objetivos]);

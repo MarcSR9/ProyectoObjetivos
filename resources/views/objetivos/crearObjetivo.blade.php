@@ -110,36 +110,20 @@
                             </div>
                         </div>
 
-                        @if(auth()->user()->role != 'Director General' & auth()->user()->role != 'Admin')
-                        <div class="form-group row">
-                            <label for="id_objetivo_dependiente" class="col-md-4 col-form-label text-md-right">Depende de otro objetivo?</label>
-
-                            <div class="col-md-6">
-                                <select id="id_objetivo_dependiente" name="id_objetivo_dependiente" type="text" class="form-control" required>
-
-                                    <option value="null">No depende de ningún objetivo</option>
-
-                                    @forelse ($objetivos as $objetivo)
-                                        <option value="{{ $objetivo->id }}">{{ $objetivo->id }} / {{ $objetivo->Nombre }} ({{ $objetivo->Tipo }})</option>
-                                    @empty
-                                        <p>No hay objetivos</p>
-                                    @endforelse
-                                </select>
-
-                                @error('id_objetivo_dependiente')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                        @else
+                        @if(auth()->user()->crea_objetivo_general == 'true'
+                            && auth()->user()->crea_objetivo_secundario == 'false'
+                            && auth()->user()->crea_objetivo_hito == 'false')
                         <div class="form-group row d-none">
+                        @else
+                        <div class="form-group row">
+                        @endif
                             <label for="id_objetivo_dependiente" class="col-md-4 col-form-label text-md-right">Depende de otro objetivo?</label>
 
                             <div class="col-md-6">
                                 <select id="id_objetivo_dependiente" name="id_objetivo_dependiente" type="text" class="form-control" required>
-                                    <option value="null">No depende de ningún objetivo</option>
+
+                                    <option value="null" selected="selected">No depende de ningún objetivo</option>
+
                                     @forelse ($objetivos as $objetivo)
                                         <option value="{{ $objetivo->id }}">{{ $objetivo->id }} / {{ $objetivo->nombre }} ({{ $objetivo->tipo }})</option>
                                     @empty
@@ -154,7 +138,6 @@
                                 @enderror
                             </div>
                         </div>
-                        @endif
 
 
                         <div class="form-group row mb-0">

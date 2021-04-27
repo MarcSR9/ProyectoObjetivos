@@ -118,8 +118,8 @@
                         <td>{{ $objetivo->nombre }}</td>
                         <td>{{ $objetivo->tipo }}</td>
                         <td>{{ $objetivo->year }}</td>
-                        <td class="text-center">{{ $objetivo->id_usuario_origen }}</td>
-                        <td class="text-center">{{ $objetivo->id_usuario_destino }}</td>
+                        <td class="text-center">{{ $objetivo->name }} {{ $objetivo->surname }}</td>
+                        <td class="text-center">{{ $objetivo->name }} {{ $objetivo->surname }}</td>
                         <td><a class="btn btn-primary" href="{{route('mostrarObjetivo', $objetivo->id)}}" >Ver Objetivo</a></td>
                     </tr>
                     @endforeach

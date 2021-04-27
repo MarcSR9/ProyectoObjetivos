@@ -19,13 +19,7 @@
                     </tr>
                     @foreach ($objetivosDestino->sortBy('id')->sortBy('year') as $objetivo)
                     @if($objetivo->completado == 'completado')
-                    <tr class="table-secondary">
-                    @elseif($objetivo->tipo == 'Secundario')
-                    <tr class="table-info">
-                    @elseif($objetivo->tipo == 'Hito')
-                    <tr class="table-warning">
-                    @elseif($objetivo->tipo == 'General')
-                    <tr class="table-primary">
+                    <tr class="table-success">
                     @endif
                         <td>{{ $objetivo->id }}</td>
                         <td>{{ $objetivo->nombre }}</td>
@@ -60,13 +54,7 @@
     	            </tr>
     	            @foreach ($objetivosOrigen->sortBy('id')->sortBy('year') as $objetivo)
                     @if($objetivo->completado == 'completado')
-                    <tr class="table-secondary">
-                    @elseif($objetivo->tipo == 'Secundario')
-                    <tr class="table-info">
-                    @elseif($objetivo->tipo == 'Hito')
-                    <tr class="table-warning">
-                    @elseif($objetivo->tipo == 'General')
-                    <tr class="table-primary">
+                    <tr class="table-success">
                     @endif
                         <td>{{ $objetivo->id }}</td>
     	                <td>{{ $objetivo->nombre }}</td>
