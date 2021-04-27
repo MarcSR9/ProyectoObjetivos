@@ -5,7 +5,7 @@
 	<div class="bg-white p-5 shadow rounded">
 		<div class="d-flex justify-content-between align-items-center">
             <h3 class="text-primary mb-4">{{ $objetivo->nombre }}</h3>
-            <a class="btn btn-outline-secondary btn-arrow-left" href="{{ route('home') }}">< Volver</a>
+            <a class="btn btn-outline-secondary btn-arrow-left font-weight-bold" href="{{ route('home') }}">< Volver</a>
         </div>
 
 		<p class="font-weight-bold h5 my-3">Tipo: {{ $objetivo->tipo }}</p>
@@ -202,7 +202,7 @@
             </div>
 		</form>
 		<div class="d-flex justify-content-between align-items-center mt-5">
-			<a class="btn btn-primary ml-auto" href="{{ URL::previous() }}">< Volver</a>
+            <a class="btn btn-outline-secondary btn-arrow-left font-weight-bold ml-auto" href="{{ route('home') }}">< Volver</a>
 		</div>
 	</div>
 </div>

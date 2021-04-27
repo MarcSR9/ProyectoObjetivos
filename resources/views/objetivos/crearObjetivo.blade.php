@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h4>Crear objetivo</h4>
-                    <a class="btn btn-outline-secondary btn-arrow-left" href="{{ route('home') }}">< Volver</a>
+                    <a class="btn btn-outline-secondary btn-arrow-left font-weight-bold" href="{{ route('home') }}">< Volver</a>
                 </div>
 
                 <div class="card-body">
@@ -142,7 +142,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">Crear Objetivo</button>
+                                <button type="submit" class="btn btn-outline-primary font-weight-bold">Crear Objetivo</button>
                             </div>
                         </div>
                     </form>

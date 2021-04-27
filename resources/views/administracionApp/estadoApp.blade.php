@@ -5,10 +5,10 @@
     <div class="col-md-10">
     	<div class="d-flex justify-content-between align-items-center">
 			<h3 class="display-5 text-primary">Estado de la aplicación</h3>
-			<a class="btn btn-outline-secondary btn-arrow-left" href="{{ route('home') }}">< Volver</a>
+			<a class="btn btn-outline-secondary btn-arrow-left font-weight-bold" href="{{ route('home') }}">< Volver</a>
 		</div>
 		<hr>
-		<a class="btn btn-primary" href="{{ route('usuarios.lista') }}">Administración de usuarios</a>
+		<a class="btn btn-outline-primary font-weight-bold" href="{{ route('usuarios.lista') }}">Administración de usuarios</a>
 		<hr>
 		<div class="list-group col-md-12">
 			<ul class="list-group">
@@ -151,7 +151,7 @@
 				@endforelse
 			</table>
 			@if(count($acciones)>0)
-				<a class="btn btn-primary rounded col-md-2" href="{{ route('listaAcciones')}}">Mostrar todas las acciones</a>
+				<a class="btn btn-outline-primary rounded col-md-2 font-weight-bold" href="{{ route('listaAcciones')}}">Mostrar todas las acciones</a>
 			@endif
 		</div>
 	</div>
