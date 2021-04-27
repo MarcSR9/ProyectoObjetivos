@@ -65,18 +65,34 @@ class ModuleGoals
 
     public function actualizarObjetivo(Goal $objetivo, $newdata)
     {
-        $objetivo->descripcion = $newdata["descripcion"];
-        $objetivo->comentario_origen_T1 = $newdata["comentario_origen_T1"];
-        $objetivo->comentario_destino_T1 = $newdata["comentario_destino_T1"];
-        $objetivo->comentario_origen_T2 = $newdata["comentario_origen_T2"];
-        $objetivo->comentario_destino_T2 = $newdata["comentario_destino_T2"];
-        $objetivo->comentario_origen_T3 = $newdata["comentario_origen_T3"];
-        $objetivo->comentario_destino_T3 = $newdata["comentario_destino_T3"];
-        $objetivo->comentario_origen_T4 = $newdata["comentario_origen_T4"];
-        $objetivo->comentario_destino_T4 = $newdata["comentario_destino_T4"];
-        $objetivo->comentario_origen_conclusiones = $newdata["comentario_origen_conclusiones"];
-        $objetivo->comentario_destino_conclusiones = $newdata["comentario_destino_conclusiones"];
-        $objetivo->save();
+        if (auth()->user()->id == $objetivo->id_usuario_destino) {
+            $objetivo->comentario_destino_T1 = $newdata["comentario_destino_T1"];
+            $objetivo->comentario_destino_T2 = $newdata["comentario_destino_T2"];
+            $objetivo->comentario_destino_T3 = $newdata["comentario_destino_T3"];
+            $objetivo->comentario_destino_T4 = $newdata["comentario_destino_T4"];
+            $objetivo->comentario_destino_conclusiones = $newdata["comentario_destino_conclusiones"];
+            $objetivo->save();
+        }
+        else if (auth()->user()->id == $objetivo->id_usuario_origen){
+            $objetivo->tipo = $newdata["tipo"];
+            $objetivo->nombre = $newdata["nombre"];
+            $objetivo->year = intval($newdata["year"]);
+            $objetivo->id_usuario_destino = intval($newdata["id_usuario_destino"]);
+            $objetivo->id_objetivo_dependiente = intval($newdata["id_objetivo_dependiente"]);
+            $objetivo->descripcion = $newdata["descripcion"];
+            $objetivo->comentario_origen_T1 = $newdata["comentario_origen_T1"];
+            $objetivo->comentario_destino_T1 = $newdata["comentario_destino_T1"];
+            $objetivo->comentario_origen_T2 = $newdata["comentario_origen_T2"];
+            $objetivo->comentario_destino_T2 = $newdata["comentario_destino_T2"];
+            $objetivo->comentario_origen_T3 = $newdata["comentario_origen_T3"];
+            $objetivo->comentario_destino_T3 = $newdata["comentario_destino_T3"];
+            $objetivo->comentario_origen_T4 = $newdata["comentario_origen_T4"];
+            $objetivo->comentario_destino_T4 = $newdata["comentario_destino_T4"];
+            $objetivo->comentario_origen_conclusiones = $newdata["comentario_origen_conclusiones"];
+            $objetivo->comentario_destino_conclusiones = $newdata["comentario_destino_conclusiones"];
+            $objetivo->save();
+        }
+
         return $objetivo;
     }
 

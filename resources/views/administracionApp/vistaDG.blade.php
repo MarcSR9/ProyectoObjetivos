@@ -104,7 +104,6 @@
             @if(count($objetivos) > 0)
                 <table class="table shadow-sm bg-transparent h5">
                     <tr>
-                        <th>ID</th>
                         <th>Nombre</th>
                         <th>Tipo</th>
                         <th>Año</th>
@@ -113,8 +112,11 @@
                         <th>Acciones</th>
                     </tr>
                     @foreach ($objetivos->sortBy('year')->sortBy('id') as $objetivo)
+                    @if($objetivo->completado != null)
+                    <tr class="table-success">
+                    @else
                     <tr>
-                        <td>{{ $objetivo->id }}</td>
+                    @endif
                         <td>{{ $objetivo->nombre }}</td>
                         <td>{{ $objetivo->tipo }}</td>
                         <td>{{ $objetivo->year }}</td>

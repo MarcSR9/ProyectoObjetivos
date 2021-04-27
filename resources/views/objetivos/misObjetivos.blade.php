@@ -9,7 +9,6 @@
             @if(count($objetivosDestino) > 0)
                 <table class="table shadow-sm bg-transparent h5">
                     <tr>
-                        <th>ID</th>
                         <th>Nombre</th>
                         <th>Tipo</th>
                         <th>Año</th>
@@ -23,7 +22,6 @@
                     @else
                     <tr>
                     @endif
-                        <td>{{ $objetivo->id }}</td>
                         <td>{{ $objetivo->nombre }}</td>
                         <td>{{ $objetivo->tipo }}</td>
                         <td>{{ $objetivo->year }}</td>
@@ -47,7 +45,6 @@
             @if(count($objetivosOrigen) > 0)
     	        <table class="table mb-3 shadow-sm bg-transparent h5">
     	            <tr>
-                        <th>ID</th>
     	                <th>Nombre</th>
     	                <th>Tipo</th>
                         <th>Año</th>
@@ -58,8 +55,9 @@
     	            @foreach ($objetivosOrigen->sortBy('id')->sortBy('year') as $objetivo)
                     @if($objetivo->completado == 'completado')
                     <tr class="table-success">
+                    @else
+                    <tr>
                     @endif
-                        <td>{{ $objetivo->id }}</td>
     	                <td>{{ $objetivo->nombre }}</td>
                         <td>{{ $objetivo->tipo }}</td>
                         <td>{{ $objetivo->year }}</td>
@@ -75,10 +73,12 @@
                                 </form>
                                 @endif
                                 &nbsp;
+                                @if(auth()->user()->role == 'Admin')
                                 <form method="POST" action="{{ route('eliminarObjetivo', $objetivo) }}">
                                     @csrf @method('DELETE')
                                     <button class="btn btn-outline-danger font-weight-bold" onclick="return confirm('Estás seguro de que quieres eliminar el objetivo?')" href="">Eliminar</button>
                                 </form>
+                                @endif
                             </span>
                         </td>
     	            </tr>

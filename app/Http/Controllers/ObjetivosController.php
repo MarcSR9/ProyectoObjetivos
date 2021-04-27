@@ -76,6 +76,9 @@ class ObjetivosController extends Controller
         if($data["id_objetivo_dependiente"] == null && $data["tipo"] == "Hito"){
             return back()->with('status-error', 'Un objetivo de tipo Hito siempre debe depender de otro objetivo.');
         }
+        else if($data["id_objetivo_dependiente"] != null && $data["tipo"] == "General"){
+            return back()->with('status-error', 'Un objetivo de tipo General no puede depender de otro objetivo.');
+        }
         else{
             $response = $moduloObjetivo->crearObjetivo($data['tipo'], $data['nombre'], $data['descripcion'], intval($data['year']), intval($data['id_usuario_destino']), intval($data['id_objetivo_dependiente']));
 
@@ -96,6 +99,13 @@ class ObjetivosController extends Controller
 
         $dependencia = $moduloObjetivo->dependenciaObjetivo($objetivo);
 
+        $usermodule = new ModuleUsers();
+        $usuarios = $usermodule->listarUsuarios();
+
+        $user_id = auth()->user()->id;
+        $moduloObjetivo = new ModuleGoals();
+        $objetivos = $moduloObjetivo->listarObjetivosDestino($user_id);
+
 
         $moduloAdminApp = new ModuleAppAdministration();
         $estados = $moduloAdminApp->estadoApp();
@@ -103,7 +113,8 @@ class ObjetivosController extends Controller
         if (auth()->user()->id == $objetivo->id_usuario_destino || auth()->user()->id == $objetivo->id_usuario_origen ||
             auth()->user()->role == 'Director General' || auth()->user()->role == 'Admin') {
             return view('objetivos.mostrarObjetivo',
-                ['objetivo' => $objetivo, 'creador' => $creador, 'destinatario' => $destinatario, 'estados' => $estados, 'dependencia' => $dependencia]
+                ['objetivo' => $objetivo, 'creador' => $creador, 'destinatario' => $destinatario, 'estados' => $estados, 'dependencia' => $dependencia,
+                    'usuarios' => $usuarios, 'objetivos' => $objetivos]
             );
         }
         else {
