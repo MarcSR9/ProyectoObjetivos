@@ -1,9 +1,8 @@
 <div class="row justify-content-center">
     <div class="col-md-12">
-        <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex justify-content-between align-items-center m-2">
             <h1 class="display-5 text-primary">Mis objetivos</h1>
         </div>
-        <br><br>
         <div class="col-md-12 py-3">
             <h3>Objetivos asignados</h3>
             @if(count($objetivosDestino) > 0)

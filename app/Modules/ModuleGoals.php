@@ -73,10 +73,10 @@ class ModuleGoals
 
         if (auth()->user()->id == $objetivo->id_usuario_destino) {
             if ($estados[0]->trimester_1== 'enabled') {
-                $objetivo->comentario_destino_T3 = $newdata["comentario_destino_T3"];
+                $objetivo->comentario_destino_T1 = $newdata["comentario_destino_T1"];
             }
             if ($estados[0]->trimester_2== 'enabled') {
-                $objetivo->comentario_destino_T3 = $newdata["comentario_destino_T3"];
+                $objetivo->comentario_destino_T2 = $newdata["comentario_destino_T2"];
             }
             if ($estados[0]->trimester_3== 'enabled') {
                 $objetivo->comentario_destino_T3 = $newdata["comentario_destino_T3"];
@@ -84,7 +84,7 @@ class ModuleGoals
             if ($estados[0]->trimester_4== 'enabled') {
                 $objetivo->comentario_destino_T4 = $newdata["comentario_destino_T4"];
             }
-            if ($estados[0]->trimester_3== 'enabled') {
+            if ($estados[0]->conclusions== 'enabled') {
                 $objetivo->comentario_destino_conclusiones = $newdata["comentario_destino_conclusiones"];
             }
             $objetivo->save();
@@ -97,10 +97,10 @@ class ModuleGoals
             $objetivo->id_objetivo_dependiente = intval($newdata["id_objetivo_dependiente"]);
             $objetivo->descripcion = $newdata["descripcion"];
             if ($estados[0]->trimester_1== 'enabled') {
-                $objetivo->comentario_origen_T3 = $newdata["comentario_origen_T3"];
+                $objetivo->comentario_origen_T1 = $newdata["comentario_origen_T1"];
             }
             if ($estados[0]->trimester_2== 'enabled') {
-                $objetivo->comentario_origen_T3 = $newdata["comentario_origen_T3"];
+                $objetivo->comentario_origen_T2 = $newdata["comentario_origen_T2"];
             }
             if ($estados[0]->trimester_3== 'enabled') {
                 $objetivo->comentario_origen_T3 = $newdata["comentario_origen_T3"];
@@ -108,7 +108,7 @@ class ModuleGoals
             if ($estados[0]->trimester_4== 'enabled') {
                 $objetivo->comentario_origen_T4 = $newdata["comentario_origen_T4"];
             }
-            if ($estados[0]->trimester_3== 'enabled') {
+            if ($estados[0]->conclusions== 'enabled') {
                 $objetivo->comentario_origen_conclusiones = $newdata["comentario_origen_conclusiones"];
             }
             $objetivo->save();

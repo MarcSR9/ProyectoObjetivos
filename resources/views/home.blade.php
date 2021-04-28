@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container col-md-9">
-    <div class="row justify-content-center">
+
+<div class="container col-md-10">
+    <div class="bg-white p-5 shadow rounded ow justify-content-center">
         <div class="col-md-12">
             <div class="">
                 @if(auth()->user()->role == 'Admin')
