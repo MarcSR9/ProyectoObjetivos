@@ -14,7 +14,10 @@ class ModuleGoals
 {
     public function listarObjetivos()
     {
-        $objetivos = Goal::get();
+        $objetivos = Goal::leftJoin('users as creadores', 'goals.id_usuario_origen', '=', 'creadores.id')
+        ->leftJoin('users as destinatarios', 'goals.id_usuario_destino', '=', 'destinatarios.id')
+        ->select('goals.*', 'creadores.name as nombre_origen', 'creadores.surname as apellido_origen', 'destinatarios.name as destino_nombre', 'destinatarios.surname as destino_apellido')
+        ->get();
         return $objetivos;
     }
 
@@ -65,12 +68,25 @@ class ModuleGoals
 
     public function actualizarObjetivo(Goal $objetivo, $newdata)
     {
+        $moduloAdminApp = new ModuleAppAdministration();
+        $estados = $moduloAdminApp->estadoApp();
+
         if (auth()->user()->id == $objetivo->id_usuario_destino) {
-            $objetivo->comentario_destino_T1 = $newdata["comentario_destino_T1"];
-            $objetivo->comentario_destino_T2 = $newdata["comentario_destino_T2"];
-            $objetivo->comentario_destino_T3 = $newdata["comentario_destino_T3"];
-            $objetivo->comentario_destino_T4 = $newdata["comentario_destino_T4"];
-            $objetivo->comentario_destino_conclusiones = $newdata["comentario_destino_conclusiones"];
+            if ($estados[0]->trimester_1== 'enabled') {
+                $objetivo->comentario_destino_T3 = $newdata["comentario_destino_T3"];
+            }
+            if ($estados[0]->trimester_2== 'enabled') {
+                $objetivo->comentario_destino_T3 = $newdata["comentario_destino_T3"];
+            }
+            if ($estados[0]->trimester_3== 'enabled') {
+                $objetivo->comentario_destino_T3 = $newdata["comentario_destino_T3"];
+            }
+            if ($estados[0]->trimester_4== 'enabled') {
+                $objetivo->comentario_destino_T4 = $newdata["comentario_destino_T4"];
+            }
+            if ($estados[0]->trimester_3== 'enabled') {
+                $objetivo->comentario_destino_conclusiones = $newdata["comentario_destino_conclusiones"];
+            }
             $objetivo->save();
         }
         else if (auth()->user()->id == $objetivo->id_usuario_origen){
@@ -80,16 +96,21 @@ class ModuleGoals
             $objetivo->id_usuario_destino = intval($newdata["id_usuario_destino"]);
             $objetivo->id_objetivo_dependiente = intval($newdata["id_objetivo_dependiente"]);
             $objetivo->descripcion = $newdata["descripcion"];
-            $objetivo->comentario_origen_T1 = $newdata["comentario_origen_T1"];
-            $objetivo->comentario_destino_T1 = $newdata["comentario_destino_T1"];
-            $objetivo->comentario_origen_T2 = $newdata["comentario_origen_T2"];
-            $objetivo->comentario_destino_T2 = $newdata["comentario_destino_T2"];
-            $objetivo->comentario_origen_T3 = $newdata["comentario_origen_T3"];
-            $objetivo->comentario_destino_T3 = $newdata["comentario_destino_T3"];
-            $objetivo->comentario_origen_T4 = $newdata["comentario_origen_T4"];
-            $objetivo->comentario_destino_T4 = $newdata["comentario_destino_T4"];
-            $objetivo->comentario_origen_conclusiones = $newdata["comentario_origen_conclusiones"];
-            $objetivo->comentario_destino_conclusiones = $newdata["comentario_destino_conclusiones"];
+            if ($estados[0]->trimester_1== 'enabled') {
+                $objetivo->comentario_origen_T3 = $newdata["comentario_origen_T3"];
+            }
+            if ($estados[0]->trimester_2== 'enabled') {
+                $objetivo->comentario_origen_T3 = $newdata["comentario_origen_T3"];
+            }
+            if ($estados[0]->trimester_3== 'enabled') {
+                $objetivo->comentario_origen_T3 = $newdata["comentario_origen_T3"];
+            }
+            if ($estados[0]->trimester_4== 'enabled') {
+                $objetivo->comentario_origen_T4 = $newdata["comentario_origen_T4"];
+            }
+            if ($estados[0]->trimester_3== 'enabled') {
+                $objetivo->comentario_origen_conclusiones = $newdata["comentario_origen_conclusiones"];
+            }
             $objetivo->save();
         }
 

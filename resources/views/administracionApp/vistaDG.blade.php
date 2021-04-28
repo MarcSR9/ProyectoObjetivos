@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container col-md-10">
     <div class="bg-white p-5 shadow rounded">
         <div class="d-flex justify-content-between align-items-center">
             <h1 class="display-5 text-primary">Vista Director General</h1>
@@ -120,8 +120,8 @@
                         <td>{{ $objetivo->nombre }}</td>
                         <td>{{ $objetivo->tipo }}</td>
                         <td>{{ $objetivo->year }}</td>
-                        <td class="text-center">{{ $objetivo->id_usuario_origen }}</td>
-                        <td class="text-center">{{ $objetivo->id_usuario_destino }}</td>
+                        <td class="text-center">{{ $objetivo->nombre_origen }} {{ $objetivo->apellido_origen }}</td>
+                        <td class="text-center">{{ $objetivo->destino_nombre }} {{ $objetivo->destino_apellido }}</td>
                         <td><a class="btn btn-outline-primary font-weight-bold" href="{{route('mostrarObjetivo', $objetivo->id)}}" >Ver Objetivo</a></td>
                     </tr>
                     @endforeach
