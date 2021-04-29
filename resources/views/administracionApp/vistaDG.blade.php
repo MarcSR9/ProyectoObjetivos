@@ -111,7 +111,7 @@
                         <th class="text-center">Usuario Destino</th>
                         <th>Acciones</th>
                     </tr>
-                    @foreach ($objetivos->sortBy('tipo') as $objetivo)
+                    @foreach ($objetivos as $objetivo)
                     @if($objetivo->completado != null)
                     <tr class="table-success">
                     @else

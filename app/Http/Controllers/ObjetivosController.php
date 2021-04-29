@@ -155,12 +155,23 @@ class ObjetivosController extends Controller
 
     public function eliminarObjetivo(Goal $objetivo)
     {
-        if(auth()->user()->id == $objetivo->id_usuario_origen){
-            $moduloObjetivo = new ModuleGoals();
-            $moduloObjetivo->eliminarObjetivo($objetivo);
-            $moduloAdminApp = new ModuleAppAdministration();
-                $action = $moduloAdminApp->registrarAccion('El usuario ha eliminado un objetivo');
-            return redirect()->route('home')->with('status-success', 'El objetivo ha sido eliminado correctamente');
+        $moduloObjetivo = new ModuleGoals();
+        $dependencia = $moduloObjetivo->dependientes($objetivo);
+
+
+        if(auth()->user()->role == 'Admin'){
+            if ($dependencia == null) {
+                $moduloObjetivo = new ModuleGoals();
+                $moduloObjetivo->eliminarObjetivo($objetivo);
+                $moduloAdminApp = new ModuleAppAdministration();
+                    $action = $moduloAdminApp->registrarAccion('El usuario ha eliminado un objetivo');
+                return redirect()->route('home')->with('status-success', 'El objetivo ha sido eliminado correctamente');
+            }
+            else{
+                $moduloAdminApp = new ModuleAppAdministration();
+                $action = $moduloAdminApp->registrarAccion('No se puede eliminar el objetivo porque tiene objetivos dependientes');
+                return back()->with('status-error', 'Para eliminar este objetivo hay que eliminar antes los objetivos que dependen de él');
+            }
         }
         else{
             $moduloAdminApp = new ModuleAppAdministration();

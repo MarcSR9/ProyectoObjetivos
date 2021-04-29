@@ -17,7 +17,7 @@ class ModuleGoals
         $objetivos = Goal::leftJoin('users as creadores', 'goals.id_usuario_origen', '=', 'creadores.id')
         ->leftJoin('users as destinatarios', 'goals.id_usuario_destino', '=', 'destinatarios.id')
         ->select('goals.*', 'creadores.name as nombre_origen', 'creadores.surname as apellido_origen', 'destinatarios.name as destino_nombre', 'destinatarios.surname as destino_apellido')
-        ->orderBy('year', 'desc')
+        ->orderByRaw('year DESC, CASE WHEN goals.tipo = \'General\' THEN 1 WHEN goals.tipo = \'Secundario\' THEN 2 WHEN goals.tipo = \'Hito\' THEN 3 END')
         ->get();
         return $objetivos;
     }
@@ -141,6 +141,12 @@ class ModuleGoals
     {
         $objetivo->delete();
         return;
+    }
+
+    public function dependientes(Goal $objetivo)
+    {
+        $dependientes = Goal::where('id_objetivo_dependiente', $objetivo->id)->first();
+        return $dependientes;
     }
 
 }
