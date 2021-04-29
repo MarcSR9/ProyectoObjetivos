@@ -17,6 +17,7 @@ class ModuleGoals
         $objetivos = Goal::leftJoin('users as creadores', 'goals.id_usuario_origen', '=', 'creadores.id')
         ->leftJoin('users as destinatarios', 'goals.id_usuario_destino', '=', 'destinatarios.id')
         ->select('goals.*', 'creadores.name as nombre_origen', 'creadores.surname as apellido_origen', 'destinatarios.name as destino_nombre', 'destinatarios.surname as destino_apellido')
+        ->orderBy('year', 'desc')
         ->get();
         return $objetivos;
     }
@@ -60,8 +61,8 @@ class ModuleGoals
 
     public function dependenciaObjetivo(Goal $objetivo)
     {
-        $objetivoDependiente = Goal::join('goals as origen', 'origen.id_objetivo_dependiente', '=', 'goals.id')
-        ->select('goals.*')->where('goals.id', $objetivo->id_objetivo_dependiente)->get();
+        $objetivoDependiente = Goal::where('id', $objetivo->id_objetivo_dependiente)->first();
+
         return $objetivoDependiente;
 
     }

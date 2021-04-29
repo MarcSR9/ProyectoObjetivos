@@ -3,6 +3,7 @@
         <div class="d-flex justify-content-between align-items-center m-2">
             <h1 class="display-5 text-primary">Mis objetivos</h1>
         </div>
+        @if(auth()->user()->role != 'Director General')
         <div class="col-md-12 py-3">
             <h3>Objetivos asignados</h3>
             @if(count($objetivosDestino) > 0)
@@ -33,9 +34,9 @@
             @else
                 <p class="h5">Aún no te han asignado ningún objetivo</p>
             @endif
-
         </div>
-        <br><br>
+        @endif
+
         <div class="col-md-12 py-3">
             @if(auth()->user()->crea_objetivo_general == 'true' || auth()->user()->crea_objetivo_secundario == 'true' || auth()->user()->crea_objetivo_hito == 'true')
 	           <h3>Objetivos creados por mí</h3>
