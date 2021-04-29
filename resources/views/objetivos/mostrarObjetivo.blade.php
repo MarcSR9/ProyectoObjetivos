@@ -29,16 +29,13 @@
 
 				<p class="h5 my-3">Año: {{ $objetivo->year }}</p>
 
-
-                <label for="id_objetivo_dependiente" class="col-md-3 col-form-label">Depende de otro objetivo?</label>
                 @if($objetivo->id_objetivo_dependiente != null)
-                <label for="id_objetivo_dependiente" class="col-md-9 col-form-label">{{ $dependencia->id }} - {{ $dependencia->nombre }} ({{ $dependencia->tipo }})</label>
-                @else
-                <label for="id_objetivo_dependiente" class="col-md-3 col-form-label">No depende de ningún objetivo</label>
+                <p for="id_objetivo_dependiente" class="h5">Objetivo dependiente: {{ $dependencia->id }} - {{ $dependencia->nombre }} ({{ $dependencia->tipo }})</p>
                 @endif
 
 				<label for="descripcion" class="h4 my-3 text-primary">Descripción del objetivo</p>
 					<p name="descripcion" id="descripcion" class="h5 text-dark" >{{ $objetivo->descripcion }}</p>
+
 			@else
 				<div class="form-group row h5">
                     <label for="tipo" class="h5 col-md-3 col-form-label">Tipo de objetivo</label>
@@ -170,7 +167,7 @@
 							<div class="col-md-12">
 								<label for="comentario_origen_T1" class="font-weight-bolder col-md-12 text-mt-3 text-dark">Comentarios del creador del objetivo {{$objetivo->tipo}} en el trimestre 1</label>
 								@if($estado->trimester_1 == 'enabled' && auth()->user()->id == $objetivo->id_usuario_origen)
-									<textarea id="comentario_origen_T1" name="comentario_origen_T1" rows="5" class="col-md-12 h5">{{ $objetivo->comentario_origen_T1 }}</textarea>
+									<textarea id="comentario_origen_T1" name="comentario_origen_T1" rows="5" class="ml-3 col-md-12 h5">{{ $objetivo->comentario_origen_T1 }}</textarea>
 								@else
 									<p class="text-justify text-dark h5" id="comentario_origen_T1" name="comentario_origen_T1">{{ $objetivo->comentario_origen_T1 }}</p>
 								@endif
@@ -181,7 +178,7 @@
 							<div class="col-md-12">
 								<label for="comentario_origen_T2" class="font-weight-bolder col-md-12 mt-3 text-dark">Comentarios del creador del objetivo {{$objetivo->tipo}} en el trimestre 2</label>
 								@if($estado->trimester_2 == 'enabled' && auth()->user()->id == $objetivo->id_usuario_origen)
-									<textarea id="comentario_origen_T2" name="comentario_origen_T2" rows="5" class="col-md-12 h5">{{ $objetivo->comentario_origen_T2 }}</textarea>
+									<textarea id="comentario_origen_T2" name="comentario_origen_T2" rows="5" class="ml-3 col-md-12 h5">{{ $objetivo->comentario_origen_T2 }}</textarea>
 								@else
 									<p class="text-justify text-dark h5" id="comentario_origen_T2" name="comentario_origen_T2">{{ $objetivo->comentario_origen_T2 }}</p>
 								@endif
@@ -192,7 +189,7 @@
 							<div class="col-md-12">
 								<label for="comentario_origen_T3" class="font-weight-bolder col-md-12 mt-3 text-dark">Comentarios del creador del objetivo {{$objetivo->tipo}} en el trimestre 3</label>
 								@if($estado->trimester_3 == 'enabled' && auth()->user()->id == $objetivo->id_usuario_origen)
-									<textarea id="comentario_origen_T3" name="comentario_origen_T3" rows="5" class="col-md-12 h5">{{ $objetivo->comentario_origen_T3 }}</textarea>
+									<textarea id="comentario_origen_T3" name="comentario_origen_T3" rows="5" class="ml-3 col-md-12 h5">{{ $objetivo->comentario_origen_T3 }}</textarea>
 								@else
 									<p class="text-justify text-dark h5" id="comentario_origen_T3" name="comentario_origen_T3">{{ $objetivo->comentario_origen_T3 }}</p>
 								@endif
@@ -203,7 +200,7 @@
 							<div class="col-md-12">
 								<label for="comentario_origen_T4" class="font-weight-bolder col-md-12 mt-3 text-dark">Comentarios del creador del objetivo {{$objetivo->tipo}} en el trimestre 4</label>
 								@if($estado->trimester_4 == 'enabled' && auth()->user()->id == $objetivo->id_usuario_origen)
-									<textarea id="comentario_origen_T4" name="comentario_origen_T4" rows="5" class="col-md-12 h5">{{ $objetivo->comentario_origen_T4 }}</textarea>
+									<textarea id="comentario_origen_T4" name="comentario_origen_T4" rows="5" class="ml-3 col-md-12 h5">{{ $objetivo->comentario_origen_T4 }}</textarea>
 								@else
 									<p class="text-justify text-dark h5" id="comentario_origen_T4" name="comentario_origen_T4">{{ $objetivo->comentario_origen_T4 }}</p>
 								@endif
@@ -214,7 +211,7 @@
 							<div class="col-md-12">
 								<label for="comentario_origen_conclusiones" class="font-weight-bolder col-md-12 mt-3 text-dark">Comentarios del creador del objetivo {{$objetivo->tipo}} en las conclusiones</label>
 								@if($estado->conclusions == 'enabled' && auth()->user()->id == $objetivo->id_usuario_origen)
-									<textarea id="comentario_origen_conclusiones" name="comentario_origen_conclusiones" rows="5" class="col-md-12 h5">{{ $objetivo->comentario_origen_conclusiones }}</textarea>
+									<textarea id="comentario_origen_conclusiones" name="comentario_origen_conclusiones" rows="5" class="ml-3 col-md-12 h5">{{ $objetivo->comentario_origen_conclusiones }}</textarea>
 								@else
 									<p class="text-justify text-dark h5" id="comentario_origen_conclusiones" name="comentario_origen_conclusiones">{{ $objetivo->comentario_origen_conclusiones }}</p>
 								@endif
@@ -227,18 +224,18 @@
 							<div class="col-md-6">
 								<label for="comentario_origen_T1" class="font-weight-bolder col-md-12 mt-3 text-dark">Creador del objetivo {{$objetivo->tipo}} en el trimestre 1</label>
 								@if($estado->trimester_1 == 'enabled' && auth()->user()->id == $objetivo->id_usuario_origen)
-									<textarea id="comentario_origen_T1" name="comentario_origen_T1" rows="5" class="col-md-11 h5">{{ $objetivo->comentario_origen_T1 }}</textarea>
+									<textarea id="comentario_origen_T1" name="comentario_origen_T1" rows="5" class="ml-3 col-md-11 h5">{{ $objetivo->comentario_origen_T1 }}</textarea>
 								@else
-									<p class="text-justify text-dark h5" id="comentario_origen_T1" name="comentario_origen_T1">{{ $objetivo->comentario_origen_T1 }}</p>
+									<p class="text-justify pl-3 text-dark h5" id="comentario_origen_T1" name="comentario_origen_T1">{{ $objetivo->comentario_origen_T1 }}</p>
 								@endif
 							</div>
 
 							<div class="col-md-6">
 								<label for="comentario_destino_T1" class="font-weight-bolder col-md-12 mt-3 text-dark">Destinatario del objetivo {{$objetivo->tipo}} en el trimestre 1</label>
 								@if($estado->trimester_1 == 'enabled' && auth()->user()->id == $objetivo->id_usuario_destino)
-									<textarea id="comentario_destino_T1" name="comentario_destino_T1" rows="5" class="col-md-12">{{ $objetivo->comentario_destino_T1 }}</textarea>
+									<textarea id="comentario_destino_T1" name="comentario_destino_T1" rows="5" class="ml-3 col-md-12">{{ $objetivo->comentario_destino_T1 }}</textarea>
 								@else
-									<p class="text-justify text-dark h5" id="comentario_destino_T1" name="comentario_destino_T1">{{ $objetivo->comentario_destino_T1 }}</p>
+									<p class="text-justify pl-3 text-dark h5" id="comentario_destino_T1" name="comentario_destino_T1">{{ $objetivo->comentario_destino_T1 }}</p>
 								@endif
 							</div>
 						</div>
@@ -247,18 +244,18 @@
 							<div class="col-md-6">
 								<label for="comentario_origen_T2" class="font-weight-bolder col-md-12 mt-3 text-dark">Creador del objetivo {{$objetivo->tipo}} en el trimestre 2</label>
 								@if($estado->trimester_2 == 'enabled' && auth()->user()->id == $objetivo->id_usuario_origen)
-									<textarea id="comentario_origen_T2" name="comentario_origen_T2" rows="5" class="col-md-11 h5">{{ $objetivo->comentario_origen_T2 }}</textarea>
+									<textarea id="comentario_origen_T2" name="comentario_origen_T2" rows="5" class="ml-3 col-md-11 h5">{{ $objetivo->comentario_origen_T2 }}</textarea>
 								@else
-									<p class="text-justify text-dark h5" id="comentario_origen_T2" name="comentario_origen_T2">{{ $objetivo->comentario_origen_T2 }}</p>
+									<p class="text-justify pl-3 text-dark h5" id="comentario_origen_T2" name="comentario_origen_T2">{{ $objetivo->comentario_origen_T2 }}</p>
 								@endif
 							</div>
 
 							<div class="col-md-6">
 								<label for="comentario_destino_T2" class="font-weight-bolder col-md-12 mt-3 text-dark">Destinatario del objetivo {{$objetivo->tipo}} en el trimestre 2</label>
 								@if($estado->trimester_2 == 'enabled' && auth()->user()->id == $objetivo->id_usuario_destino)
-									<textarea id="comentario_destino_T2" name="comentario_destino_T2" rows="5" class="col-md-12">{{ $objetivo->comentario_destino_T2 }}</textarea>
+									<textarea id="comentario_destino_T2" name="comentario_destino_T2" rows="5" class="ml-3 col-md-12">{{ $objetivo->comentario_destino_T2 }}</textarea>
 								@else
-									<p class="text-justify text-dark h5" id="comentario_destino_T2" name="comentario_destino_T2">{{ $objetivo->comentario_destino_T2 }}</p>
+									<p class="text-justify pl-3 text-dark h5" id="comentario_destino_T2" name="comentario_destino_T2">{{ $objetivo->comentario_destino_T2 }}</p>
 								@endif
 							</div>
 						</div>
@@ -267,18 +264,18 @@
 							<div class="col-md-6">
 								<label for="comentario_origen_T3" class="font-weight-bolder col-md-12 mt-3 text-dark">Creador del objetivo {{$objetivo->tipo}} en el trimestre 3</label>
 								@if($estado->trimester_3 == 'enabled' && auth()->user()->id == $objetivo->id_usuario_origen)
-									<textarea id="comentario_origen_T3" name="comentario_origen_T3" rows="5" class="col-md-11 h5">{{ $objetivo->comentario_origen_T3 }}</textarea>
+									<textarea id="comentario_origen_T3" name="comentario_origen_T3" rows="5" class="ml-3 col-md-11 h5">{{ $objetivo->comentario_origen_T3 }}</textarea>
 								@else
-									<p class="text-justify text-dark h5" id="comentario_origen_T3" name="comentario_origen_T3">{{ $objetivo->comentario_origen_T3 }}</p>
+									<p class="text-justify pl-3 text-dark h5" id="comentario_origen_T3" name="comentario_origen_T3">{{ $objetivo->comentario_origen_T3 }}</p>
 								@endif
 							</div>
 
 							<div class="col-md-6">
 								<label for="comentario_destino_T3" class="font-weight-bolder col-md-12 mt-3 text-dark">Destinatario del objetivo {{$objetivo->tipo}} en el trimestre 3</label>
 								@if($estado->trimester_3 == 'enabled' && auth()->user()->id == $objetivo->id_usuario_destino)
-									<textarea id="comentario_destino_T3" name="comentario_destino_T3" rows="5" class="col-md-12">{{ $objetivo->comentario_destino_T3 }}</textarea>
+									<textarea id="comentario_destino_T3" name="comentario_destino_T3" rows="5" class="ml-3 col-md-12">{{ $objetivo->comentario_destino_T3 }}</textarea>
 								@else
-									<p class="text-justify text-dark h5" id="comentario_destino_T3" name="comentario_destino_T3">{{ $objetivo->comentario_destino_T3 }}</p>
+									<p class="text-justify pl-3 text-dark h5" id="comentario_destino_T3" name="comentario_destino_T3">{{ $objetivo->comentario_destino_T3 }}</p>
 								@endif
 							</div>
 						</div>
@@ -287,18 +284,18 @@
 							<div class="col-md-6">
 								<label for="comentario_origen_T4" class="font-weight-bolder col-md-12 mt-3 text-dark">Creador del objetivo {{$objetivo->tipo}} en el trimestre 4</label>
 								@if($estado->trimester_4 == 'enabled' && auth()->user()->id == $objetivo->id_usuario_origen)
-									<textarea id="comentario_origen_T4" name="comentario_origen_T4" rows="5" class="col-md-11 h5">{{ $objetivo->comentario_origen_T4 }}</textarea>
+									<textarea id="comentario_origen_T4" name="comentario_origen_T4" rows="5" class="ml-3 col-md-11 h5">{{ $objetivo->comentario_origen_T4 }}</textarea>
 								@else
-									<p class="text-justify text-dark h5" id="comentario_origen_T4" name="comentario_origen_T4">{{ $objetivo->comentario_origen_T4 }}</p>
+									<p class="text-justify pl-3 text-dark h5" id="comentario_origen_T4" name="comentario_origen_T4">{{ $objetivo->comentario_origen_T4 }}</p>
 								@endif
 							</div>
 
 							<div class="col-md-6">
 								<label for="comentario_destino_T4" class="font-weight-bolder col-md-12 mt-3 text-dark">Destinatario del objetivo {{$objetivo->tipo}} en el trimestre 4</label>
 								@if($estado->trimester_4 == 'enabled' && auth()->user()->id == $objetivo->id_usuario_destino)
-									<textarea id="comentario_destino_T4" name="comentario_destino_T4" rows="5" class="col-md-12">{{ $objetivo->comentario_destino_T4 }}</textarea>
+									<textarea id="comentario_destino_T4" name="comentario_destino_T4" rows="5" class="ml-3 col-md-12">{{ $objetivo->comentario_destino_T4 }}</textarea>
 								@else
-									<p class="text-justify text-dark h5" id="comentario_destino_T4" name="comentario_destino_T4">{{ $objetivo->comentario_destino_T4 }}</p>
+									<p class="text-justify pl-3 text-dark h5" id="comentario_destino_T4" name="comentario_destino_T4">{{ $objetivo->comentario_destino_T4 }}</p>
 								@endif
 							</div>
 						</div>
@@ -307,18 +304,18 @@
 							<div class="col-md-6">
 								<label for="comentario_origen_conclusiones" class="font-weight-bolder col-md-12 mt-3 text-dark">Creador del objetivo {{$objetivo->tipo}} en las conclusiones</label>
 								@if($estado->conclusions == 'enabled' && auth()->user()->id == $objetivo->id_usuario_origen)
-									<textarea id="comentario_origen_conclusiones" name="comentario_origen_conclusiones" rows="5" class="col-md-11 h5">{{ $objetivo->comentario_origen_conclusiones }}</textarea>
+									<textarea id="comentario_origen_conclusiones" name="comentario_origen_conclusiones" rows="5" class="ml-3 col-md-11 h5">{{ $objetivo->comentario_origen_conclusiones }}</textarea>
 								@else
-									<p class="text-justify text-dark h5" id="comentario_origen_conclusiones" name="comentario_origen_conclusiones">{{ $objetivo->comentario_origen_conclusiones }}</p>
+									<p class="text-justify pl-3 text-dark h5" id="comentario_origen_conclusiones" name="comentario_origen_conclusiones">{{ $objetivo->comentario_origen_conclusiones }}</p>
 								@endif
 							</div>
 
 							<div class="col-md-6">
 								<label for="comentario_destino_conclusiones" class="font-weight-bolder col-md-12 mt-3 text-dark">Destinatario del objetivo {{$objetivo->tipo}} en las conclusiones</label>
 								@if($estado->conclusions == 'enabled' && auth()->user()->id == $objetivo->id_usuario_destino)
-									<textarea id="comentario_destino_conclusiones" name="comentario_destino_conclusiones" rows="5" class="col-md-12">{{ $objetivo->comentario_destino_conclusiones }}</textarea>
+									<textarea id="comentario_destino_conclusiones" name="comentario_destino_conclusiones" rows="5" class="ml-3 col-md-12">{{ $objetivo->comentario_destino_conclusiones }}</textarea>
 								@else
-									<p class="text-justify text-dark h5" id="comentario_destino_conclusiones" name="comentario_destino_conclusiones">{{ $objetivo->comentario_destino_conclusiones }}</p>
+									<p class="text-justify pl-3 text-dark h5" id="comentario_destino_conclusiones" name="comentario_destino_conclusiones">{{ $objetivo->comentario_destino_conclusiones }}</p>
 								@endif
 							</div>
 						</div>
