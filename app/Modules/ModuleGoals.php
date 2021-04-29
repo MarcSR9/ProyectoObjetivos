@@ -91,12 +91,26 @@ class ModuleGoals
             $objetivo->save();
         }
         else if (auth()->user()->id == $objetivo->id_usuario_origen){
-            $objetivo->tipo = $newdata["tipo"];
+            //comprobar si se viene el campo en el formulario, si no dejar el valor por defecto
+            if(array_key_exists("tipo", $newdata)){
+                $objetivo->tipo = $newdata["tipo"];
+            }
+            //$objetivo->tipo = $newdata["tipo"];
             $objetivo->nombre = $newdata["nombre"];
             $objetivo->year = intval($newdata["year"]);
             $objetivo->id_usuario_destino = intval($newdata["id_usuario_destino"]);
-            $objetivo->id_objetivo_dependiente = intval($newdata["id_objetivo_dependiente"]);
-            $objetivo->descripcion = $newdata["descripcion"];
+
+            //comprobar si se viene el campo en el formulario, si no dejar el valor por defecto
+            if(array_key_exists("id_objetivo_dependiente", $newdata)){
+                $objetivo->tipo = $newdata["id_objetivo_dependiente"];
+            }
+            //$objetivo->id_objetivo_dependiente = intval($newdata["id_objetivo_dependiente"]);
+
+            //comprobar si se viene el campo en el formulario, si no dejar el valor por defecto
+            if(array_key_exists("descripcion", $newdata)){
+                $objetivo->tipo = $newdata["descripcion"];
+            }
+            //$objetivo->descripcion = $newdata["descripcion"];
             if ($estados[0]->trimester_1== 'enabled') {
                 $objetivo->comentario_origen_T1 = $newdata["comentario_origen_T1"];
             }
