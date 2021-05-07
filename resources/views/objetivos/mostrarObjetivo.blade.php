@@ -516,7 +516,7 @@
 
 							<div class="col-md-6">
                                 <div class="card card-t4">
-                                    <h5 class="card-header text-center">Comentarios {{ $creador->name }} {{ $creador->surname }} T4</h5>
+                                    <h5 class="card-header text-center">Comentarios {{ $destinatario->name }} {{ $destinatario->surname }} T4</h5>
                                     <div class="card-body">
                                         @if($estado->trimester_4 == 'enabled' && auth()->user()->id == $objetivo->id_usuario_destino && $objetivo->completado == null)
                                             <textarea id="comentario_origen_T4" name="comentario_destino_T4" rows="5" class="ml-3 col-md-12 h5">{{ $objetivo->comentario_destino_T4 }}</textarea>
@@ -558,7 +558,7 @@
 							<div class="col-md-6">
 
                                 <div class="card card-conclusions">
-                                    <h5 class="card-header text-center">Comentarios {{ $destinatario->name }} {{ $destinatario->surname }} T1</h5>
+                                    <h5 class="card-header text-center">Comentarios {{ $destinatario->name }} {{ $destinatario->surname }} conclusiones</h5>
                                     <div class="card-body">
                                         @if($estado->conclusions == 'enabled' && auth()->user()->id == $objetivo->id_usuario_destino && $objetivo->completado == null)
                                             <textarea id="comentario_origen_conclusiones" name="comentario_destino_conclusiones" rows="5" class="ml-3 col-md-12 h5">{{ $objetivo->comentario_destino_conclusiones }}</textarea>
