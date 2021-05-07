@@ -99,8 +99,41 @@
             </ul>
         </div>
         <hr>
+
         <div class="col-md-12 py-3">
-            <h3>Objetivos de la empresa</h3>
+            <h1>Objetivos de la empresa</h1>
+            <br>
+            <form method="POST" action="{{ route('filtrarObjetivos') }}" class="form-group row filterbar" id="filterbar">
+                @csrf
+                <label for="year" class="col-md-2 col-form-label text-md-right">Año del objetivo</label>
+                <div class="col-md-2">
+                    <select id="year" name="year" type="text" class="form-control" required>
+                        <option @if($year == "all" || $year == null) selected @endif value="all">Todos</option>
+                        <option @if($year == "2021") selected @endif value="2021">2021</option>
+                        <option @if($year == "2022") selected @endif value="2022">2022</option>
+                        <option @if($year == "2023") selected @endif value="2023">2023</option>
+                        <option @if($year == "2024") selected @endif value="2024">2024</option>
+                        <option @if($year == "2025") selected @endif value="2025">2025</option>
+                        <option @if($year == "2026") selected @endif value="2026">2026</option>
+                        <option @if($year == "2027") selected @endif value="2027">2027</option>
+                        <option @if($year == "2028") selected @endif value="2028">2028</option>
+                        <option @if($year == "2029") selected @endif value="2029">2029</option>
+                    </select>
+                </div>
+                <label for="tipo" class="col-md-2 col-form-label text-md-right">Tipo de Objetivo</label>
+                <div class="col-md-2">
+                    <select id="tipo" name="tipo" type="text" class="form-control" required>
+                        <option @if($tipo == "all" or $tipo == null) selected @endif value="all">Todos</option>
+                        <option @if($tipo == "General") selected @endif value="General">Objetivo General</option>
+                        <option @if($tipo == "Secundario") selected @endif value="Secundario">Objetivo Secundario</option>
+                        <option @if($tipo == "Hito") selected @endif value="Hito">Hito</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-outline-dark font-weight-bold">Filtrar</button>
+
+            </form>
+        </div>
+        <br>
             @if(count($objetivos) > 0)
                 <table class="table shadow-sm bg-transparent h5">
                     <tr>

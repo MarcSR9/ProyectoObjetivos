@@ -53,10 +53,10 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/objetivos/{objetivo}/nocompletar', 'ObjetivosController@noCompletarObjetivo')->name('noCompletarObjetivo');
 	Route::delete('/objetivos/{objetivo}/eliminar', 'ObjetivosController@eliminarObjetivo')->name('eliminarObjetivo');
 
-
 	//Administración de la aplicación
 	Route::get('/administracion', 'AppAdminController@estadoApp')->name('administracion');
 	Route::get('/panelDGeneral', 'AppAdminController@vistaDG')->name('panelDGeneral');
+	Route::post('/filtrarObjetivos', 'AppAdminController@filtrarObjetivos')->name('filtrarObjetivos');
 	Route::get('/administracion/errores', 'AppAdminController@listarErrores')->name('listaErrores');
 	Route::get('/administracion/acciones', 'AppAdminController@listarAcciones')->name('listaAcciones');
 

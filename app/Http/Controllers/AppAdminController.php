@@ -138,19 +138,25 @@ class AppAdminController extends Controller
         }
     }
 
-    public function vistaDG()
+    public function filtrarObjetivos(Request $request)
     {
+        $output = $this->vistaDG($request->post()['year'], $request->post()['tipo']);
+        //dd($output);
+        return $output;
+    }
+
+    public function vistaDG(string $year = null, string $tipo = null)
+    {
+        //dd($year, $tipo);
     	$moduloAdminApp = new ModuleAppAdministration();
     	$estados = $moduloAdminApp->estadoApp();
 
     	$moduloObjetivo = new ModuleGoals();
-        $objetivos = $moduloObjetivo->listarObjetivos();
-
-
+        $objetivos = $moduloObjetivo->listarObjetivos($year, $tipo);
 
         if (auth()->user()->role == 'Director General') {
         	return view('administracionApp.vistaDG',
-    		['estados' => $estados, 'objetivos' => $objetivos]);
+    		['estados' => $estados, 'objetivos' => $objetivos, 'year' => $year, 'tipo' => $tipo]);
         }
         else {
             $moduloAdminApp = new ModuleAppAdministration();

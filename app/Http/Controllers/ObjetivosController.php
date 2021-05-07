@@ -122,8 +122,6 @@ class ObjetivosController extends Controller
             $action = $moduloAdminApp->registrarAccion('Intento de acceso a recurso no autorizado');
             return back()->with('status-error', 'No tienes acceso a este recurso');
         }
-
-
     }
 
     public function actualizarObjetivo(Request $request, Goal $objetivo)

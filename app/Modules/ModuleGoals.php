@@ -12,14 +12,23 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ModuleGoals
 {
-    public function listarObjetivos()
+    public function listarObjetivos(string $year = null, string $tipo = null)
     {
         $objetivos = Goal::leftJoin('users as creadores', 'goals.id_usuario_origen', '=', 'creadores.id')
         ->leftJoin('users as destinatarios', 'goals.id_usuario_destino', '=', 'destinatarios.id')
         ->select('goals.*', 'creadores.name as nombre_origen', 'creadores.surname as apellido_origen', 'destinatarios.name as destino_nombre', 'destinatarios.surname as destino_apellido')
-        ->orderByRaw('year DESC, CASE WHEN goals.tipo = \'General\' THEN 1 WHEN goals.tipo = \'Secundario\' THEN 2 WHEN goals.tipo = \'Hito\' THEN 3 END')
-        ->get();
-        return $objetivos;
+        ->orderByRaw('year DESC, CASE WHEN goals.tipo = \'General\' THEN 1 WHEN goals.tipo = \'Secundario\' THEN 2 WHEN goals.tipo = \'Hito\' THEN 3 END');
+
+        if($year != null && $year != "all"){
+            $objetivos->where("year","=",$year);
+        }
+
+        if($tipo != null && $tipo != "all"){
+            $objetivos->where("tipo","=",$tipo);
+        }
+
+        //echo $objetivos->toSql();
+        return $objetivos->get();
     }
 
     public function listarObjetivosOrigen($user_id)
