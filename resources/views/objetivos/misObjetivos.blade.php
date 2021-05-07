@@ -19,6 +19,8 @@
                     @foreach ($objetivosDestino->sortBy('id')->sortBy('year') as $objetivo)
                     @if($objetivo->completado == 'completado')
                     <tr class="table-success">
+                    @elseif($objetivo->completado == 'no completado')
+                    <tr class="table-danger">
                     @else
                     <tr>
                     @endif
@@ -55,6 +57,8 @@
     	            @foreach ($objetivosOrigen->sortBy('id')->sortBy('year') as $objetivo)
                     @if($objetivo->completado == 'completado')
                     <tr class="table-success">
+                    @elseif($objetivo->completado == 'no completado')
+                    <tr class="table-danger">
                     @else
                     <tr>
                     @endif
@@ -69,7 +73,11 @@
                                 @if($objetivo->completado == null)
                                 <form method="POST" action="{{ route('completarObjetivo', $objetivo) }}">
                                     @csrf
-                                    <button class="btn btn-success rounded mx-1 font-weight-bold" onclick="return confirm('Estás seguro de que quieres marcar el objetivo como completado?')" href="">Completar</button>
+                                    <button class="btn btn-success rounded mx-1 font-weight-bold" onclick="return confirm('Estás seguro de que quieres marcar el objetivo como Completado?')" href="">Completado</button>
+                                </form>
+                                    <form method="POST" action="{{ route('noCompletarObjetivo', $objetivo) }}">
+                                    @csrf
+                                    <button class="btn btn-danger rounded mx-1 font-weight-bold" onclick="return confirm('Estás seguro de que quieres marcar el objetivo como No Completado?')" href="">No Completado</button>
                                 </form>
                                 @endif
                                 &nbsp;

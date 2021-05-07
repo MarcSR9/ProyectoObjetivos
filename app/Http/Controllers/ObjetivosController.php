@@ -144,7 +144,23 @@ class ObjetivosController extends Controller
             $moduloObjetivo->completarObjetivo($objetivo);
             $moduloAdminApp = new ModuleAppAdministration();
                 $action = $moduloAdminApp->registrarAccion('El usuario ha completado un objetivo');
-            return redirect()->route('home')->with('status-success', 'El objetivo ha sido marcado como completado');
+            return redirect()->route('home')->with('status-success', 'El objetivo ha sido marcado como Completado');
+        }
+        else{
+            $moduloAdminApp = new ModuleAppAdministration();
+            $action = $moduloAdminApp->registrarAccion('Intento de acceso a recurso no autorizado');
+            return back()->with('status-error', 'No tienes acceso a este recurso');
+        }
+    }
+
+    public function noCompletarObjetivo(Goal $objetivo)
+    {
+        if(auth()->user()->id == $objetivo->id_usuario_origen){
+            $moduloObjetivo = new ModuleGoals();
+            $moduloObjetivo->noCompletarObjetivo($objetivo);
+            $moduloAdminApp = new ModuleAppAdministration();
+            $action = $moduloAdminApp->registrarAccion('El usuario NO ha completado un objetivo');
+            return redirect()->route('home')->with('status-success', 'El objetivo ha sido marcado como No Completado');
         }
         else{
             $moduloAdminApp = new ModuleAppAdministration();

@@ -112,8 +112,10 @@
                         <th>Acciones</th>
                     </tr>
                     @foreach ($objetivos as $objetivo)
-                    @if($objetivo->completado != null)
+                    @if($objetivo->completado == 'completado')
                     <tr class="table-success">
+                    @elseif($objetivo->completado == 'no completado')
+                    <tr class="table-danger">
                     @else
                     <tr>
                     @endif

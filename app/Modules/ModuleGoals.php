@@ -139,6 +139,13 @@ class ModuleGoals
         return $objetivo;
     }
 
+    public function noCompletarObjetivo(Goal $objetivo)
+    {
+        $objetivo->completado = "no completado";
+        $objetivo->save();
+        return $objetivo;
+    }
+
     public function creadorObjetivo(Goal $objetivo)
     {
         $creador = User::where('id', $objetivo->id_usuario_origen)->first();

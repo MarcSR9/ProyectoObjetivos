@@ -80,8 +80,10 @@
         </div>
 
 		<form method="POST" class="col-md-11" action="{{ route('actualizarObjetivo', $objetivo) }}">
-            @if($objetivo->completado != null)
+            @if($objetivo->completado == 'completado')
                 <div class="h5 my-3 font-weight-bold">Estado: &nbsp;&nbsp;&nbsp; <div class="font-weight-bold btn btn-success">Completado</div></div>
+            @elseif($objetivo->completado == 'no completado')
+                <div class="h5 my-3 font-weight-bold">Estado: &nbsp;&nbsp;&nbsp; <div class="font-weight-bold btn btn-danger">No Completado</div></div>
             @else
                 <div class="h5 my-3 font-weight-bold">Estado: &nbsp;&nbsp;&nbsp;  <div class="font-weight-bold btn btn-warning">En curso</div></div>
             @endif
@@ -107,7 +109,7 @@
 
                 @if($objetivo->tipo == "Hito")
                     <label for="descripcion" class="h4 my-4 text-primary"> Descripción del {{ $objetivo->tipo }} </label>
-                @else($objtivo->tipo == "hito")
+                @else
                     <label for="descripcion" class="h4 my-4 text-primary"> Descripción del Objetivo {{ $objetivo->tipo }} </label>
                 @endif
                 <p name="descripcion" id="descripcion" class="h5 text-dark" >{{ $objetivo->descripcion }}</p>
@@ -232,7 +234,12 @@
                     </div>--}}
                 </div>
 
+                @if($objetivo->tipo == "Hito")
                 <label for="descripcion" class="h4 my-5 text-primary">Descripción del {{ $objetivo->tipo }}</label>
+                @else
+                <label for="descripcion" class="h4 my-5 text-primary">Descripción del Objetivo {{ $objetivo->tipo }}</label>
+                @endif
+
 				<p name="descripcion" id="descripcion" rows="5" class="col-md-9 text-dark h5">{{ $objetivo->descripcion }}</p>
 			@endif
 

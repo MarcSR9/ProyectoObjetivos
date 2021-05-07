@@ -50,6 +50,7 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/objetivos/{objetivo}', 'ObjetivosController@mostrarObjetivo')->name('mostrarObjetivo');
 	Route::post('/objetivos/{objetivo}/actualizar', 'ObjetivosController@actualizarObjetivo')->name('actualizarObjetivo');
 	Route::post('/objetivos/{objetivo}/completar', 'ObjetivosController@completarObjetivo')->name('completarObjetivo');
+    Route::post('/objetivos/{objetivo}/nocompletar', 'ObjetivosController@noCompletarObjetivo')->name('noCompletarObjetivo');
 	Route::delete('/objetivos/{objetivo}/eliminar', 'ObjetivosController@eliminarObjetivo')->name('eliminarObjetivo');
 
 
