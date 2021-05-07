@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h4>Editar usuario</h4>
@@ -23,7 +23,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre') }}</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name', $usuario->name) }}" required autocomplete="name" autofocus>
@@ -37,7 +37,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="surname" class="col-md-4 col-form-label text-md-right">{{ __('Surname') }}</label>
+                            <label for="surname" class="col-md-4 col-form-label text-md-right">{{ __('Apellido') }}</label>
 
                             <div class="col-md-6">
                                 <input id="surname" type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ old('surname', $usuario->surname) }}" required autocomplete="surname" autofocus>
@@ -51,7 +51,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
+                            <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Rol') }}</label>
                             <div class="col-md-6">
                                 <select id="role" name="role" type="text" class="form-control" required>
                                     <option value="Admin" {{ $usuario->role == 'Admin' ? 'selected' : ''}}>Admin</option>
@@ -66,9 +66,44 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="form-group">
+                            <div class="form-check row">
+                                <label class="col-md-4 col-form-label text-md-right">Permiso para crear objetivos generales:</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" {{ $usuario->crea_objetivo_general == 'true' ? 'checked' : '' }} type="radio" name="obj_general" id="obj_general" value="true">
+                                    <label class="form-check-label" for="obj_general">Sí</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" {{ $usuario->crea_objetivo_general == 'false' ? 'checked' : '' }} type="radio" name="obj_general" id="obj_general" value="false">
+                                    <label class="form-check-label" for="obj_general">No</label>
+                                </div>
+                            </div>
+
+                            <div class="form-check row">
+                                <label class="col-md-4 col-form-label text-md-right">Permiso para crear objetivos secundarios:</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" {{ $usuario->crea_objetivo_secundario == 'true' ? 'checked' : '' }} type="radio" name="obj_secundario" id="obj_secundario" value="true">
+                                    <label class="form-check-label" for="obj_secundario">Sí</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" {{ $usuario->crea_objetivo_secundario == 'false' ? 'checked' : '' }} type="radio" name="obj_secundario" id="obj_secundario" value="false">
+                                    <label class="form-check-label" for="obj_secundario">No</label>
+                                </div>
+                            </div><div class="form-check row">
+                                <label class="col-md-4 col-form-label text-md-right">Permiso para crear hitos:</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" {{ $usuario->crea_objetivo_hito == 'true' ? 'checked' : '' }} type="radio" name="obj_hito" id="obj_hito" value="true">
+                                    <label class="form-check-label" for="obj_hito">Sí</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" {{ $usuario->crea_objetivo_hito == 'false' ? 'checked' : '' }} type="radio" name="obj_hito" id="obj_hito" value="false">
+                                    <label class="form-check-label" for="obj_hito">No</label>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Correo Electrónico') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email', $usuario->email) }}" required autocomplete="email">

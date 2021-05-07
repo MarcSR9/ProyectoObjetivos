@@ -51,6 +51,9 @@ class ModuleUsers
         $usuario->surname = $newdata["surname"];
         $usuario->role = $newdata["role"];
         $usuario->email = $newdata["email"];
+        $usuario->crea_objetivo_general = $newdata["obj_general"];
+        $usuario->crea_objetivo_secundario = $newdata["obj_secundario"];
+        $usuario->crea_objetivo_hito = $newdata["obj_hito"];
         $usuario->save();
         return $usuario;
     }
