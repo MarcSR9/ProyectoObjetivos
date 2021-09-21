@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'pgsql'),
+    'default' => env('DB_CONNECTION', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -48,9 +48,9 @@ return [
             'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'database' => env('DB_DATABASE', 'proyecto_objetivos'),
+            'username' => env('DB_USERNAME', 'marc'),
+            'password' => env('DB_PASSWORD', 'Wolfcirat$1'),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
@@ -68,9 +68,9 @@ return [
             'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST', 'objetivos.aeinnova.com'),
             'port' => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', 'admin_objetivos_aei'),
-            'username' => env('DB_USERNAME', 'alex'),
-            'password' => env('DB_PASSWORD', '2_Cd3zv7'),
+            'database' => env('DB_DATABASE', 'proyecto_objetivos'),
+            'username' => env('DB_USERNAME', 'marc'),
+            'password' => env('DB_PASSWORD', 'Wolfcirat$1'),
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,

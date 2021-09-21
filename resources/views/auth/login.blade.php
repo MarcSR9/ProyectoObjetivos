@@ -53,20 +53,20 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-outline-primary font-weight-bold">
+-                                <button type="submit" class="btn btn-outline-primary font-weight-bold">
                                     {{ __('Login') }}
                                 </button>
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('recuperarContraseña') }}">
-                                        {{ __('He olvidado mi contraseña') }}
-                                    </a>
-                                @endif
-                            </div>
-                            <div class="col-md-9 offset-md-4">
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('recuperarCuenta') }}">
-                                        {{ __('Recuperar cuenta con Token') }}
+-                                        {{ __('He olvidado mi contraseña') }}
+-                                    </a>
+-                                @endif
+-                            </div>
+-                            <div class="col-md-9 offset-md-4">
+-                                @if (Route::has('password.request'))
+-                                    <a class="btn btn-link" href="{{ route('recuperarCuenta') }}">
+-                                        {{ __('Recuperar cuenta con Token') }}
                                     </a>
                                 @endif
                             </div>
