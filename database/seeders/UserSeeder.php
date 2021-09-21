@@ -24,7 +24,7 @@ class UserSeeder extends Seeder
             'crea_objetivo_general' => 'true',
             'crea_objetivo_secundario' => 'true',
             'crea_objetivo_hito' => 'true',
-            'email' => 'admin@aeinnova.com',
+            'email' => 'admin@gmail.com',
             'password' => Hash::make('12345aA'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -36,7 +36,7 @@ class UserSeeder extends Seeder
             'crea_objetivo_general' => 'true',
             'crea_objetivo_secundario' => 'false',
             'crea_objetivo_hito' => 'false',
-            'email' => 'director.general@aeinnova.com',
+            'email' => 'director.general@gmail.com',
             'password' => Hash::make('12345aA'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -48,7 +48,7 @@ class UserSeeder extends Seeder
             'crea_objetivo_general' => 'false',
             'crea_objetivo_secundario' => 'true',
             'crea_objetivo_hito' => 'false',
-            'email' => 'pm@aeinnova.com',
+            'email' => 'pm@gmail.com',
             'password' => Hash::make('12345aA'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -60,7 +60,7 @@ class UserSeeder extends Seeder
             'crea_objetivo_general' => 'false',
             'crea_objetivo_secundario' => 'false',
             'crea_objetivo_hito' => 'true',
-            'email' => 'responsable@aeinnova.com',
+            'email' => 'responsable@gmail.com',
             'password' => Hash::make('12345aA'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -72,7 +72,7 @@ class UserSeeder extends Seeder
             'crea_objetivo_general' => 'false',
             'crea_objetivo_secundario' => 'false',
             'crea_objetivo_hito' => 'false',
-            'email' => 'auxiliar@aeinnova.com',
+            'email' => 'auxiliar@gmail.com',
             'password' => Hash::make('12345aA'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -84,7 +84,7 @@ class UserSeeder extends Seeder
             'crea_objetivo_general' => 'true',
             'crea_objetivo_secundario' => 'true',
             'crea_objetivo_hito' => 'true',
-            'email' => 'comodin@aeinnova.com',
+            'email' => 'comodin@gmail.com',
             'password' => Hash::make('12345aA'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
